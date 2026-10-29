@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tenon.coffee/schema/nutrients.schema.json",
+  "title": "Nutrient catalogue",
+  "description": "The nutrients Tenon tracks, their units and reference intakes.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["reference_sources", "nutrients"],
+  "properties": {
+    "reference_sources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["us_fda", "sg_hpb"],
+      "properties": {
+        "us_fda": { "type": "string" },
+        "sg_hpb": { "type": "string" }
+      }
+    },
+    "nutrients": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["key", "name", "unit", "group", "reference_intakes"],
+        "properties": {
+          "key": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+          "name": { "type": "string" },
+          "unit": { "enum": ["kcal", "g", "mg", "ug"] },
+          "group": { "enum": ["energy", "macro", "micro", "other"] },
+          "lever": { "enum": ["protein", "fibre", "micronutrient"] },
+          "reference_intakes": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["us_fda", "sg_hpb"],
+            "properties": {
+              "us_fda": { "anyOf": [{ "type": "null" }, { "type": "number", "exclusiveMinimum": 0 }] },
+              "sg_hpb": { "anyOf": [{ "type": "null" }, { "type": "number", "exclusiveMinimum": 0 }] }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "tenon-data",
+  "version": "0.1.0",
+  "description": "Open ingredient, prep and build data for Tenon Coffee, with calculated nutrition.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts",
+    "./compile": "./src/compile.ts",
+    "./markdown": "./src/markdown.ts",
+    "./nutrition": "./src/nutrition.ts",
+    "./scale": "./src/scale.ts",
+    "./types": "./src/types.ts"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "validate": "node src/cli.ts validate",
+    "build": "node src/cli.ts build",
+    "test": "vitest run",
+    "typecheck": "tsc"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.16.1",
+      "onFail": "download"
+    }
+  },
+  "packageManager": "pnpm@12.16.1",
+  "dependencies": {
+    "ajv": "^8.20.0",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}

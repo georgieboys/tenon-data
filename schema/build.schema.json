@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tenon.coffee/schema/build.schema.json",
+  "title": "Build",
+  "description": "Final assembly instructions for one serving. Slots let a build accept interchangeable components (e.g. milk bases); every format and slot combination is calculated.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "code", "name", "version", "vertical", "formats"],
+  "properties": {
+    "id": { "$ref": "common.schema.json#/$defs/id" },
+    "code": { "type": "string", "pattern": "^BLD-\\d{3}$" },
+    "name": { "type": "string", "minLength": 1 },
+    "version": { "$ref": "common.schema.json#/$defs/semver" },
+    "description": { "type": "string" },
+    "derived_from": { "$ref": "common.schema.json#/$defs/derivedFrom" },
+    "vertical": { "enum": ["coffee", "matcha", "cocoa", "tea"] },
+    "slots": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z][a-z0-9_]*$" },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "options", "default"],
+        "properties": {
+          "label": { "type": "string" },
+          "options": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "$ref": "common.schema.json#/$defs/componentRef" }
+          },
+          "default": { "$ref": "common.schema.json#/$defs/componentRef" }
+        }
+      }
+    },
+    "formats": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "$ref": "common.schema.json#/$defs/format" },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["inputs", "steps"],
+        "properties": {
+          "inputs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "oneOf": [
+                { "$ref": "common.schema.json#/$defs/componentInput" },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["slot", "qty", "unit"],
+                  "properties": {
+                    "slot": { "type": "string" },
+                    "qty": { "$ref": "common.schema.json#/$defs/quantity" },
+                    "unit": { "$ref": "common.schema.json#/$defs/unit" },
+                    "temp_c": { "$ref": "common.schema.json#/$defs/temperature" },
+                    "note": { "type": "string" }
+                  }
+                }
+              ]
+            }
+          },
+          "steps": { "$ref": "common.schema.json#/$defs/steps" }
+        }
+      }
+    }
+  }
+}

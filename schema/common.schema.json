@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tenon.coffee/schema/common.schema.json",
+  "title": "Tenon shared definitions",
+  "$defs": {
+    "id": {
+      "description": "Stable kebab-case identifier. Must match the file name. Never reused or renamed once published.",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "componentRef": {
+      "description": "Reference to an ingredient or prep, e.g. ingredient/matcha or prep/soy-whey-milk.",
+      "type": "string",
+      "pattern": "^(ingredient|prep)/[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "derivedFrom": {
+      "description": "The record this one was remixed from, pinned to a version, e.g. build/tenon-matcha@1.0.0.",
+      "anyOf": [
+        { "type": "null" },
+        {
+          "type": "string",
+          "pattern": "^(prep|build)/[a-z0-9]+(-[a-z0-9]+)*@\\d+\\.\\d+\\.\\d+$"
+        }
+      ]
+    },
+    "unit": {
+      "description": "Mass units are preferred. Volume units require a density on the referenced component.",
+      "enum": ["g", "kg", "ml", "l"]
+    },
+    "quantity": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "temperature": {
+      "description": "Degrees Celsius.",
+      "type": "number",
+      "minimum": -40,
+      "maximum": 250
+    },
+    "density": {
+      "description": "Grams per millilitre.",
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "format": {
+      "enum": ["hot", "iced", "ice_blended", "ice_cream"]
+    },
+    "allergen": {
+      "enum": [
+        "milk",
+        "egg",
+        "soy",
+        "peanut",
+        "tree_nut",
+        "sesame",
+        "gluten",
+        "fish",
+        "crustacean",
+        "mollusc",
+        "mustard",
+        "celery",
+        "lupin",
+        "sulphites"
+      ]
+    },
+    "componentInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ref", "qty", "unit"],
+      "properties": {
+        "ref": { "$ref": "#/$defs/componentRef" },
+        "qty": { "$ref": "#/$defs/quantity" },
+        "unit": { "$ref": "#/$defs/unit" },
+        "temp_c": { "$ref": "#/$defs/temperature" },
+        "note": { "type": "string" }
+      }
+    },
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["op", "action"],
+      "properties": {
+        "op": {
+          "description": "Operation number. Conventionally 10, 20, 30 so steps can be inserted later.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "action": { "type": "string", "minLength": 1 },
+        "equipment": { "type": "array", "items": { "type": "string" } },
+        "duration_s": { "type": "number", "minimum": 0 },
+        "temp_c": { "$ref": "#/$defs/temperature" }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/step" }
+    }
+  }
+}

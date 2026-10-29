@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tenon.coffee/schema/ingredient.schema.json",
+  "title": "Ingredient",
+  "description": "A raw material and its nutritional composition. Ingredient nutrition is the primary source of all calculated values.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "code",
+    "name",
+    "version",
+    "category",
+    "basis",
+    "default_source",
+    "sources",
+    "nutrition",
+    "allergens",
+    "diet"
+  ],
+  "properties": {
+    "id": { "$ref": "common.schema.json#/$defs/id" },
+    "code": { "type": "string", "pattern": "^ING-\\d{3}$" },
+    "name": { "type": "string", "minLength": 1 },
+    "version": { "$ref": "common.schema.json#/$defs/semver" },
+    "description": { "type": "string" },
+    "category": {
+      "enum": [
+        "water",
+        "dairy",
+        "plant_milk",
+        "protein_powder",
+        "tea",
+        "coffee",
+        "cocoa",
+        "spice",
+        "sweetener",
+        "fruit",
+        "nut_seed",
+        "fat",
+        "grain",
+        "egg",
+        "other"
+      ]
+    },
+    "supplier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "product": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    },
+    "basis": {
+      "description": "The basis the nutrition values are declared on. per_100ml requires density_g_per_ml.",
+      "enum": ["per_100g", "per_100ml"]
+    },
+    "density_g_per_ml": { "$ref": "common.schema.json#/$defs/density" },
+    "unlisted_nutrients": {
+      "description": "How to treat nutrients not listed under nutrition. Defaults to unknown. Use zero only when it is true by definition (e.g. water).",
+      "enum": ["unknown", "zero"]
+    },
+    "default_source": {
+      "description": "Key into sources used for any value given as a bare number.",
+      "type": "string"
+    },
+    "sources": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "pattern": "^[a-z0-9_-]+$" },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "ref"],
+        "properties": {
+          "type": {
+            "enum": [
+              "manufacturer_label",
+              "usda_fdc",
+              "lab_analysis",
+              "literature",
+              "definition",
+              "placeholder"
+            ]
+          },
+          "ref": { "type": "string", "minLength": 1 },
+          "captured": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+          "url": { "type": "string" }
+        }
+      }
+    },
+    "nutrition": {
+      "description": "Nutrient values on the declared basis. null means unknown, which is different from zero.",
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z0-9_]+$" },
+      "additionalProperties": {
+        "anyOf": [
+          { "type": "null" },
+          { "type": "number", "minimum": 0 },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["value", "source"],
+            "properties": {
+              "value": { "type": "number", "minimum": 0 },
+              "source": { "type": "string" }
+            }
+          }
+        ]
+      }
+    },
+    "allergens": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "common.schema.json#/$defs/allergen" }
+    },
+    "diet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["plant_based", "vegetarian"],
+      "properties": {
+        "plant_based": { "type": "boolean" },
+        "vegetarian": { "type": "boolean" }
+      }
+    }
+  }
+}

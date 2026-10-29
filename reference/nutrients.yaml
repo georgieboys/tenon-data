@@ -1,0 +1,142 @@
+# Nutrient catalogue.
+# Ingredient nutrition keys must come from this list.
+# reference_intakes are per day for adults. null means not yet sourced or no reference exists.
+# carbohydrate_g is total carbohydrate, including sugars and fibre (see docs/nutrition-methodology.md).
+
+reference_sources:
+  us_fda: "US FDA Daily Values for adults and children 4 years and older, 21 CFR 101.9(c)"
+  sg_hpb: "Singapore Health Promotion Board Recommended Dietary Allowances (values not yet entered)"
+
+nutrients:
+  - key: energy_kcal
+    name: Energy
+    unit: kcal
+    group: energy
+    reference_intakes: { us_fda: 2000, sg_hpb: null }
+
+  - key: protein_g
+    name: Protein
+    unit: g
+    group: macro
+    lever: protein
+    reference_intakes: { us_fda: 50, sg_hpb: null }
+
+  - key: fat_g
+    name: Total fat
+    unit: g
+    group: macro
+    reference_intakes: { us_fda: 78, sg_hpb: null }
+
+  - key: saturated_fat_g
+    name: Saturated fat
+    unit: g
+    group: macro
+    reference_intakes: { us_fda: 20, sg_hpb: null }
+
+  - key: carbohydrate_g
+    name: Total carbohydrate
+    unit: g
+    group: macro
+    reference_intakes: { us_fda: 275, sg_hpb: null }
+
+  - key: sugars_g
+    name: Total sugars
+    unit: g
+    group: macro
+    reference_intakes: { us_fda: null, sg_hpb: null }
+
+  - key: fibre_g
+    name: Dietary fibre
+    unit: g
+    group: macro
+    lever: fibre
+    reference_intakes: { us_fda: 28, sg_hpb: null }
+
+  - key: sodium_mg
+    name: Sodium
+    unit: mg
+    group: micro
+    reference_intakes: { us_fda: 2300, sg_hpb: null }
+
+  - key: calcium_mg
+    name: Calcium
+    unit: mg
+    group: micro
+    lever: micronutrient
+    reference_intakes: { us_fda: 1300, sg_hpb: null }
+
+  - key: iron_mg
+    name: Iron
+    unit: mg
+    group: micro
+    lever: micronutrient
+    reference_intakes: { us_fda: 18, sg_hpb: null }
+
+  - key: magnesium_mg
+    name: Magnesium
+    unit: mg
+    group: micro
+    lever: micronutrient
+    reference_intakes: { us_fda: 420, sg_hpb: null }
+
+  - key: potassium_mg
+    name: Potassium
+    unit: mg
+    group: micro
+    lever: micronutrient
+    reference_intakes: { us_fda: 4700, sg_hpb: null }
+
+  - key: zinc_mg
+    name: Zinc
+    unit: mg
+    group: micro
+    lever: micronutrient
+    reference_intakes: { us_fda: 11, sg_hpb: null }
+
+  - key: vitamin_a_ug
+    name: Vitamin A, RAE
+    unit: ug
+    group: micro
+    lever: micronutrient
+    reference_intakes: { us_fda: 900, sg_hpb: null }
+
+  - key: vitamin_c_mg
+    name: Vitamin C
+    unit: mg
+    group: micro
+    lever: micronutrient
+    reference_intakes: { us_fda: 90, sg_hpb: null }
+
+  - key: vitamin_d_ug
+    name: Vitamin D
+    unit: ug
+    group: micro
+    lever: micronutrient
+    reference_intakes: { us_fda: 20, sg_hpb: null }
+
+  - key: vitamin_k_ug
+    name: Vitamin K
+    unit: ug
+    group: micro
+    lever: micronutrient
+    reference_intakes: { us_fda: 120, sg_hpb: null }
+
+  - key: vitamin_b12_ug
+    name: Vitamin B12
+    unit: ug
+    group: micro
+    lever: micronutrient
+    reference_intakes: { us_fda: 2.4, sg_hpb: null }
+
+  - key: folate_ug
+    name: Folate, DFE
+    unit: ug
+    group: micro
+    lever: micronutrient
+    reference_intakes: { us_fda: 400, sg_hpb: null }
+
+  - key: caffeine_mg
+    name: Caffeine
+    unit: mg
+    group: other
+    reference_intakes: { us_fda: null, sg_hpb: null }

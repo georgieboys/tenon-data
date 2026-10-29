@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tenon.coffee/schema/prep.schema.json",
+  "title": "Prep",
+  "description": "A reusable prepared component made from ingredients or other preps.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "code", "name", "version", "inputs", "yield", "steps"],
+  "properties": {
+    "id": { "$ref": "common.schema.json#/$defs/id" },
+    "code": { "type": "string", "pattern": "^PRP-\\d{3}$" },
+    "name": { "type": "string", "minLength": 1 },
+    "version": { "$ref": "common.schema.json#/$defs/semver" },
+    "description": { "type": "string" },
+    "derived_from": { "$ref": "common.schema.json#/$defs/derivedFrom" },
+    "inputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "common.schema.json#/$defs/componentInput" }
+    },
+    "yield": {
+      "description": "Output mass. sum = total input mass (no losses). measured or estimated = a stated output mass, which may not exceed the input mass.",
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["method"],
+          "properties": { "method": { "const": "sum" } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["method", "mass_g"],
+          "properties": {
+            "method": { "enum": ["measured", "estimated"] },
+            "mass_g": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        }
+      ]
+    },
+    "density_g_per_ml": { "$ref": "common.schema.json#/$defs/density" },
+    "retention": {
+      "description": "Fraction of each nutrient retained through processing (0 to 1). Unlisted nutrients are fully retained.",
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z0-9_]+$" },
+      "additionalProperties": { "type": "number", "minimum": 0, "maximum": 1 }
+    },
+    "storage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "temp_c": { "$ref": "common.schema.json#/$defs/temperature" },
+        "shelf_life_h": { "type": "number", "exclusiveMinimum": 0 },
+        "notes": { "type": "string" }
+      }
+    },
+    "steps": { "$ref": "common.schema.json#/$defs/steps" }
+  }
+}

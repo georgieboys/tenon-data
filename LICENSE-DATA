@@ -1,0 +1,19 @@
+Tenon Data — recipes, data and documentation
+Copyright (c) 2026 Tenon Coffee
+
+The contents of the following are licensed under the Creative Commons
+Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0):
+
+  ingredients/  preps/  builds/  menu/  reference/  docs/
+
+and the generated outputs derived from them (dist/).
+
+You are free to share and adapt this material for any purpose, including
+commercially, provided you give appropriate credit to Tenon Coffee, link to
+the licence, indicate if changes were made, and distribute your
+contributions under the same licence.
+
+Full licence text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+Software in src/, test/ and schema/ is licensed separately under the MIT
+License (see LICENSE).
