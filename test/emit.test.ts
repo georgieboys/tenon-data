@@ -82,6 +82,11 @@ describe("exports", () => {
             code: "BLD-018",
             name: "Tenon Strawberry Chia",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-strawberry-overnight-oats",
+            code: "BLD-019",
+            name: "Tenon Strawberry Overnight Oats",
+          }),
         ]),
       );
 

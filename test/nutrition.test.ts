@@ -271,6 +271,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-banana-cheesecake",
       "build/tenon-blueberry-overnight-oats",
       "build/tenon-honey-oat-bar",
+      "build/tenon-strawberry-overnight-oats",
       "prep/dairy-whey-milk",
       "prep/protein-bread",
       "prep/soy-whey-milk",
@@ -286,6 +287,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-matcha",
       "build/tenon-pistachio-matcha-ice-cream",
       "build/tenon-strawberry-chia",
+      "build/tenon-strawberry-overnight-oats",
       "build/tenon-tea",
       "build/tenon-teh-tarik-ice-cream",
     ]);
@@ -327,5 +329,11 @@ describe("allergens, diet and provenance", () => {
     );
     expect(build(data, "tenon-strawberry-chia").derived_from).toBe("build/tenon-chia-pudding@0.1.0");
     expect(build(data, "tenon-strawberry-chia").used_by).toEqual(["menu/tenon-strawberry-chia"]);
+    expect(build(data, "tenon-strawberry-overnight-oats").derived_from).toBe(
+      "build/tenon-blueberry-overnight-oats@0.1.0",
+    );
+    expect(build(data, "tenon-strawberry-overnight-oats").used_by).toEqual([
+      "menu/tenon-strawberry-overnight-oats",
+    ]);
   });
 });
