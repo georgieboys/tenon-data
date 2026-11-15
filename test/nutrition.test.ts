@@ -484,5 +484,20 @@ describe("allergens, diet and provenance", () => {
     expect(build(data, "tenon-cinnamon-cottage-bowl").used_by).toEqual([
       "menu/tenon-cinnamon-cottage-bowl",
     ]);
+    expect(build(data, "tenon-almond-date-cookies").used_by).toEqual([
+      "menu/tenon-almond-date-cookies",
+    ]);
+    expect(variant(data, "tenon-almond-date-cookies", "baked").composition.allergens).toEqual(
+      expect.arrayContaining(["egg", "tree_nut"]),
+    );
+    expect(variant(data, "tenon-almond-date-cookies", "baked").composition.allergens).not.toContain(
+      "gluten",
+    );
+    expect(build(data, "tenon-espresso-yogurt-bowl").derived_from).toBe(
+      "build/tenon-yogurt-honey-bowl@0.1.0",
+    );
+    expect(build(data, "tenon-espresso-yogurt-bowl").used_by).toEqual([
+      "menu/tenon-espresso-yogurt-bowl",
+    ]);
   });
 });
