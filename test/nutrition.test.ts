@@ -131,6 +131,13 @@ describe("build variants", () => {
     expect(variant(data, "tenon-energy-fruitcake", "baked").composition.allergens).toEqual(
       expect.arrayContaining(["egg", "gluten", "milk"]),
     );
+    expect(build(data, "tenon-banana-cheesecake").variants).toHaveLength(1);
+    expect(build(data, "tenon-banana-cheesecake").vertical).toBe("food");
+    expect(build(data, "tenon-banana-cheesecake").formats).toEqual(["baked"]);
+    expect(variant(data, "tenon-banana-cheesecake", "baked").composition.allergens).toEqual(
+      expect.arrayContaining(["egg", "milk"]),
+    );
+    expect(variant(data, "tenon-banana-cheesecake", "baked").composition.allergens).not.toContain("gluten");
     expect(variant(data, "tenon-cocoa", "hot.soy-whey-milk").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-latte", "hot.soy-whey-milk").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-tea", "hot.soy-whey-milk").composition.placeholder).toBe(false);
@@ -241,7 +248,11 @@ describe("allergens, diet and provenance", () => {
   it("records which records use each component", async () => {
     const data = compileDataset(await repoDataset());
     const whey = data.ingredients.find((i) => i.id === "whey-concentrate")!;
-    expect(whey.used_by).toEqual(["prep/dairy-whey-milk", "prep/soy-whey-milk"]);
+    expect(whey.used_by).toEqual([
+      "build/tenon-banana-cheesecake",
+      "prep/dairy-whey-milk",
+      "prep/soy-whey-milk",
+    ]);
     expect(prep(data, "soy-whey-milk").used_by).toEqual([
       "build/tenon-bulletproof-ice-cream",
       "build/tenon-cocoa",
@@ -270,5 +281,6 @@ describe("allergens, diet and provenance", () => {
     expect(build(data, "tenon-teh-tarik-ice-cream").used_by).toEqual(["menu/tenon-teh-tarik-ice-cream"]);
     expect(build(data, "tenon-bulletproof-ice-cream").used_by).toEqual(["menu/tenon-bulletproof-ice-cream"]);
     expect(build(data, "tenon-energy-fruitcake").used_by).toEqual(["menu/tenon-energy-fruitcake"]);
+    expect(build(data, "tenon-banana-cheesecake").used_by).toEqual(["menu/tenon-banana-cheesecake"]);
   });
 });
