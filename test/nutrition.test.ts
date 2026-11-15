@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { build, compileDataset, menuItem, prep, repoDataset, variant } from "./helpers.ts";
 
-// Hand calculations use the placeholder values in ingredients/*.md:
-// UniSoy 3.6 g protein per 100 ml at 1.03 g/ml, whey 78 g per 100 g, matcha 30 g per 100 g.
+// Hand calculations use values in ingredients/*.md:
+// UniSoy 3.6 g protein per 100 ml at 1.03 g/ml (placeholder), whey 78.13 g per 100 g (USDA),
+// soy isolate 88.32 g per 100 g (USDA), matcha 30 g per 100 g (placeholder).
 
 describe("ingredient normalisation", () => {
   it("converts per-100 ml label values to per 100 g using density", async () => {
@@ -19,9 +20,10 @@ describe("prep calculation", () => {
     const milk = prep(data, "soy-whey-milk");
     // 1000 ml UniSoy = 1030 g; plus 40 g whey; yield = sum = 1070 g.
     expect(milk.yield.mass_g).toBeCloseTo(1070, 6);
-    // 36.0 g from UniSoy + 31.2 g from whey.
-    expect(milk.composition.totals.protein_g!.value).toBeCloseTo(67.2, 6);
-    expect(milk.composition.per_100g.protein_g!.value).toBeCloseTo((67.2 / 1070) * 100, 6);
+    // 36.0 g from UniSoy + 31.252 g from whey (40 × 78.13 / 100).
+    const wheyBatchProtein = 36 + 40 * 0.7813;
+    expect(milk.composition.totals.protein_g!.value).toBeCloseTo(wheyBatchProtein, 6);
+    expect(milk.composition.per_100g.protein_g!.value).toBeCloseTo((wheyBatchProtein / 1070) * 100, 6);
   });
 
   it("concentrates per-100 g values when measured yield is below input mass", async () => {
@@ -29,7 +31,7 @@ describe("prep calculation", () => {
     const milk = prep(data, "soy-protein-milk");
     // 1030 g UniSoy + 35 g isolate = 1065 g in, 1060 g measured out.
     expect(milk.yield.input_mass_g).toBeCloseTo(1065, 6);
-    const totalProtein = 36 + 0.88 * 35;
+    const totalProtein = 36 + 0.8832 * 35;
     expect(milk.composition.totals.protein_g!.value).toBeCloseTo(totalProtein, 6);
     expect(milk.composition.per_100g.protein_g!.value).toBeCloseTo((totalProtein / 1060) * 100, 6);
   });
@@ -38,7 +40,7 @@ describe("prep calculation", () => {
     const ds = await repoDataset();
     ds.prep["soy-whey-milk"]!.retention = { protein_g: 0.5 };
     const milk = prep(compileDataset(ds), "soy-whey-milk");
-    expect(milk.composition.totals.protein_g!.value).toBeCloseTo(33.6, 6);
+    expect(milk.composition.totals.protein_g!.value).toBeCloseTo((36 + 40 * 0.7813) / 2, 6);
   });
 });
 
@@ -61,16 +63,18 @@ describe("build variants", () => {
     const hot = variant(data, "tenon-matcha", "hot.soy-whey-milk");
     // 4 g matcha (1.2 g protein) + 60 g water + 200 g of the soy-whey prep.
     expect(hot.composition.mass_g).toBe(264);
-    expect(hot.composition.totals.protein_g!.value).toBeCloseTo(1.2 + (200 * 67.2) / 1070, 6);
-    expect(hot.percent_ri.us_fda.protein_g).toBeCloseTo(((1.2 + (200 * 67.2) / 1070) / 50) * 100, 6);
-    expect(hot.percent_ri.sg_hpb.protein_g).toBeCloseTo(((1.2 + (200 * 67.2) / 1070) / 62) * 100, 6);
+    const wheyBatchProtein = 36 + 40 * 0.7813;
+    expect(hot.composition.totals.protein_g!.value).toBeCloseTo(1.2 + (200 * wheyBatchProtein) / 1070, 6);
+    expect(hot.percent_ri.us_fda.protein_g).toBeCloseTo(((1.2 + (200 * wheyBatchProtein) / 1070) / 50) * 100, 6);
+    expect(hot.percent_ri.sg_hpb.protein_g).toBeCloseTo(((1.2 + (200 * wheyBatchProtein) / 1070) / 62) * 100, 6);
   });
 
   it("counts ice in the serving mass but not in the nutrients", async () => {
     const data = compileDataset(await repoDataset());
     const iced = variant(data, "tenon-matcha", "iced.soy-whey-milk");
     expect(iced.composition.mass_g).toBe(4 + 40 + 180 + 120);
-    expect(iced.composition.totals.protein_g!.value).toBeCloseTo(1.2 + (180 * 67.2) / 1070, 6);
+    const wheyBatchProtein = 36 + 40 * 0.7813;
+    expect(iced.composition.totals.protein_g!.value).toBeCloseTo(1.2 + (180 * wheyBatchProtein) / 1070, 6);
   });
 
   it("menu product exposes the same numbers as the build", async () => {
@@ -119,7 +123,7 @@ describe("nutritional inheritance", () => {
     ds.prep["soy-whey-milk"]!.inputs[1]!.qty = 60;
     const milk = prep(compileDataset(ds), "soy-whey-milk");
     expect(milk.yield.mass_g).toBeCloseTo(1090, 6);
-    expect(milk.composition.totals.protein_g!.value).toBeCloseTo(36 + 0.78 * 60, 6);
+    expect(milk.composition.totals.protein_g!.value).toBeCloseTo(36 + 0.7813 * 60, 6);
   });
 });
 
@@ -127,7 +131,7 @@ describe("missing data", () => {
   it("reports a lower bound, not zero, when some inputs lack a value", async () => {
     const data = compileDataset(await repoDataset());
     const hot = variant(data, "tenon-matcha", "hot.soy-whey-milk");
-    // Matcha has vitamin K (2900 µg per 100 g); UniSoy and whey are unknown.
+    // Matcha has vitamin K (2900 µg per 100 g); UniSoy is unknown, so the total is incomplete.
     expect(hot.composition.totals.vitamin_k_ug).toEqual({ value: expect.closeTo(116, 6), complete: false });
   });
 

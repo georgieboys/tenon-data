@@ -2,37 +2,37 @@
 id: soy-protein-isolate
 code: ING-005
 name: Soy protein isolate
-version: 0.1.0
+version: 0.1.1
 description: Unflavoured soy protein isolate (around 90% protein).
 category: protein_powder
 supplier:
   name: TBD
 basis: per_100g
-default_source: placeholder
+default_source: usda_fdc
 sources:
-  placeholder:
-    type: placeholder
-    ref: "Illustrative values for development only. Replace with the supplier specification."
+  usda_fdc:
+    type: usda_fdc
+    ref: "FDC 174276 · Soy protein isolate (SR Legacy). Proxy until the café supplier specification is entered."
 nutrition:
-  energy_kcal: 370
-  protein_g: 88
-  fat_g: 3
-  saturated_fat_g: 0.5
-  carbohydrate_g: 1
+  energy_kcal: 335
+  protein_g: 88.32
+  fat_g: 3.39
+  saturated_fat_g: 0.422
+  carbohydrate_g: 0
   sugars_g: 0
-  fibre_g: 0.5
-  sodium_mg: 1000
-  calcium_mg: 180
-  iron_mg: 14
-  magnesium_mg: 40
-  potassium_mg: 80
-  zinc_mg: 4
+  fibre_g: 0
+  sodium_mg: 1005
+  calcium_mg: 178
+  iron_mg: 14.5
+  magnesium_mg: 39
+  potassium_mg: 81
+  zinc_mg: 4.03
   vitamin_a_ug: null
   vitamin_c_mg: null
-  vitamin_d_ug: null
+  vitamin_d_ug: 0
   vitamin_k_ug: null
-  vitamin_b12_ug: null
-  folate_ug: null
+  vitamin_b12_ug: 0
+  folate_ug: 176
   caffeine_mg: 0
 allergens: [soy]
 diet:
@@ -40,4 +40,4 @@ diet:
   vegetarian: true
 ---
 
-Soy isolates are often high in sodium from processing. Worth checking against the actual supplier specification.
+USDA SR Legacy soy protein isolate until the exact supplier specification replaces it.
