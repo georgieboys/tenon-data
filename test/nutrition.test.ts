@@ -106,7 +106,7 @@ describe("build variants", () => {
 
   it("compiles cocoa, latte, tea, americano and masala chai builds", async () => {
     const data = compileDataset(await repoDataset());
-    expect(build(data, "tenon-cocoa").variants).toHaveLength(6);
+    expect(build(data, "tenon-cocoa").variants).toHaveLength(9);
     expect(build(data, "tenon-cocoa").vertical).toBe("cocoa");
     expect(build(data, "tenon-latte").variants).toHaveLength(6);
     expect(build(data, "tenon-latte").vertical).toBe("coffee");

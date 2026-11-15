@@ -73,6 +73,37 @@ formats:
         temp_c: 4
       - op: 50
         action: Pour the cocoa paste over and stir until uniform.
+  ice_blended:
+    inputs:
+      - ref: ingredient/cocoa
+        qty: 14
+        unit: g
+      - ref: ingredient/water
+        qty: 40
+        unit: g
+        temp_c: 90
+      - slot: base
+        qty: 200
+        unit: g
+        temp_c: 4
+      - ref: ingredient/ice
+        qty: 180
+        unit: g
+    steps:
+      - op: 10
+        action: Weigh the cocoa into a pitcher.
+        equipment: [scale]
+      - op: 20
+        action: Add hot water and whisk to a smooth paste with no dry pockets.
+        equipment: [whisk]
+        temp_c: 90
+      - op: 30
+        action: Add the cold milk base and ice. Blend until smooth and pourable.
+        equipment: [blender]
+        duration_s: 25
+        temp_c: 4
+      - op: 40
+        action: Pour into a cold glass. Serve immediately.
 ---
 
-Cocoa dose is higher than matcha because cocoa is less intense by weight and the build is meant to read as bitter chocolate, not sweet hot chocolate. No sugar in the published recipe; sweetener on request is recorded separately.
+Cocoa dose is higher than matcha because cocoa is less intense by weight and the build is meant to read as bitter chocolate, not sweet hot chocolate. Ice-blended uses a slightly higher cocoa dose so bitterness holds after dilution. No sugar in the published recipe; sweetener on request is recorded separately.
