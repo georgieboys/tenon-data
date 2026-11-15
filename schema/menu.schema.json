@@ -8,7 +8,7 @@
   "required": ["id", "code", "name", "version", "build", "status", "formats"],
   "properties": {
     "id": { "$ref": "common.schema.json#/$defs/id" },
-    "code": { "type": "string", "pattern": "^MNU-\\d{3}$" },
+    "code": { "type": "string", "pattern": "^MNU-\\d{3,}$" },
     "name": { "type": "string", "minLength": 1 },
     "version": { "$ref": "common.schema.json#/$defs/semver" },
     "description": { "type": "string" },
