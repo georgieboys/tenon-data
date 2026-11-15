@@ -152,6 +152,16 @@ describe("exports", () => {
             code: "BLD-032",
             name: "Tenon Peanut Butter Banana Sandwich",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-cocoa-overnight-oats",
+            code: "BLD-033",
+            name: "Tenon Cocoa Overnight Oats",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-egg-banana-sandwich",
+            code: "BLD-034",
+            name: "Tenon Egg Banana Sandwich",
+          }),
         ]),
       );
 
