@@ -252,6 +252,31 @@ describe("exports", () => {
             code: "BLD-052",
             name: "Tenon Tea Cottage Bowl",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-pistachio-cottage-bowl",
+            code: "BLD-053",
+            name: "Tenon Pistachio Cottage Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-masala-cottage-bowl",
+            code: "BLD-054",
+            name: "Tenon Masala Cottage Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-tea-overnight-oats",
+            code: "BLD-055",
+            name: "Tenon Tea Overnight Oats",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-banana-chia",
+            code: "BLD-056",
+            name: "Tenon Banana Chia",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-espresso-chia",
+            code: "BLD-057",
+            name: "Tenon Espresso Chia",
+          }),
         ]),
       );
 
