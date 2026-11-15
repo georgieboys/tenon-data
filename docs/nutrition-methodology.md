@@ -60,7 +60,29 @@ Matcha and cocoa powder are consumed whole, so the powder's composition ends up 
 Percentages of reference intake are calculated per serving against two standards, defined in `reference/nutrients.yaml`:
 
 - **US FDA Daily Values** (21 CFR 101.9) — entered.
-- **Singapore HPB Recommended Dietary Allowances** — to be entered. Shown as `—` until then.
+- **Singapore HPB / HealthHub** — entered for nutrients with a published adult figure. Shown as `—` when no single official adult value exists in the source tables (e.g. total carbohydrate, magnesium, potassium, zinc, vitamin K, sugars, caffeine).
+
+### HPB cohort used for % RI
+
+HealthHub RDAs are age- and sex-specific. Tenon shows one column, so values are taken from a documented adult cohort:
+
+| Nutrient | HPB figure used | Notes |
+| --- | --- | --- |
+| Energy | 2200 kcal | HealthHub average recommended intake for adult males |
+| Protein | 62 g | WHO/FAO protein requirement at HPB adult-men reference weight 63.5 kg (NPU 70%) |
+| Total fat | 73 g | ~30% of 2200 kcal (HPB dietary guidance 30–35% of energy) |
+| Saturated fat | 24 g | 10% of 2200 kcal (HPB: less than 10% of energy) |
+| Fibre | 26 g | HealthHub guidance for men (women: 20 g) |
+| Sodium | 2000 mg | HealthHub upper guidance (~5 g salt) |
+| Calcium | 800 mg | Adults 19–50 yrs (51+: 1000 mg) |
+| Iron | 8 mg | Adult men (women 18–<60 yrs: 18 mg) |
+| Vitamin A | 750 µg RE | Adult men and women |
+| Vitamin C | 105 mg | Men 19–50 yrs (women: 85 mg) |
+| Vitamin D | 2.5 µg | Singapore adult figure (tropical sunlight) |
+| Vitamin B12 | 2.4 µg | Adults 19–50 yrs |
+| Folate | 400 µg | Adults 19–50 yrs (HealthHub “folic acid”) |
+
+Iron and several vitamins differ for women of reproductive age. The % RI column is therefore not a clinical recommendation for every diner; it is a transparent comparison against the published cohort above.
 
 ## Scaling
 

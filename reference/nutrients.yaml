@@ -2,41 +2,50 @@
 # Ingredient nutrition keys must come from this list.
 # reference_intakes are per day for adults. null means not yet sourced or no reference exists.
 # carbohydrate_g is total carbohydrate, including sugars and fibre (see docs/nutrition-methodology.md).
+#
+# Singapore HPB values use a single adult reference cohort so % RI can be shown beside US FDA:
+# adult men 18–<30 yrs (or 19–50 for calcium) from HealthHub RDA tables, plus HealthHub dietary
+# guidance figures for energy, fibre and sodium where the RDA tables do not publish a single figure.
+# Sex-specific differences (e.g. iron for women of reproductive age) are noted in nutrition-methodology.md.
 
 reference_sources:
   us_fda: "US FDA Daily Values for adults and children 4 years and older, 21 CFR 101.9(c)"
-  sg_hpb: "Singapore Health Promotion Board Recommended Dietary Allowances (values not yet entered)"
+  sg_hpb: "Singapore Health Promotion Board / HealthHub Recommended Dietary Allowances and dietary guidance; adult men 18–<30 yrs (calcium: adults 19–50 yrs) unless noted"
 
 nutrients:
   - key: energy_kcal
     name: Energy
     unit: kcal
     group: energy
-    reference_intakes: { us_fda: 2000, sg_hpb: null }
+    reference_intakes: { us_fda: 2000, sg_hpb: 2200 }
 
   - key: protein_g
     name: Protein
     unit: g
     group: macro
     lever: protein
-    reference_intakes: { us_fda: 50, sg_hpb: null }
+    # WHO/FAO energy & protein (TRS 724) at HPB adult-men reference weight 63.5 kg, NPU 70% ≈ 62 g/day
+    reference_intakes: { us_fda: 50, sg_hpb: 62 }
 
   - key: fat_g
     name: Total fat
     unit: g
     group: macro
-    reference_intakes: { us_fda: 78, sg_hpb: null }
+    # HPB dietary guidance: total fat ~30–35% of energy; 30% of 2200 kcal ≈ 73 g
+    reference_intakes: { us_fda: 78, sg_hpb: 73 }
 
   - key: saturated_fat_g
     name: Saturated fat
     unit: g
     group: macro
-    reference_intakes: { us_fda: 20, sg_hpb: null }
+    # HPB: less than 10% of energy from saturated fat; 10% of 2200 kcal ≈ 24 g
+    reference_intakes: { us_fda: 20, sg_hpb: 24 }
 
   - key: carbohydrate_g
     name: Total carbohydrate
     unit: g
     group: macro
+    # No single HPB RDA for total carbohydrate; left null rather than inventing one
     reference_intakes: { us_fda: 275, sg_hpb: null }
 
   - key: sugars_g
@@ -50,27 +59,31 @@ nutrients:
     unit: g
     group: macro
     lever: fibre
-    reference_intakes: { us_fda: 28, sg_hpb: null }
+    # HealthHub / HPB dietary guidance: 26 g/day for men, 20 g/day for women
+    reference_intakes: { us_fda: 28, sg_hpb: 26 }
 
   - key: sodium_mg
     name: Sodium
     unit: mg
     group: micro
-    reference_intakes: { us_fda: 2300, sg_hpb: null }
+    # HealthHub: no more than 2000 mg sodium/day (≈ 5 g salt)
+    reference_intakes: { us_fda: 2300, sg_hpb: 2000 }
 
   - key: calcium_mg
     name: Calcium
     unit: mg
     group: micro
     lever: micronutrient
-    reference_intakes: { us_fda: 1300, sg_hpb: null }
+    # HealthHub RDA: adults 19–50 years 800 mg; 51+ is 1000 mg
+    reference_intakes: { us_fda: 1300, sg_hpb: 800 }
 
   - key: iron_mg
     name: Iron
     unit: mg
     group: micro
     lever: micronutrient
-    reference_intakes: { us_fda: 18, sg_hpb: null }
+    # HealthHub RDA: men 8 mg; women 18–<60 yrs 18 mg (see methodology)
+    reference_intakes: { us_fda: 18, sg_hpb: 8 }
 
   - key: magnesium_mg
     name: Magnesium
@@ -98,21 +111,23 @@ nutrients:
     unit: ug
     group: micro
     lever: micronutrient
-    reference_intakes: { us_fda: 900, sg_hpb: null }
+    reference_intakes: { us_fda: 900, sg_hpb: 750 }
 
   - key: vitamin_c_mg
     name: Vitamin C
     unit: mg
     group: micro
     lever: micronutrient
-    reference_intakes: { us_fda: 90, sg_hpb: null }
+    # HealthHub: ascorbic acid, men 19–50 yrs 105 mg
+    reference_intakes: { us_fda: 90, sg_hpb: 105 }
 
   - key: vitamin_d_ug
     name: Vitamin D
     unit: ug
     group: micro
     lever: micronutrient
-    reference_intakes: { us_fda: 20, sg_hpb: null }
+    # HealthHub: 2.5 µg for Singapore adults (tropical sunlight exposure)
+    reference_intakes: { us_fda: 20, sg_hpb: 2.5 }
 
   - key: vitamin_k_ug
     name: Vitamin K
@@ -126,14 +141,15 @@ nutrients:
     unit: ug
     group: micro
     lever: micronutrient
-    reference_intakes: { us_fda: 2.4, sg_hpb: null }
+    reference_intakes: { us_fda: 2.4, sg_hpb: 2.4 }
 
   - key: folate_ug
     name: Folate, DFE
     unit: ug
     group: micro
     lever: micronutrient
-    reference_intakes: { us_fda: 400, sg_hpb: null }
+    # HealthHub lists folic acid 400 µg for adults 19–50
+    reference_intakes: { us_fda: 400, sg_hpb: 400 }
 
   - key: caffeine_mg
     name: Caffeine

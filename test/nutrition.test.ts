@@ -63,7 +63,7 @@ describe("build variants", () => {
     expect(hot.composition.mass_g).toBe(264);
     expect(hot.composition.totals.protein_g!.value).toBeCloseTo(1.2 + (200 * 67.2) / 1070, 6);
     expect(hot.percent_ri.us_fda.protein_g).toBeCloseTo(((1.2 + (200 * 67.2) / 1070) / 50) * 100, 6);
-    expect(hot.percent_ri.sg_hpb.protein_g).toBeNull();
+    expect(hot.percent_ri.sg_hpb.protein_g).toBeCloseTo(((1.2 + (200 * 67.2) / 1070) / 62) * 100, 6);
   });
 
   it("counts ice in the serving mass but not in the nutrients", async () => {

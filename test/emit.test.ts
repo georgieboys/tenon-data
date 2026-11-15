@@ -25,7 +25,7 @@ describe("exports", () => {
       expect(md).toContain("# BLD-001 · Tenon Matcha");
       expect(md).toContain("**Placeholder data.**");
       expect(md).toContain("`hot.soy-whey-milk` (default)");
-      expect(md).toContain("| Vitamin D (µg) | unknown | unknown | unknown | — |");
+      expect(md).toContain("| Vitamin D (µg) | unknown | unknown | unknown | unknown |");
     } finally {
       await rm(out, { recursive: true, force: true });
     }
