@@ -120,6 +120,9 @@ describe("build variants", () => {
     expect(build(data, "tenon-cocoa-pb-ice-cream").formats).toEqual(["ice_cream"]);
     expect(build(data, "tenon-pistachio-matcha-ice-cream").variants).toHaveLength(3);
     expect(build(data, "tenon-pistachio-matcha-ice-cream").vertical).toBe("matcha");
+    expect(build(data, "tenon-teh-tarik-ice-cream").variants).toHaveLength(3);
+    expect(build(data, "tenon-teh-tarik-ice-cream").vertical).toBe("tea");
+    expect(build(data, "tenon-teh-tarik-ice-cream").derived_from).toBe("build/tenon-masala-chai@0.1.0");
     expect(variant(data, "tenon-cocoa", "hot.soy-whey-milk").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-latte", "hot.soy-whey-milk").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-tea", "hot.soy-whey-milk").composition.placeholder).toBe(false);
@@ -233,8 +236,12 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-matcha",
       "build/tenon-pistachio-matcha-ice-cream",
       "build/tenon-tea",
+      "build/tenon-teh-tarik-ice-cream",
     ]);
-    expect(prep(data, "masala-spice").used_by).toEqual(["build/tenon-masala-chai"]);
+    expect(prep(data, "masala-spice").used_by).toEqual([
+      "build/tenon-masala-chai",
+      "build/tenon-teh-tarik-ice-cream",
+    ]);
     expect(build(data, "tenon-matcha").used_by).toEqual(["menu/tenon-matcha"]);
     expect(build(data, "tenon-cocoa").used_by).toEqual(["menu/tenon-cocoa"]);
     expect(build(data, "tenon-latte").used_by).toEqual(["menu/tenon-latte"]);
@@ -245,5 +252,6 @@ describe("allergens, diet and provenance", () => {
     expect(build(data, "tenon-pistachio-matcha-ice-cream").used_by).toEqual([
       "menu/tenon-pistachio-matcha-ice-cream",
     ]);
+    expect(build(data, "tenon-teh-tarik-ice-cream").used_by).toEqual(["menu/tenon-teh-tarik-ice-cream"]);
   });
 });
