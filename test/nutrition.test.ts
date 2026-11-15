@@ -97,12 +97,14 @@ describe("build variants", () => {
     expect(item.default_variant).toBe("hot.soy-protein-milk");
   });
 
-  it("compiles the cocoa build with three bases", async () => {
+  it("compiles cocoa and latte builds with three bases", async () => {
     const data = compileDataset(await repoDataset());
-    const cocoa = build(data, "tenon-cocoa");
-    expect(cocoa.variants).toHaveLength(6);
-    expect(cocoa.vertical).toBe("cocoa");
+    expect(build(data, "tenon-cocoa").variants).toHaveLength(6);
+    expect(build(data, "tenon-cocoa").vertical).toBe("cocoa");
+    expect(build(data, "tenon-latte").variants).toHaveLength(6);
+    expect(build(data, "tenon-latte").vertical).toBe("coffee");
     expect(variant(data, "tenon-cocoa", "hot.soy-whey-milk").composition.placeholder).toBe(false);
+    expect(variant(data, "tenon-latte", "hot.soy-whey-milk").composition.placeholder).toBe(false);
   });
 });
 
@@ -197,8 +199,13 @@ describe("allergens, diet and provenance", () => {
     const data = compileDataset(await repoDataset());
     const whey = data.ingredients.find((i) => i.id === "whey-concentrate")!;
     expect(whey.used_by).toEqual(["prep/dairy-whey-milk", "prep/soy-whey-milk"]);
-    expect(prep(data, "soy-whey-milk").used_by).toEqual(["build/tenon-cocoa", "build/tenon-matcha"]);
+    expect(prep(data, "soy-whey-milk").used_by).toEqual([
+      "build/tenon-cocoa",
+      "build/tenon-latte",
+      "build/tenon-matcha",
+    ]);
     expect(build(data, "tenon-matcha").used_by).toEqual(["menu/tenon-matcha"]);
     expect(build(data, "tenon-cocoa").used_by).toEqual(["menu/tenon-cocoa"]);
+    expect(build(data, "tenon-latte").used_by).toEqual(["menu/tenon-latte"]);
   });
 });
