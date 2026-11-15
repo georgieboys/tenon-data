@@ -62,6 +62,32 @@ formats:
         temp_c: 4
       - op: 40
         action: Pour the tea over and stir once.
+  ice_blended:
+    inputs:
+      - ref: ingredient/black-tea
+        qty: 110
+        unit: g
+        note: Strong brew liquor, cooled
+        temp_c: 4
+      - slot: base
+        qty: 180
+        unit: g
+        temp_c: 4
+      - ref: ingredient/ice
+        qty: 180
+        unit: g
+    steps:
+      - op: 10
+        action: Brew a strong black tea and cool. Weigh the liquor.
+        equipment: [kettle, scale, strainer]
+      - op: 20
+        action: Add the cold milk base and ice. Blend until smooth and pourable, not icy grit.
+        equipment: [blender]
+        duration_s: 25
+        temp_c: 4
+      - op: 30
+        action: Pour into a cold glass. Serve immediately.
 ---
 
-Tea quantity is liquid yield, not dry leaf dose. A future spice prep (masala) will sit upstream of this build without changing the extraction rule.
+Tea quantity is liquid yield, not dry leaf dose. Ice-blended serving mass includes the ice. A spice prep (masala) sits upstream without changing the extraction rule.
+

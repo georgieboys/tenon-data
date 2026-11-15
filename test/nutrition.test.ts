@@ -111,11 +111,17 @@ describe("build variants", () => {
     expect(build(data, "tenon-latte").variants).toHaveLength(9);
     expect(build(data, "tenon-latte").formats).toEqual(["hot", "iced", "ice_blended"]);
     expect(build(data, "tenon-latte").vertical).toBe("coffee");
-    expect(build(data, "tenon-tea").variants).toHaveLength(6);
+    expect(build(data, "tenon-tea").variants).toHaveLength(9);
+    expect(build(data, "tenon-tea").formats).toEqual(["hot", "iced", "ice_blended"]);
     expect(build(data, "tenon-tea").vertical).toBe("tea");
-    expect(build(data, "tenon-americano").variants).toHaveLength(2);
-    expect(build(data, "tenon-americano").variants.map((v) => v.key).sort()).toEqual(["hot", "iced"]);
-    expect(build(data, "tenon-masala-chai").variants).toHaveLength(6);
+    expect(build(data, "tenon-americano").variants).toHaveLength(3);
+    expect(build(data, "tenon-americano").variants.map((v) => v.key).sort()).toEqual([
+      "hot",
+      "ice_blended",
+      "iced",
+    ]);
+    expect(build(data, "tenon-masala-chai").variants).toHaveLength(9);
+    expect(build(data, "tenon-masala-chai").formats).toEqual(["hot", "iced", "ice_blended"]);
     expect(build(data, "tenon-masala-chai").derived_from).toBe("build/tenon-tea@0.1.0");
     expect(build(data, "tenon-cocoa-pb-ice-cream").variants).toHaveLength(3);
     expect(build(data, "tenon-cocoa-pb-ice-cream").formats).toEqual(["ice_cream"]);

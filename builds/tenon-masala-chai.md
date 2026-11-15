@@ -72,6 +72,38 @@ formats:
       - op: 40
         action: Add the cold milk base and the spiced tea. Stir once.
         temp_c: 4
+  ice_blended:
+    inputs:
+      - ref: ingredient/black-tea
+        qty: 110
+        unit: g
+        note: Strong brew liquor, cooled
+        temp_c: 4
+      - ref: prep/masala-spice
+        qty: 2.5
+        unit: g
+      - slot: base
+        qty: 180
+        unit: g
+        temp_c: 4
+      - ref: ingredient/ice
+        qty: 180
+        unit: g
+    steps:
+      - op: 10
+        action: Brew a strong black tea and cool. Weigh the liquor.
+        equipment: [kettle, scale, strainer]
+      - op: 20
+        action: Whisk the masala spice into a splash of the liquor, then combine.
+        equipment: [whisk]
+      - op: 30
+        action: Add the cold milk base, spiced tea and ice. Blend until smooth and pourable.
+        equipment: [blender]
+        duration_s: 25
+        temp_c: 4
+      - op: 40
+        action: Pour into a cold glass. Serve immediately.
 ---
 
-Derived from Tenon Tea. Spice is a prep so ratios stay remixable; tea remains an extraction.
+Derived from Tenon Tea. Spice is a prep so ratios stay remixable; tea remains an extraction. Ice-blended serving mass includes the ice.
+
