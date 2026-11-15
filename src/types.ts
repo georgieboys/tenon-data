@@ -1,7 +1,7 @@
 export const KINDS = ["ingredient", "prep", "build", "menu"] as const;
 export type Kind = (typeof KINDS)[number];
 
-export const FORMATS = ["hot", "iced", "ice_blended", "ice_cream", "baked"] as const;
+export const FORMATS = ["hot", "iced", "ice_blended", "ice_cream", "baked", "assembled"] as const;
 export type Format = (typeof FORMATS)[number];
 
 export type Unit = "g" | "kg" | "ml" | "l";
