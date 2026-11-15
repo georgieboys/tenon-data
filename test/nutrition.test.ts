@@ -97,7 +97,7 @@ describe("build variants", () => {
     expect(item.default_variant).toBe("hot.soy-protein-milk");
   });
 
-  it("compiles cocoa, latte, tea and americano builds", async () => {
+  it("compiles cocoa, latte, tea, americano and masala chai builds", async () => {
     const data = compileDataset(await repoDataset());
     expect(build(data, "tenon-cocoa").variants).toHaveLength(6);
     expect(build(data, "tenon-cocoa").vertical).toBe("cocoa");
@@ -107,10 +107,13 @@ describe("build variants", () => {
     expect(build(data, "tenon-tea").vertical).toBe("tea");
     expect(build(data, "tenon-americano").variants).toHaveLength(2);
     expect(build(data, "tenon-americano").variants.map((v) => v.key).sort()).toEqual(["hot", "iced"]);
+    expect(build(data, "tenon-masala-chai").variants).toHaveLength(6);
+    expect(build(data, "tenon-masala-chai").derived_from).toBe("build/tenon-tea@0.1.0");
     expect(variant(data, "tenon-cocoa", "hot.soy-whey-milk").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-latte", "hot.soy-whey-milk").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-tea", "hot.soy-whey-milk").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-americano", "hot").composition.placeholder).toBe(false);
+    expect(variant(data, "tenon-masala-chai", "hot.soy-whey-milk").composition.placeholder).toBe(false);
   });
 });
 
@@ -208,13 +211,16 @@ describe("allergens, diet and provenance", () => {
     expect(prep(data, "soy-whey-milk").used_by).toEqual([
       "build/tenon-cocoa",
       "build/tenon-latte",
+      "build/tenon-masala-chai",
       "build/tenon-matcha",
       "build/tenon-tea",
     ]);
+    expect(prep(data, "masala-spice").used_by).toEqual(["build/tenon-masala-chai"]);
     expect(build(data, "tenon-matcha").used_by).toEqual(["menu/tenon-matcha"]);
     expect(build(data, "tenon-cocoa").used_by).toEqual(["menu/tenon-cocoa"]);
     expect(build(data, "tenon-latte").used_by).toEqual(["menu/tenon-latte"]);
     expect(build(data, "tenon-tea").used_by).toEqual(["menu/tenon-tea"]);
     expect(build(data, "tenon-americano").used_by).toEqual(["menu/tenon-americano"]);
+    expect(build(data, "tenon-masala-chai").used_by).toEqual(["menu/tenon-masala-chai"]);
   });
 });
