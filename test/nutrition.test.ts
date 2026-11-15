@@ -271,13 +271,16 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-banana-cheesecake",
       "build/tenon-banana-overnight-oats",
       "build/tenon-blueberry-overnight-oats",
+      "build/tenon-cinnamon-oat-bar",
       "build/tenon-cinnamon-overnight-oats",
+      "build/tenon-cocoa-oat-bar",
       "build/tenon-cocoa-overnight-oats",
       "build/tenon-date-pb-bites",
       "build/tenon-espresso-overnight-oats",
       "build/tenon-honey-date-bites",
       "build/tenon-honey-oat-bar",
       "build/tenon-masala-overnight-oats",
+      "build/tenon-matcha-oat-bar",
       "build/tenon-matcha-overnight-oats",
       "build/tenon-pistachio-overnight-oats",
       "build/tenon-strawberry-overnight-oats",
@@ -340,6 +343,7 @@ describe("allergens, diet and provenance", () => {
     expect(build(data, "tenon-energy-fruitcake").used_by).toEqual(["menu/tenon-energy-fruitcake"]);
     expect(build(data, "tenon-banana-cheesecake").used_by).toEqual(["menu/tenon-banana-cheesecake"]);
     expect(prep(data, "protein-bread").used_by).toEqual([
+      "build/tenon-cottage-protein-sandwich",
       "build/tenon-egg-banana-sandwich",
       "build/tenon-egg-protein-sandwich",
       "build/tenon-pb-banana-sandwich",
