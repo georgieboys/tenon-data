@@ -3,10 +3,10 @@ id: tenon-matcha
 code: MNU-001
 name: Tenon Matcha
 version: 0.1.0
-description: Ceremonial matcha with your choice of high-protein milk base. Hot or iced. No added sugar.
+description: Ceremonial matcha with your choice of high-protein milk base. Hot, iced or ice-blended. No added sugar.
 build: build/tenon-matcha
 status: planned
-formats: [hot, iced]
+formats: [hot, iced, ice_blended]
 price_sgd: null
 ---
 

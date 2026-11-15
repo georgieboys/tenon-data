@@ -75,8 +75,40 @@ formats:
         temp_c: 4
       - op: 50
         action: Pour the matcha over the milk base.
+  ice_blended:
+    inputs:
+      - ref: ingredient/matcha
+        qty: 5
+        unit: g
+      - ref: ingredient/water
+        qty: 40
+        unit: g
+        temp_c: 80
+      - slot: base
+        qty: 200
+        unit: g
+        temp_c: 4
+      - ref: ingredient/ice
+        qty: 180
+        unit: g
+    steps:
+      - op: 10
+        action: Sift the matcha into a pitcher.
+        equipment: [scale, sieve]
+      - op: 20
+        action: Add the water and whisk until smooth with no lumps.
+        equipment: [whisk]
+        duration_s: 20
+        temp_c: 80
+      - op: 30
+        action: Add the cold milk base and ice. Blend until smooth and pourable, not icy grit.
+        equipment: [blender]
+        duration_s: 25
+        temp_c: 4
+      - op: 40
+        action: Pour into a cold glass. Serve immediately.
 ---
 
-The hot and iced formats use the same matcha dose. Iced uses less water so the matcha concentrate stays strong after the ice melts.
+The hot and iced formats use the same matcha dose. Iced uses less water so the matcha concentrate stays strong after the ice melts. Ice-blended uses a slightly higher matcha dose so the flavour holds after dilution from blending.
 
-Serving mass for iced includes the ice, so per-100 g values are lower than hot even though the per-serving nutrition is close.
+Serving mass for iced and ice-blended includes the ice, so per-100 g values are lower than hot even though the per-serving nutrition is close.

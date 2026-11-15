@@ -26,7 +26,7 @@ describe("exports", () => {
       );
 
       const buildJson = JSON.parse(await readFile(join(out, "api/v1/builds/tenon-matcha.json"), "utf8"));
-      expect(buildJson.variants).toHaveLength(6);
+      expect(buildJson.variants).toHaveLength(9);
 
       const md = await readFile(join(out, "markdown/builds/tenon-matcha.md"), "utf8");
       expect(md).toContain("# BLD-001 · Tenon Matcha");

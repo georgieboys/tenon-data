@@ -54,6 +54,9 @@ describe("build variants", () => {
       "hot.dairy-whey-milk",
       "hot.soy-protein-milk",
       "hot.soy-whey-milk",
+      "ice_blended.dairy-whey-milk",
+      "ice_blended.soy-protein-milk",
+      "ice_blended.soy-whey-milk",
       "iced.dairy-whey-milk",
       "iced.soy-protein-milk",
       "iced.soy-whey-milk",
@@ -93,7 +96,11 @@ describe("build variants", () => {
     const ds = await repoDataset();
     ds.menu["tenon-matcha"]!.options = { base: ["prep/soy-protein-milk"] };
     const item = menuItem(compileDataset(ds), "tenon-matcha");
-    expect(item.variants.map((v) => v.key).sort()).toEqual(["hot.soy-protein-milk", "iced.soy-protein-milk"]);
+    expect(item.variants.map((v) => v.key).sort()).toEqual([
+      "hot.soy-protein-milk",
+      "ice_blended.soy-protein-milk",
+      "iced.soy-protein-milk",
+    ]);
     expect(item.default_variant).toBe("hot.soy-protein-milk");
   });
 
