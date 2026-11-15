@@ -278,6 +278,7 @@ describe("allergens, diet and provenance", () => {
     expect(prep(data, "soy-whey-milk").used_by).toEqual([
       "build/tenon-blueberry-overnight-oats",
       "build/tenon-bulletproof-ice-cream",
+      "build/tenon-chia-pudding",
       "build/tenon-cocoa",
       "build/tenon-cocoa-pb-ice-cream",
       "build/tenon-latte",
@@ -318,6 +319,10 @@ describe("allergens, diet and provenance", () => {
     );
     expect(variant(data, "tenon-honey-oat-bar", "baked").composition.allergens).toEqual(
       expect.arrayContaining(["egg", "gluten", "milk", "peanut"]),
+    );
+    expect(build(data, "tenon-chia-pudding").used_by).toEqual(["menu/tenon-chia-pudding"]);
+    expect(variant(data, "tenon-chia-pudding", "assembled").composition.allergens).toEqual(
+      expect.arrayContaining(["milk", "soy"]),
     );
   });
 });
