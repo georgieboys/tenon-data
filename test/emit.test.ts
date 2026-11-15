@@ -627,6 +627,46 @@ describe("exports", () => {
             code: "BLD-127",
             name: "Tenon Dates Cottage Bowl",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-espresso-egg-sandwich",
+            code: "BLD-128",
+            name: "Tenon Espresso Egg Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-tea-egg-sandwich",
+            code: "BLD-129",
+            name: "Tenon Tea Egg Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-pistachio-egg-sandwich",
+            code: "BLD-130",
+            name: "Tenon Pistachio Egg Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-masala-egg-sandwich",
+            code: "BLD-131",
+            name: "Tenon Masala Egg Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-honey-cottage-bowl",
+            code: "BLD-132",
+            name: "Tenon Honey Cottage Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-pb-cottage-bowl",
+            code: "BLD-133",
+            name: "Tenon PB Cottage Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-blueberry-egg-sandwich",
+            code: "BLD-134",
+            name: "Tenon Blueberry Egg Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-strawberry-egg-sandwich",
+            code: "BLD-135",
+            name: "Tenon Strawberry Egg Sandwich",
+          }),
         ]),
       );
 
