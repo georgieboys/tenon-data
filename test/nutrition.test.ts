@@ -272,6 +272,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-almond-date-bites",
       "build/tenon-almond-oat-bar",
       "build/tenon-almond-overnight-oats",
+      "build/tenon-baking-powder-cheesecake",
       "build/tenon-baking-powder-date-bites",
       "build/tenon-baking-powder-oat-bar",
       "build/tenon-baking-powder-overnight-oats",
@@ -393,6 +394,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-whole-wheat-cheesecake",
       "build/tenon-whole-wheat-date-bites",
       "build/tenon-whole-wheat-oat-bar",
+      "build/tenon-whole-wheat-overnight-oats",
       "prep/dairy-whey-milk",
       "prep/protein-bread",
       "prep/soy-whey-milk",
@@ -402,6 +404,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-almond-ice-cream",
       "build/tenon-almond-overnight-oats",
       "build/tenon-baking-powder-chia",
+      "build/tenon-baking-powder-ice-cream",
       "build/tenon-baking-powder-overnight-oats",
       "build/tenon-banana-chia",
       "build/tenon-banana-ice-cream",
@@ -485,6 +488,9 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-whey-chia",
       "build/tenon-whey-ice-cream",
       "build/tenon-whey-overnight-oats",
+      "build/tenon-whole-wheat-chia",
+      "build/tenon-whole-wheat-ice-cream",
+      "build/tenon-whole-wheat-overnight-oats",
     ]);
     expect(prep(data, "masala-spice").used_by).toEqual([
       "build/tenon-masala-almond-cookies",
@@ -519,6 +525,8 @@ describe("allergens, diet and provenance", () => {
     expect(prep(data, "protein-bread").used_by).toEqual([
       "build/tenon-almond-egg-sandwich",
       "build/tenon-almond-protein-sandwich",
+      "build/tenon-baking-powder-egg-sandwich",
+      "build/tenon-baking-powder-protein-sandwich",
       "build/tenon-banana-protein-sandwich",
       "build/tenon-blueberry-egg-sandwich",
       "build/tenon-blueberry-protein-sandwich",
