@@ -6,7 +6,7 @@ The open ingredient, prep and build database behind [Tenon Coffee](https://tenon
 
 Every drink and food item served at Tenon is documented here as structured data: the raw ingredients and their nutrition, the reusable components prepared from them, and the final assembly. Nutrition is calculated automatically from the ingredients up, so a published number can never disagree with its recipe.
 
-> **Status: v0.3.16.** Core beverage builds cover hot/iced/ice-blended; food covers baked and assembled (oats, chia remakes including matcha/cocoa, cottage/yogurt bowls, date PB bites, sandwiches, cakes); full Creami set. Core ingredients cite USDA FoodData Central, manufacturer labels or literature. Values still marked `placeholder` (if any) are flagged in every output until replaced.
+> **Status: v0.3.17.** Core beverage builds cover hot/iced/ice-blended; food covers baked and assembled (oats including cinnamon, chia remakes, cottage/yogurt bowls, date PB bites, sandwiches, cakes); full Creami set. Core ingredients cite USDA FoodData Central, manufacturer labels or literature. Values still marked `placeholder` (if any) are flagged in every output until replaced.
 
 ## How it fits together
 
