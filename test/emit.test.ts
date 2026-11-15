@@ -27,6 +27,11 @@ describe("exports", () => {
             code: "BLD-007",
             name: "Tenon Cocoa–Peanut Butter Ice Cream",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-pistachio-matcha-ice-cream",
+            code: "BLD-008",
+            name: "Tenon Pistachio–Matcha Ice Cream",
+          }),
         ]),
       );
 

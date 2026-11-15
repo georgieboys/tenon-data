@@ -118,6 +118,8 @@ describe("build variants", () => {
     expect(build(data, "tenon-masala-chai").derived_from).toBe("build/tenon-tea@0.1.0");
     expect(build(data, "tenon-cocoa-pb-ice-cream").variants).toHaveLength(3);
     expect(build(data, "tenon-cocoa-pb-ice-cream").formats).toEqual(["ice_cream"]);
+    expect(build(data, "tenon-pistachio-matcha-ice-cream").variants).toHaveLength(3);
+    expect(build(data, "tenon-pistachio-matcha-ice-cream").vertical).toBe("matcha");
     expect(variant(data, "tenon-cocoa", "hot.soy-whey-milk").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-latte", "hot.soy-whey-milk").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-tea", "hot.soy-whey-milk").composition.placeholder).toBe(false);
@@ -125,6 +127,9 @@ describe("build variants", () => {
     expect(variant(data, "tenon-masala-chai", "hot.soy-whey-milk").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-cocoa-pb-ice-cream", "ice_cream.soy-whey-milk").composition.allergens).toEqual(
       expect.arrayContaining(["peanut", "milk", "soy"]),
+    );
+    expect(variant(data, "tenon-pistachio-matcha-ice-cream", "ice_cream.soy-whey-milk").composition.allergens).toEqual(
+      expect.arrayContaining(["tree_nut", "milk", "soy"]),
     );
   });
 });
@@ -226,6 +231,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-latte",
       "build/tenon-masala-chai",
       "build/tenon-matcha",
+      "build/tenon-pistachio-matcha-ice-cream",
       "build/tenon-tea",
     ]);
     expect(prep(data, "masala-spice").used_by).toEqual(["build/tenon-masala-chai"]);
@@ -236,5 +242,8 @@ describe("allergens, diet and provenance", () => {
     expect(build(data, "tenon-americano").used_by).toEqual(["menu/tenon-americano"]);
     expect(build(data, "tenon-masala-chai").used_by).toEqual(["menu/tenon-masala-chai"]);
     expect(build(data, "tenon-cocoa-pb-ice-cream").used_by).toEqual(["menu/tenon-cocoa-pb-ice-cream"]);
+    expect(build(data, "tenon-pistachio-matcha-ice-cream").used_by).toEqual([
+      "menu/tenon-pistachio-matcha-ice-cream",
+    ]);
   });
 });
