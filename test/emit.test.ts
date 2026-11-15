@@ -1092,6 +1092,56 @@ describe("exports", () => {
             code: "BLD-220",
             name: "Tenon Cloves Chia",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-cloves-cottage-bowl",
+            code: "BLD-221",
+            name: "Tenon Cloves Cottage Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cloves-yogurt-bowl",
+            code: "BLD-222",
+            name: "Tenon Cloves Yogurt Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cloves-overnight-oats",
+            code: "BLD-223",
+            name: "Tenon Cloves Overnight Oats",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cloves-egg-sandwich",
+            code: "BLD-224",
+            name: "Tenon Cloves Egg Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-ginger-protein-sandwich",
+            code: "BLD-225",
+            name: "Tenon Ginger Protein Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cardamom-protein-sandwich",
+            code: "BLD-226",
+            name: "Tenon Cardamom Protein Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cloves-oat-bar",
+            code: "BLD-227",
+            name: "Tenon Cloves Oat Bar",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cloves-date-bites",
+            code: "BLD-228",
+            name: "Tenon Cloves Date Bites",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cloves-almond-cookies",
+            code: "BLD-229",
+            name: "Tenon Cloves Almond Cookies",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cloves-fruitcake",
+            code: "BLD-230",
+            name: "Tenon Cloves Fruitcake",
+          }),
         ]),
       );
 
