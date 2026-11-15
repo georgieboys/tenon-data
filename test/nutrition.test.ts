@@ -97,14 +97,17 @@ describe("build variants", () => {
     expect(item.default_variant).toBe("hot.soy-protein-milk");
   });
 
-  it("compiles cocoa and latte builds with three bases", async () => {
+  it("compiles cocoa, latte and tea builds with three bases", async () => {
     const data = compileDataset(await repoDataset());
     expect(build(data, "tenon-cocoa").variants).toHaveLength(6);
     expect(build(data, "tenon-cocoa").vertical).toBe("cocoa");
     expect(build(data, "tenon-latte").variants).toHaveLength(6);
     expect(build(data, "tenon-latte").vertical).toBe("coffee");
+    expect(build(data, "tenon-tea").variants).toHaveLength(6);
+    expect(build(data, "tenon-tea").vertical).toBe("tea");
     expect(variant(data, "tenon-cocoa", "hot.soy-whey-milk").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-latte", "hot.soy-whey-milk").composition.placeholder).toBe(false);
+    expect(variant(data, "tenon-tea", "hot.soy-whey-milk").composition.placeholder).toBe(false);
   });
 });
 
@@ -203,9 +206,11 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-cocoa",
       "build/tenon-latte",
       "build/tenon-matcha",
+      "build/tenon-tea",
     ]);
     expect(build(data, "tenon-matcha").used_by).toEqual(["menu/tenon-matcha"]);
     expect(build(data, "tenon-cocoa").used_by).toEqual(["menu/tenon-cocoa"]);
     expect(build(data, "tenon-latte").used_by).toEqual(["menu/tenon-latte"]);
+    expect(build(data, "tenon-tea").used_by).toEqual(["menu/tenon-tea"]);
   });
 });
