@@ -692,6 +692,56 @@ describe("exports", () => {
             code: "BLD-140",
             name: "Tenon PB Yogurt Bowl",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-pb-chia",
+            code: "BLD-141",
+            name: "Tenon PB Chia",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-honey-chia",
+            code: "BLD-142",
+            name: "Tenon Honey Chia",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-honey-yogurt-bowl",
+            code: "BLD-143",
+            name: "Tenon Honey Yogurt Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-date-overnight-oats",
+            code: "BLD-144",
+            name: "Tenon Date Overnight Oats",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-pb-overnight-oats",
+            code: "BLD-145",
+            name: "Tenon PB Overnight Oats",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-honey-overnight-oats",
+            code: "BLD-146",
+            name: "Tenon Honey Overnight Oats",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cottage-egg-sandwich",
+            code: "BLD-147",
+            name: "Tenon Cottage Egg Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-date-cheesecake",
+            code: "BLD-148",
+            name: "Tenon Date Cheesecake",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-honey-cheesecake",
+            code: "BLD-149",
+            name: "Tenon Honey Cheesecake",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-pb-cheesecake",
+            code: "BLD-150",
+            name: "Tenon PB Cheesecake",
+          }),
         ]),
       );
 
