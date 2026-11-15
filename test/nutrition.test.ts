@@ -108,7 +108,8 @@ describe("build variants", () => {
     const data = compileDataset(await repoDataset());
     expect(build(data, "tenon-cocoa").variants).toHaveLength(9);
     expect(build(data, "tenon-cocoa").vertical).toBe("cocoa");
-    expect(build(data, "tenon-latte").variants).toHaveLength(6);
+    expect(build(data, "tenon-latte").variants).toHaveLength(9);
+    expect(build(data, "tenon-latte").formats).toEqual(["hot", "iced", "ice_blended"]);
     expect(build(data, "tenon-latte").vertical).toBe("coffee");
     expect(build(data, "tenon-tea").variants).toHaveLength(6);
     expect(build(data, "tenon-tea").vertical).toBe("tea");

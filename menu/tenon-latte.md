@@ -3,10 +3,10 @@ id: tenon-latte
 code: MNU-003
 name: Tenon Latte
 version: 0.1.0
-description: Double espresso with your choice of high-protein milk base. Hot or iced. No added sugar.
+description: Double espresso with your choice of high-protein milk base. Hot, iced or ice-blended. No added sugar.
 build: build/tenon-latte
 status: planned
-formats: [hot, iced]
+formats: [hot, iced, ice_blended]
 price_sgd: null
 ---
 
