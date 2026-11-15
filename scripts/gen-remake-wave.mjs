@@ -1,141 +1,137 @@
 #!/usr/bin/env node
-/**
- * Clone the raspberry 12-chassis remake matrix for new ingredients.
- * Usage: node scripts/gen-remake-wave.mjs
- */
 import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const startCode = 851;
-const baseBuilds = 850;
+const startCode = 901;
+const baseBuilds = 900;
 
 const INGREDIENTS = [
   {
-    id: "cherry",
-    code: "ING-067",
-    name: "Cherry",
+    id: "plum",
+    code: "ING-071",
+    name: "Plum",
     category: "fruit",
     density: 0.65,
-    fdc: "FDC 171719 · Cherries, sweet, raw (SR Legacy). Proxy until the café SKU is labelled.",
+    fdc: "FDC 169917 · Plums, raw (SR Legacy). Proxy until the café SKU is labelled.",
     allergens: "[]",
-    note: "Raw sweet cherries. Replace with the café SOP when locked.",
+    note: "Raw plum. Replace with the café SOP when locked.",
     nutrition: {
-      energy_kcal: 63,
-      protein_g: 1.06,
-      fat_g: 0.2,
-      saturated_fat_g: 0.04,
-      carbohydrate_g: 16.01,
-      sugars_g: 12.82,
-      fibre_g: 2.1,
+      energy_kcal: 46,
+      protein_g: 0.7,
+      fat_g: 0.28,
+      saturated_fat_g: 0.02,
+      carbohydrate_g: 11.42,
+      sugars_g: 9.92,
+      fibre_g: 1.4,
       sodium_mg: 0,
-      calcium_mg: 13,
-      iron_mg: 0.36,
-      magnesium_mg: 11,
-      potassium_mg: 222,
-      zinc_mg: 0.07,
-      vitamin_a_ug: 3,
-      vitamin_c_mg: 7,
+      calcium_mg: 6,
+      iron_mg: 0.17,
+      magnesium_mg: 7,
+      potassium_mg: 157,
+      zinc_mg: 0.1,
+      vitamin_a_ug: 17,
+      vitamin_c_mg: 9.5,
       vitamin_d_ug: 0,
-      vitamin_k_ug: 2.1,
+      vitamin_k_ug: 6.4,
       vitamin_b12_ug: 0,
-      folate_ug: 4,
+      folate_ug: 5,
       caffeine_mg: 0,
     },
   },
   {
-    id: "fig",
-    code: "ING-068",
-    name: "Fig",
+    id: "grape",
+    code: "ING-072",
+    name: "Grape",
     category: "fruit",
     density: 0.7,
-    fdc: "FDC 173021 · Figs, raw (SR Legacy). Proxy until the café SKU is labelled.",
+    fdc: "FDC 174683 · Grapes, red or green, raw (SR Legacy). Proxy until the café SKU is labelled.",
     allergens: "[]",
-    note: "Raw figs. Replace with the café SOP when locked.",
+    note: "Raw grapes. Replace with the café SOP when locked.",
     nutrition: {
-      energy_kcal: 74,
-      protein_g: 0.75,
-      fat_g: 0.3,
-      saturated_fat_g: 0.06,
-      carbohydrate_g: 19.18,
-      sugars_g: 16.26,
-      fibre_g: 2.9,
-      sodium_mg: 1,
-      calcium_mg: 35,
-      iron_mg: 0.37,
-      magnesium_mg: 17,
-      potassium_mg: 232,
-      zinc_mg: 0.15,
-      vitamin_a_ug: 7,
-      vitamin_c_mg: 2,
+      energy_kcal: 69,
+      protein_g: 0.72,
+      fat_g: 0.16,
+      saturated_fat_g: 0.05,
+      carbohydrate_g: 18.1,
+      sugars_g: 15.48,
+      fibre_g: 0.9,
+      sodium_mg: 2,
+      calcium_mg: 10,
+      iron_mg: 0.36,
+      magnesium_mg: 7,
+      potassium_mg: 191,
+      zinc_mg: 0.07,
+      vitamin_a_ug: 3,
+      vitamin_c_mg: 3.2,
       vitamin_d_ug: 0,
-      vitamin_k_ug: 4.7,
+      vitamin_k_ug: 14.6,
       vitamin_b12_ug: 0,
-      folate_ug: 6,
+      folate_ug: 2,
       caffeine_mg: 0,
     },
   },
   {
-    id: "apricot",
-    code: "ING-069",
-    name: "Apricot",
+    id: "orange",
+    code: "ING-073",
+    name: "Orange",
     category: "fruit",
     density: 0.65,
-    fdc: "FDC 171697 · Apricots, raw (SR Legacy). Proxy until the café SKU is labelled.",
+    fdc: "FDC 169097 · Oranges, raw, all commercial varieties (SR Legacy). Proxy until the café SKU is labelled.",
     allergens: "[]",
-    note: "Raw apricot. Replace with the café SOP when locked.",
+    note: "Raw orange. Replace with the café SOP when locked.",
     nutrition: {
-      energy_kcal: 48,
-      protein_g: 1.4,
-      fat_g: 0.39,
-      saturated_fat_g: 0.03,
-      carbohydrate_g: 11.12,
-      sugars_g: 9.24,
-      fibre_g: 2,
-      sodium_mg: 1,
-      calcium_mg: 13,
-      iron_mg: 0.39,
+      energy_kcal: 47,
+      protein_g: 0.94,
+      fat_g: 0.12,
+      saturated_fat_g: 0.02,
+      carbohydrate_g: 11.75,
+      sugars_g: 9.35,
+      fibre_g: 2.4,
+      sodium_mg: 0,
+      calcium_mg: 40,
+      iron_mg: 0.1,
       magnesium_mg: 10,
-      potassium_mg: 259,
-      zinc_mg: 0.2,
-      vitamin_a_ug: 96,
-      vitamin_c_mg: 10,
+      potassium_mg: 181,
+      zinc_mg: 0.07,
+      vitamin_a_ug: 11,
+      vitamin_c_mg: 53.2,
       vitamin_d_ug: 0,
-      vitamin_k_ug: 3.3,
+      vitamin_k_ug: 0,
       vitamin_b12_ug: 0,
-      folate_ug: 9,
+      folate_ug: 30,
       caffeine_mg: 0,
     },
   },
   {
-    id: "broccoli",
-    code: "ING-070",
-    name: "Broccoli",
+    id: "cauliflower",
+    code: "ING-074",
+    name: "Cauliflower",
     category: "other",
     density: 0.4,
-    fdc: "FDC 170379 · Broccoli, raw (SR Legacy). Proxy until the café SKU is labelled.",
+    fdc: "FDC 169986 · Cauliflower, raw (SR Legacy). Proxy until the café SKU is labelled.",
     allergens: "[]",
-    note: "Raw broccoli. Replace with the café SOP when locked.",
+    note: "Raw cauliflower. Replace with the café SOP when locked.",
     nutrition: {
-      energy_kcal: 34,
-      protein_g: 2.82,
-      fat_g: 0.37,
-      saturated_fat_g: 0.04,
-      carbohydrate_g: 6.64,
-      sugars_g: 1.7,
-      fibre_g: 2.6,
-      sodium_mg: 33,
-      calcium_mg: 47,
-      iron_mg: 0.73,
-      magnesium_mg: 21,
-      potassium_mg: 316,
-      zinc_mg: 0.41,
-      vitamin_a_ug: 31,
-      vitamin_c_mg: 89.2,
+      energy_kcal: 25,
+      protein_g: 1.92,
+      fat_g: 0.28,
+      saturated_fat_g: 0.06,
+      carbohydrate_g: 4.97,
+      sugars_g: 1.91,
+      fibre_g: 2,
+      sodium_mg: 30,
+      calcium_mg: 22,
+      iron_mg: 0.42,
+      magnesium_mg: 15,
+      potassium_mg: 299,
+      zinc_mg: 0.27,
+      vitamin_a_ug: 0,
+      vitamin_c_mg: 48.2,
       vitamin_d_ug: 0,
-      vitamin_k_ug: 101.6,
+      vitamin_k_ug: 15.5,
       vitamin_b12_ug: 0,
-      folate_ug: 63,
+      folate_ug: 57,
       caffeine_mg: 0,
     },
   },
@@ -157,8 +153,8 @@ const CELLS = [
 ];
 
 const ELEVATED = [
-  { ing: "cherry", cell: "chia", template: "tenon-peach-chia-elevated", fromId: "peach" },
-  { ing: "fig", cell: "overnight-oats", template: "tenon-pineapple-overnight-oats-elevated", fromId: "pineapple" },
+  { ing: "plum", cell: "chia", template: "tenon-cherry-chia-elevated", fromId: "cherry" },
+  { ing: "orange", cell: "overnight-oats", template: "tenon-fig-overnight-oats-elevated", fromId: "fig" },
 ];
 
 function titleCase(id) {
@@ -237,12 +233,11 @@ function rewriteElevated(src, fromId, toId, toName, codeNum, kind) {
   out = out.replaceAll(`Elevated ${toId} cell`, `Elevated ${prose} cell`);
   out = out.replaceAll(`elevated ${toId}`, `elevated ${prose}`);
   out = out.replaceAll(`with elevated ${toId}`, `with elevated ${prose}`);
-  out = out.replaceAll(`Eight hundred fifty builds.`, "Nine hundred builds.");
+  out = out.replaceAll(`Nine hundred builds.`, "Nine hundred fifty builds.");
   return out;
 }
 
 let code = startCode;
-
 for (const ing of INGREDIENTS) {
   writeFileSync(path.join(root, "ingredients", `${ing.id}.md`), ingredientMd(ing));
   console.log(`+ ingredient ${ing.id}`);
@@ -260,7 +255,6 @@ for (const ing of INGREDIENTS) {
     code += 1;
   }
 }
-
 for (const elev of ELEVATED) {
   const cellSlug = `${elev.cell}-elevated`;
   const srcBuild = readFileSync(path.join(root, "builds", `${elev.template}.md`), "utf8");
@@ -277,7 +271,6 @@ for (const elev of ELEVATED) {
   console.log(`+ elevated ${elev.ing}-${cellSlug} BLD-${code}`);
   code += 1;
 }
-
 console.log(
   `done through BLD-${code - 1}; expected builds ${baseBuilds + INGREDIENTS.length * CELLS.length + ELEVATED.length}`,
 );
