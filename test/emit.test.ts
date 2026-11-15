@@ -242,6 +242,16 @@ describe("exports", () => {
             code: "BLD-050",
             name: "Tenon Matcha Cottage Bowl",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-espresso-cottage-bowl",
+            code: "BLD-051",
+            name: "Tenon Espresso Cottage Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-tea-cottage-bowl",
+            code: "BLD-052",
+            name: "Tenon Tea Cottage Bowl",
+          }),
         ]),
       );
 
