@@ -284,6 +284,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-bulletproof-ice-cream",
       "build/tenon-chia-pudding",
       "build/tenon-cocoa",
+      "build/tenon-cocoa-chia",
       "build/tenon-cocoa-pb-ice-cream",
       "build/tenon-latte",
       "build/tenon-masala-chai",
@@ -360,5 +361,9 @@ describe("allergens, diet and provenance", () => {
     expect(variant(data, "tenon-date-pb-bites", "assembled").composition.allergens).toEqual(
       expect.arrayContaining(["gluten", "milk", "peanut"]),
     );
+    expect(build(data, "tenon-cocoa-chia").derived_from).toBe("build/tenon-chia-pudding@0.1.0");
+    expect(build(data, "tenon-cocoa-chia").used_by).toEqual(["menu/tenon-cocoa-chia"]);
+    expect(build(data, "tenon-yogurt-honey-bowl").used_by).toEqual(["menu/tenon-yogurt-honey-bowl"]);
+    expect(variant(data, "tenon-yogurt-honey-bowl", "assembled").composition.allergens).toEqual(["milk"]);
   });
 });
