@@ -842,6 +842,56 @@ describe("exports", () => {
             code: "BLD-170",
             name: "Tenon Almond Cottage Bowl",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-almond-ice-cream",
+            code: "BLD-171",
+            name: "Tenon Almond Ice Cream",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-coconut-ice-cream",
+            code: "BLD-172",
+            name: "Tenon Coconut Ice Cream",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-pb-ice-cream",
+            code: "BLD-173",
+            name: "Tenon PB Ice Cream",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-coconut-oat-bar",
+            code: "BLD-174",
+            name: "Tenon Coconut Oat Bar",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-almond-oat-bar",
+            code: "BLD-175",
+            name: "Tenon Almond Oat Bar",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-almond-cheesecake",
+            code: "BLD-176",
+            name: "Tenon Almond Cheesecake",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-almond-date-bites",
+            code: "BLD-177",
+            name: "Tenon Almond Date Bites",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-almond-overnight-oats",
+            code: "BLD-178",
+            name: "Tenon Almond Overnight Oats",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-almond-chia",
+            code: "BLD-179",
+            name: "Tenon Almond Chia",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-almond-egg-sandwich",
+            code: "BLD-180",
+            name: "Tenon Almond Egg Sandwich",
+          }),
         ]),
       );
 

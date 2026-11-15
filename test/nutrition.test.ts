@@ -268,6 +268,10 @@ describe("allergens, diet and provenance", () => {
     const data = compileDataset(await repoDataset());
     const whey = data.ingredients.find((i) => i.id === "whey-concentrate")!;
     expect(whey.used_by).toEqual([
+      "build/tenon-almond-cheesecake",
+      "build/tenon-almond-date-bites",
+      "build/tenon-almond-oat-bar",
+      "build/tenon-almond-overnight-oats",
       "build/tenon-banana-cheesecake",
       "build/tenon-banana-date-bites",
       "build/tenon-banana-oat-bar",
@@ -284,6 +288,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-cocoa-date-bites",
       "build/tenon-cocoa-oat-bar",
       "build/tenon-cocoa-overnight-oats",
+      "build/tenon-coconut-oat-bar",
       "build/tenon-date-cheesecake",
       "build/tenon-date-oat-bar",
       "build/tenon-date-overnight-oats",
@@ -323,6 +328,9 @@ describe("allergens, diet and provenance", () => {
       "prep/soy-whey-milk",
     ]);
     expect(prep(data, "soy-whey-milk").used_by).toEqual([
+      "build/tenon-almond-chia",
+      "build/tenon-almond-ice-cream",
+      "build/tenon-almond-overnight-oats",
       "build/tenon-banana-chia",
       "build/tenon-banana-ice-cream",
       "build/tenon-banana-overnight-oats",
@@ -338,6 +346,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-cocoa-ice-cream",
       "build/tenon-cocoa-overnight-oats",
       "build/tenon-cocoa-pb-ice-cream",
+      "build/tenon-coconut-ice-cream",
       "build/tenon-date-chia",
       "build/tenon-date-ice-cream",
       "build/tenon-date-overnight-oats",
@@ -357,6 +366,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-matcha-ice-cream",
       "build/tenon-matcha-overnight-oats",
       "build/tenon-pb-chia",
+      "build/tenon-pb-ice-cream",
       "build/tenon-pb-overnight-oats",
       "build/tenon-pistachio-chia",
       "build/tenon-pistachio-ice-cream",
@@ -402,6 +412,7 @@ describe("allergens, diet and provenance", () => {
     expect(build(data, "tenon-energy-fruitcake").used_by).toEqual(["menu/tenon-energy-fruitcake"]);
     expect(build(data, "tenon-banana-cheesecake").used_by).toEqual(["menu/tenon-banana-cheesecake"]);
     expect(prep(data, "protein-bread").used_by).toEqual([
+      "build/tenon-almond-egg-sandwich",
       "build/tenon-blueberry-egg-sandwich",
       "build/tenon-blueberry-protein-sandwich",
       "build/tenon-cinnamon-egg-sandwich",
