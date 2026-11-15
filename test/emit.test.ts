@@ -1242,6 +1242,56 @@ describe("exports", () => {
             code: "BLD-250",
             name: "Tenon Cream Cheese Almond Cookies",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-cream-cheese-fruitcake",
+            code: "BLD-251",
+            name: "Tenon Cream Cheese Fruitcake",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cream-cheese-cheesecake",
+            code: "BLD-252",
+            name: "Tenon Cream Cheese Cheesecake",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-whey-cottage-bowl",
+            code: "BLD-253",
+            name: "Tenon Whey Cottage Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-whey-yogurt-bowl",
+            code: "BLD-254",
+            name: "Tenon Whey Yogurt Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-whey-chia",
+            code: "BLD-255",
+            name: "Tenon Whey Chia",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-whey-ice-cream",
+            code: "BLD-256",
+            name: "Tenon Whey Ice Cream",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-soy-isolate-cottage-bowl",
+            code: "BLD-257",
+            name: "Tenon Soy Isolate Cottage Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-soy-isolate-yogurt-bowl",
+            code: "BLD-258",
+            name: "Tenon Soy Isolate Yogurt Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-soy-isolate-chia",
+            code: "BLD-259",
+            name: "Tenon Soy Isolate Chia",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-soy-isolate-ice-cream",
+            code: "BLD-260",
+            name: "Tenon Soy Isolate Ice Cream",
+          }),
         ]),
       );
 
