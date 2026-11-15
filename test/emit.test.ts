@@ -1292,6 +1292,56 @@ describe("exports", () => {
             code: "BLD-260",
             name: "Tenon Soy Isolate Ice Cream",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-whey-overnight-oats",
+            code: "BLD-261",
+            name: "Tenon Whey Overnight Oats",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-soy-isolate-overnight-oats",
+            code: "BLD-262",
+            name: "Tenon Soy Isolate Overnight Oats",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-whey-egg-sandwich",
+            code: "BLD-263",
+            name: "Tenon Whey Egg Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-soy-isolate-egg-sandwich",
+            code: "BLD-264",
+            name: "Tenon Soy Isolate Egg Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-whey-protein-sandwich",
+            code: "BLD-265",
+            name: "Tenon Whey Protein Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-soy-isolate-protein-sandwich",
+            code: "BLD-266",
+            name: "Tenon Soy Isolate Protein Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-whey-oat-bar",
+            code: "BLD-267",
+            name: "Tenon Whey Oat Bar",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-soy-isolate-oat-bar",
+            code: "BLD-268",
+            name: "Tenon Soy Isolate Oat Bar",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-whey-date-bites",
+            code: "BLD-269",
+            name: "Tenon Whey Date Bites",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-soy-isolate-date-bites",
+            code: "BLD-270",
+            name: "Tenon Soy Isolate Date Bites",
+          }),
         ]),
       );
 
