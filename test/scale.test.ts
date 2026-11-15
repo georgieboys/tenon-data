@@ -12,7 +12,7 @@ describe("batch scaling", () => {
     expect(double.inputs[1]!.grams).toBeCloseTo(80, 6);
     expect(double.yield.mass_g).toBeCloseTo(2140, 6);
     expect(double.composition.mass_g).toBeCloseTo(2140, 6);
-    expect(double.composition.totals.protein_g!.value).toBeCloseTo(2 * (36 + 40 * 0.7813), 6);
+    expect(double.composition.totals.protein_g!.value).toBeCloseTo(2 * (2.6 * 10 + 40 * 0.7813), 6);
     expect(double.composition.per_100g).toEqual(milk.composition.per_100g);
   });
 

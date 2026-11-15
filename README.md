@@ -6,7 +6,7 @@ The open ingredient, prep and build database behind [Tenon Coffee](https://tenon
 
 Every drink and food item served at Tenon is documented here as structured data: the raw ingredients and their nutrition, the reusable components prepared from them, and the final assembly. Nutrition is calculated automatically from the ingredients up, so a published number can never disagree with its recipe.
 
-> **Status: v0.1, placeholder data.** The structure is real; the nutrition values are illustrative and are flagged as placeholders in every output until they are replaced with label or reference data.
+> **Status: v0.2.** Core ingredients cite USDA FoodData Central, manufacturer labels or literature. Values still marked `placeholder` (if any) are flagged in every output until replaced.
 
 ## How it fits together
 

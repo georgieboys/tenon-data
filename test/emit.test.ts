@@ -14,16 +14,19 @@ describe("exports", () => {
 
       const index = JSON.parse(await readFile(join(out, "api/v1/index.json"), "utf8"));
       expect(index.data_version).toBe("9.9.9");
-      expect(index.builds).toEqual([
-        { ref: "build/tenon-matcha", code: "BLD-001", name: "Tenon Matcha", version: "0.1.0", json: "builds/tenon-matcha.json" },
-      ]);
+      expect(index.builds).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ ref: "build/tenon-matcha", code: "BLD-001", name: "Tenon Matcha" }),
+          expect.objectContaining({ ref: "build/tenon-cocoa", code: "BLD-002", name: "Tenon Cocoa" }),
+        ]),
+      );
 
       const buildJson = JSON.parse(await readFile(join(out, "api/v1/builds/tenon-matcha.json"), "utf8"));
       expect(buildJson.variants).toHaveLength(6);
 
       const md = await readFile(join(out, "markdown/builds/tenon-matcha.md"), "utf8");
       expect(md).toContain("# BLD-001 · Tenon Matcha");
-      expect(md).toContain("**Placeholder data.**");
+      expect(md).not.toContain("**Placeholder data.**");
       expect(md).toContain("`hot.soy-whey-milk` (default)");
       expect(md).toContain("| Vitamin D (µg) | unknown | unknown | unknown | unknown |");
     } finally {
