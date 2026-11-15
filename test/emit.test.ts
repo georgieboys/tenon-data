@@ -122,6 +122,16 @@ describe("exports", () => {
             code: "BLD-026",
             name: "Tenon Strawberry Yogurt Bowl",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-matcha-chia",
+            code: "BLD-027",
+            name: "Tenon Matcha Chia",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-banana-yogurt-bowl",
+            code: "BLD-028",
+            name: "Tenon Banana Yogurt Bowl",
+          }),
         ]),
       );
 

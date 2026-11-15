@@ -289,6 +289,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-latte",
       "build/tenon-masala-chai",
       "build/tenon-matcha",
+      "build/tenon-matcha-chia",
       "build/tenon-pistachio-matcha-ice-cream",
       "build/tenon-strawberry-chia",
       "build/tenon-strawberry-overnight-oats",
@@ -371,5 +372,11 @@ describe("allergens, diet and provenance", () => {
     expect(build(data, "tenon-strawberry-yogurt-bowl").used_by).toEqual([
       "menu/tenon-strawberry-yogurt-bowl",
     ]);
+    expect(build(data, "tenon-matcha-chia").derived_from).toBe("build/tenon-chia-pudding@0.1.0");
+    expect(build(data, "tenon-matcha-chia").used_by).toEqual(["menu/tenon-matcha-chia"]);
+    expect(build(data, "tenon-banana-yogurt-bowl").derived_from).toBe(
+      "build/tenon-yogurt-honey-bowl@0.1.0",
+    );
+    expect(build(data, "tenon-banana-yogurt-bowl").used_by).toEqual(["menu/tenon-banana-yogurt-bowl"]);
   });
 });
