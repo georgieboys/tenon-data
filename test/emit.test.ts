@@ -492,6 +492,26 @@ describe("exports", () => {
             code: "BLD-100",
             name: "Tenon Strawberry Protein Sandwich",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-pistachio-cheesecake",
+            code: "BLD-101",
+            name: "Tenon Pistachio Cheesecake",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-tea-cheesecake",
+            code: "BLD-102",
+            name: "Tenon Tea Cheesecake",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-masala-cheesecake",
+            code: "BLD-103",
+            name: "Tenon Masala Cheesecake",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-blueberry-oat-bar",
+            code: "BLD-104",
+            name: "Tenon Blueberry Oat Bar",
+          }),
         ]),
       );
 
