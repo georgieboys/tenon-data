@@ -275,13 +275,16 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-cinnamon-overnight-oats",
       "build/tenon-cocoa-oat-bar",
       "build/tenon-cocoa-overnight-oats",
+      "build/tenon-date-oat-bar",
       "build/tenon-date-pb-bites",
       "build/tenon-espresso-overnight-oats",
       "build/tenon-honey-date-bites",
       "build/tenon-honey-oat-bar",
+      "build/tenon-masala-oat-bar",
       "build/tenon-masala-overnight-oats",
       "build/tenon-matcha-oat-bar",
       "build/tenon-matcha-overnight-oats",
+      "build/tenon-pistachio-oat-bar",
       "build/tenon-pistachio-overnight-oats",
       "build/tenon-strawberry-overnight-oats",
       "build/tenon-tea-overnight-oats",
@@ -324,6 +327,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-masala-chai",
       "build/tenon-masala-chia",
       "build/tenon-masala-cottage-bowl",
+      "build/tenon-masala-oat-bar",
       "build/tenon-masala-overnight-oats",
       "build/tenon-masala-yogurt-bowl",
       "build/tenon-teh-tarik-ice-cream",
@@ -348,6 +352,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-egg-protein-sandwich",
       "build/tenon-pb-banana-sandwich",
       "build/tenon-pb-protein-sandwich",
+      "build/tenon-yogurt-protein-sandwich",
     ]);
     expect(build(data, "tenon-pb-protein-sandwich").used_by).toEqual(["menu/tenon-pb-protein-sandwich"]);
     expect(build(data, "tenon-egg-protein-sandwich").used_by).toEqual(["menu/tenon-egg-protein-sandwich"]);
