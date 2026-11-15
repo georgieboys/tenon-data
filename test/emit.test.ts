@@ -1142,6 +1142,56 @@ describe("exports", () => {
             code: "BLD-230",
             name: "Tenon Cloves Fruitcake",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-cloves-cheesecake",
+            code: "BLD-231",
+            name: "Tenon Cloves Cheesecake",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cloves-protein-sandwich",
+            code: "BLD-232",
+            name: "Tenon Cloves Protein Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cream-cheese-cottage-bowl",
+            code: "BLD-233",
+            name: "Tenon Cream Cheese Cottage Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cream-cheese-yogurt-bowl",
+            code: "BLD-234",
+            name: "Tenon Cream Cheese Yogurt Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cream-cheese-chia",
+            code: "BLD-235",
+            name: "Tenon Cream Cheese Chia",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cream-cheese-overnight-oats",
+            code: "BLD-236",
+            name: "Tenon Cream Cheese Overnight Oats",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cream-cheese-ice-cream",
+            code: "BLD-237",
+            name: "Tenon Cream Cheese Ice Cream",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-heavy-cream-cottage-bowl",
+            code: "BLD-238",
+            name: "Tenon Heavy Cream Cottage Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-heavy-cream-yogurt-bowl",
+            code: "BLD-239",
+            name: "Tenon Heavy Cream Yogurt Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-heavy-cream-chia",
+            code: "BLD-240",
+            name: "Tenon Heavy Cream Chia",
+          }),
         ]),
       );
 
