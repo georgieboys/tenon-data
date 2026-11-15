@@ -275,7 +275,9 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-cocoa-overnight-oats",
       "build/tenon-date-pb-bites",
       "build/tenon-espresso-overnight-oats",
+      "build/tenon-honey-date-bites",
       "build/tenon-honey-oat-bar",
+      "build/tenon-matcha-overnight-oats",
       "build/tenon-strawberry-overnight-oats",
       "prep/dairy-whey-milk",
       "prep/protein-bread",
@@ -296,6 +298,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-masala-chai",
       "build/tenon-matcha",
       "build/tenon-matcha-chia",
+      "build/tenon-matcha-overnight-oats",
       "build/tenon-pistachio-matcha-ice-cream",
       "build/tenon-strawberry-chia",
       "build/tenon-strawberry-overnight-oats",
@@ -420,5 +423,21 @@ describe("allergens, diet and provenance", () => {
     expect(build(data, "tenon-egg-banana-sandwich").used_by).toEqual([
       "menu/tenon-egg-banana-sandwich",
     ]);
+    expect(build(data, "tenon-matcha-overnight-oats").derived_from).toBe(
+      "build/tenon-blueberry-overnight-oats@0.1.0",
+    );
+    expect(build(data, "tenon-matcha-overnight-oats").used_by).toEqual([
+      "menu/tenon-matcha-overnight-oats",
+    ]);
+    expect(build(data, "tenon-honey-date-bites").derived_from).toBe(
+      "build/tenon-date-pb-bites@0.1.0",
+    );
+    expect(build(data, "tenon-honey-date-bites").used_by).toEqual(["menu/tenon-honey-date-bites"]);
+    expect(variant(data, "tenon-honey-date-bites", "assembled").composition.allergens).toEqual(
+      expect.arrayContaining(["gluten", "milk"]),
+    );
+    expect(variant(data, "tenon-honey-date-bites", "assembled").composition.allergens).not.toContain(
+      "peanut",
+    );
   });
 });
