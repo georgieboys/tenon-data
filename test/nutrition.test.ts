@@ -313,6 +313,7 @@ describe("allergens, diet and provenance", () => {
     expect(prep(data, "masala-spice").used_by).toEqual([
       "build/tenon-masala-chai",
       "build/tenon-masala-overnight-oats",
+      "build/tenon-masala-yogurt-bowl",
       "build/tenon-teh-tarik-ice-cream",
     ]);
     expect(build(data, "tenon-matcha").used_by).toEqual(["menu/tenon-matcha"]);
@@ -512,5 +513,17 @@ describe("allergens, diet and provenance", () => {
     expect(variant(data, "tenon-pistachio-yogurt-bowl", "assembled").composition.allergens).toEqual(
       expect.arrayContaining(["milk", "tree_nut"]),
     );
+    expect(build(data, "tenon-cocoa-cottage-bowl").derived_from).toBe(
+      "build/tenon-cottage-cheese-berry-bowl@0.1.0",
+    );
+    expect(build(data, "tenon-cocoa-cottage-bowl").used_by).toEqual([
+      "menu/tenon-cocoa-cottage-bowl",
+    ]);
+    expect(build(data, "tenon-masala-yogurt-bowl").derived_from).toBe(
+      "build/tenon-yogurt-honey-bowl@0.1.0",
+    );
+    expect(build(data, "tenon-masala-yogurt-bowl").used_by).toEqual([
+      "menu/tenon-masala-yogurt-bowl",
+    ]);
   });
 });
