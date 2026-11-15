@@ -271,6 +271,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-banana-cheesecake",
       "build/tenon-banana-overnight-oats",
       "build/tenon-blueberry-overnight-oats",
+      "build/tenon-date-pb-bites",
       "build/tenon-honey-oat-bar",
       "build/tenon-strawberry-overnight-oats",
       "prep/dairy-whey-milk",
@@ -349,5 +350,15 @@ describe("allergens, diet and provenance", () => {
     expect(variant(data, "tenon-cottage-cheese-berry-bowl", "assembled").composition.allergens).toEqual([
       "milk",
     ]);
+    expect(build(data, "tenon-strawberry-cottage-bowl").derived_from).toBe(
+      "build/tenon-cottage-cheese-berry-bowl@0.1.0",
+    );
+    expect(build(data, "tenon-strawberry-cottage-bowl").used_by).toEqual([
+      "menu/tenon-strawberry-cottage-bowl",
+    ]);
+    expect(build(data, "tenon-date-pb-bites").used_by).toEqual(["menu/tenon-date-pb-bites"]);
+    expect(variant(data, "tenon-date-pb-bites", "assembled").composition.allergens).toEqual(
+      expect.arrayContaining(["gluten", "milk", "peanut"]),
+    );
   });
 });

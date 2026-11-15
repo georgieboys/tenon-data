@@ -97,6 +97,16 @@ describe("exports", () => {
             code: "BLD-021",
             name: "Tenon Cottage Cheese Berry Bowl",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-strawberry-cottage-bowl",
+            code: "BLD-022",
+            name: "Tenon Strawberry Cottage Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-date-pb-bites",
+            code: "BLD-023",
+            name: "Tenon Date Peanut Butter Bites",
+          }),
         ]),
       );
 
