@@ -150,6 +150,10 @@ describe("build variants", () => {
     expect(variant(data, "tenon-pb-protein-sandwich", "assembled").composition.allergens).toEqual(
       expect.arrayContaining(["egg", "milk", "peanut", "tree_nut"]),
     );
+    expect(build(data, "tenon-egg-protein-sandwich").formats).toEqual(["assembled"]);
+    expect(variant(data, "tenon-egg-protein-sandwich", "assembled").composition.allergens).toEqual(
+      expect.arrayContaining(["egg", "milk", "tree_nut"]),
+    );
     expect(prep(data, "protein-bread").composition.allergens).toEqual(
       expect.arrayContaining(["egg", "milk", "tree_nut"]),
     );
@@ -298,7 +302,11 @@ describe("allergens, diet and provenance", () => {
     expect(build(data, "tenon-bulletproof-ice-cream").used_by).toEqual(["menu/tenon-bulletproof-ice-cream"]);
     expect(build(data, "tenon-energy-fruitcake").used_by).toEqual(["menu/tenon-energy-fruitcake"]);
     expect(build(data, "tenon-banana-cheesecake").used_by).toEqual(["menu/tenon-banana-cheesecake"]);
-    expect(prep(data, "protein-bread").used_by).toEqual(["build/tenon-pb-protein-sandwich"]);
+    expect(prep(data, "protein-bread").used_by).toEqual([
+      "build/tenon-egg-protein-sandwich",
+      "build/tenon-pb-protein-sandwich",
+    ]);
     expect(build(data, "tenon-pb-protein-sandwich").used_by).toEqual(["menu/tenon-pb-protein-sandwich"]);
+    expect(build(data, "tenon-egg-protein-sandwich").used_by).toEqual(["menu/tenon-egg-protein-sandwich"]);
   });
 });
