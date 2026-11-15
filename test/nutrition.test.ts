@@ -499,5 +499,18 @@ describe("allergens, diet and provenance", () => {
     expect(build(data, "tenon-espresso-yogurt-bowl").used_by).toEqual([
       "menu/tenon-espresso-yogurt-bowl",
     ]);
+    expect(build(data, "tenon-tea-yogurt-bowl").derived_from).toBe(
+      "build/tenon-yogurt-honey-bowl@0.1.0",
+    );
+    expect(build(data, "tenon-tea-yogurt-bowl").used_by).toEqual(["menu/tenon-tea-yogurt-bowl"]);
+    expect(build(data, "tenon-pistachio-yogurt-bowl").derived_from).toBe(
+      "build/tenon-yogurt-honey-bowl@0.1.0",
+    );
+    expect(build(data, "tenon-pistachio-yogurt-bowl").used_by).toEqual([
+      "menu/tenon-pistachio-yogurt-bowl",
+    ]);
+    expect(variant(data, "tenon-pistachio-yogurt-bowl", "assembled").composition.allergens).toEqual(
+      expect.arrayContaining(["milk", "tree_nut"]),
+    );
   });
 });
