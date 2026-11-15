@@ -338,9 +338,11 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-teh-tarik-ice-cream",
     ]);
     expect(prep(data, "masala-spice").used_by).toEqual([
+      "build/tenon-masala-almond-cookies",
       "build/tenon-masala-chai",
       "build/tenon-masala-chia",
       "build/tenon-masala-cottage-bowl",
+      "build/tenon-masala-fruitcake",
       "build/tenon-masala-oat-bar",
       "build/tenon-masala-overnight-oats",
       "build/tenon-masala-yogurt-bowl",
@@ -370,6 +372,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-pb-banana-sandwich",
       "build/tenon-pb-protein-sandwich",
       "build/tenon-pistachio-protein-sandwich",
+      "build/tenon-strawberry-protein-sandwich",
       "build/tenon-yogurt-protein-sandwich",
     ]);
     expect(build(data, "tenon-pb-protein-sandwich").used_by).toEqual(["menu/tenon-pb-protein-sandwich"]);
