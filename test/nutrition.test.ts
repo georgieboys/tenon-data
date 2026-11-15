@@ -343,5 +343,11 @@ describe("allergens, diet and provenance", () => {
     expect(build(data, "tenon-banana-overnight-oats").used_by).toEqual([
       "menu/tenon-banana-overnight-oats",
     ]);
+    expect(build(data, "tenon-cottage-cheese-berry-bowl").used_by).toEqual([
+      "menu/tenon-cottage-cheese-berry-bowl",
+    ]);
+    expect(variant(data, "tenon-cottage-cheese-berry-bowl", "assembled").composition.allergens).toEqual([
+      "milk",
+    ]);
   });
 });

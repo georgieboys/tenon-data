@@ -92,6 +92,11 @@ describe("exports", () => {
             code: "BLD-020",
             name: "Tenon Banana Overnight Oats",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-cottage-cheese-berry-bowl",
+            code: "BLD-021",
+            name: "Tenon Cottage Cheese Berry Bowl",
+          }),
         ]),
       );
 
