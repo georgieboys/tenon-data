@@ -292,6 +292,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-blueberry-overnight-oats",
       "build/tenon-bulletproof-ice-cream",
       "build/tenon-chia-pudding",
+      "build/tenon-cinnamon-chia",
       "build/tenon-cinnamon-overnight-oats",
       "build/tenon-cocoa",
       "build/tenon-cocoa-chia",
@@ -301,10 +302,12 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-espresso-overnight-oats",
       "build/tenon-latte",
       "build/tenon-masala-chai",
+      "build/tenon-masala-chia",
       "build/tenon-masala-overnight-oats",
       "build/tenon-matcha",
       "build/tenon-matcha-chia",
       "build/tenon-matcha-overnight-oats",
+      "build/tenon-pistachio-chia",
       "build/tenon-pistachio-matcha-ice-cream",
       "build/tenon-pistachio-overnight-oats",
       "build/tenon-strawberry-chia",
@@ -316,6 +319,7 @@ describe("allergens, diet and provenance", () => {
     ]);
     expect(prep(data, "masala-spice").used_by).toEqual([
       "build/tenon-masala-chai",
+      "build/tenon-masala-chia",
       "build/tenon-masala-cottage-bowl",
       "build/tenon-masala-overnight-oats",
       "build/tenon-masala-yogurt-bowl",

@@ -277,6 +277,21 @@ describe("exports", () => {
             code: "BLD-057",
             name: "Tenon Espresso Chia",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-cinnamon-chia",
+            code: "BLD-058",
+            name: "Tenon Cinnamon Chia",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-masala-chia",
+            code: "BLD-059",
+            name: "Tenon Masala Chia",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-pistachio-chia",
+            code: "BLD-060",
+            name: "Tenon Pistachio Chia",
+          }),
         ]),
       );
 
