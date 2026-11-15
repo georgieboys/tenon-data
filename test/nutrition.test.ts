@@ -365,5 +365,11 @@ describe("allergens, diet and provenance", () => {
     expect(build(data, "tenon-cocoa-chia").used_by).toEqual(["menu/tenon-cocoa-chia"]);
     expect(build(data, "tenon-yogurt-honey-bowl").used_by).toEqual(["menu/tenon-yogurt-honey-bowl"]);
     expect(variant(data, "tenon-yogurt-honey-bowl", "assembled").composition.allergens).toEqual(["milk"]);
+    expect(build(data, "tenon-strawberry-yogurt-bowl").derived_from).toBe(
+      "build/tenon-yogurt-honey-bowl@0.1.0",
+    );
+    expect(build(data, "tenon-strawberry-yogurt-bowl").used_by).toEqual([
+      "menu/tenon-strawberry-yogurt-bowl",
+    ]);
   });
 });
