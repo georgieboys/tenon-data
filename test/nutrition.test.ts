@@ -3,7 +3,7 @@ import { build, compileDataset, menuItem, prep, repoDataset, variant } from "./h
 
 // Hand calculations use values in ingredients/*.md:
 // UniSoy 3.6 g protein per 100 ml at 1.03 g/ml (placeholder), whey 78.13 g per 100 g (USDA),
-// soy isolate 88.32 g per 100 g (USDA), matcha 30 g per 100 g (placeholder).
+// soy isolate 88.32 g per 100 g (USDA), matcha 29.6 g per 100 g (literature).
 
 describe("ingredient normalisation", () => {
   it("converts per-100 ml label values to per 100 g using density", async () => {
@@ -61,20 +61,22 @@ describe("build variants", () => {
   it("calculates per-serving nutrition through the prep", async () => {
     const data = compileDataset(await repoDataset());
     const hot = variant(data, "tenon-matcha", "hot.soy-whey-milk");
-    // 4 g matcha (1.2 g protein) + 60 g water + 200 g of the soy-whey prep.
+    // 4 g matcha (1.184 g protein) + 60 g water + 200 g of the soy-whey prep.
     expect(hot.composition.mass_g).toBe(264);
+    const matchaProtein = 4 * 0.296;
     const wheyBatchProtein = 36 + 40 * 0.7813;
-    expect(hot.composition.totals.protein_g!.value).toBeCloseTo(1.2 + (200 * wheyBatchProtein) / 1070, 6);
-    expect(hot.percent_ri.us_fda.protein_g).toBeCloseTo(((1.2 + (200 * wheyBatchProtein) / 1070) / 50) * 100, 6);
-    expect(hot.percent_ri.sg_hpb.protein_g).toBeCloseTo(((1.2 + (200 * wheyBatchProtein) / 1070) / 62) * 100, 6);
+    expect(hot.composition.totals.protein_g!.value).toBeCloseTo(matchaProtein + (200 * wheyBatchProtein) / 1070, 6);
+    expect(hot.percent_ri.us_fda.protein_g).toBeCloseTo(((matchaProtein + (200 * wheyBatchProtein) / 1070) / 50) * 100, 6);
+    expect(hot.percent_ri.sg_hpb.protein_g).toBeCloseTo(((matchaProtein + (200 * wheyBatchProtein) / 1070) / 62) * 100, 6);
   });
 
   it("counts ice in the serving mass but not in the nutrients", async () => {
     const data = compileDataset(await repoDataset());
     const iced = variant(data, "tenon-matcha", "iced.soy-whey-milk");
     expect(iced.composition.mass_g).toBe(4 + 40 + 180 + 120);
+    const matchaProtein = 4 * 0.296;
     const wheyBatchProtein = 36 + 40 * 0.7813;
-    expect(iced.composition.totals.protein_g!.value).toBeCloseTo(1.2 + (180 * wheyBatchProtein) / 1070, 6);
+    expect(iced.composition.totals.protein_g!.value).toBeCloseTo(matchaProtein + (180 * wheyBatchProtein) / 1070, 6);
   });
 
   it("menu product exposes the same numbers as the build", async () => {
@@ -109,7 +111,7 @@ describe("nutritional inheritance", () => {
       variant(before, "tenon-matcha", "hot.soy-protein-milk").composition.totals,
     );
 
-    const expected = 1.2 + (200 * 68) / 1070;
+    const expected = 4 * 0.296 + (200 * 68) / 1070;
     expect(variant(after, "tenon-matcha", "hot.soy-whey-milk").composition.totals.protein_g!.value).toBeCloseTo(
       expected,
       6,
