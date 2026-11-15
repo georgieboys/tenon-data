@@ -792,6 +792,56 @@ describe("exports", () => {
             code: "BLD-160",
             name: "Tenon Espresso Ice Cream",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-blueberry-ice-cream",
+            code: "BLD-161",
+            name: "Tenon Blueberry Ice Cream",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-matcha-ice-cream",
+            code: "BLD-162",
+            name: "Tenon Matcha Ice Cream",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-tea-ice-cream",
+            code: "BLD-163",
+            name: "Tenon Tea Ice Cream",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cocoa-ice-cream",
+            code: "BLD-164",
+            name: "Tenon Cocoa Ice Cream",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-date-ice-cream",
+            code: "BLD-165",
+            name: "Tenon Date Ice Cream",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-pistachio-ice-cream",
+            code: "BLD-166",
+            name: "Tenon Pistachio Ice Cream",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cinnamon-ice-cream",
+            code: "BLD-167",
+            name: "Tenon Cinnamon Ice Cream",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-masala-ice-cream",
+            code: "BLD-168",
+            name: "Tenon Masala Ice Cream",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-almond-yogurt-bowl",
+            code: "BLD-169",
+            name: "Tenon Almond Yogurt Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-almond-cottage-bowl",
+            code: "BLD-170",
+            name: "Tenon Almond Cottage Bowl",
+          }),
         ]),
       );
 
