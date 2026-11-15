@@ -1192,6 +1192,56 @@ describe("exports", () => {
             code: "BLD-240",
             name: "Tenon Heavy Cream Chia",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-heavy-cream-overnight-oats",
+            code: "BLD-241",
+            name: "Tenon Heavy Cream Overnight Oats",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-heavy-cream-egg-sandwich",
+            code: "BLD-242",
+            name: "Tenon Heavy Cream Egg Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-heavy-cream-protein-sandwich",
+            code: "BLD-243",
+            name: "Tenon Heavy Cream Protein Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-heavy-cream-oat-bar",
+            code: "BLD-244",
+            name: "Tenon Heavy Cream Oat Bar",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-heavy-cream-date-bites",
+            code: "BLD-245",
+            name: "Tenon Heavy Cream Date Bites",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-heavy-cream-almond-cookies",
+            code: "BLD-246",
+            name: "Tenon Heavy Cream Almond Cookies",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-heavy-cream-fruitcake",
+            code: "BLD-247",
+            name: "Tenon Heavy Cream Fruitcake",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cream-cheese-oat-bar",
+            code: "BLD-248",
+            name: "Tenon Cream Cheese Oat Bar",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cream-cheese-date-bites",
+            code: "BLD-249",
+            name: "Tenon Cream Cheese Date Bites",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-cream-cheese-almond-cookies",
+            code: "BLD-250",
+            name: "Tenon Cream Cheese Almond Cookies",
+          }),
         ]),
       );
 
