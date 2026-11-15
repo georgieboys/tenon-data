@@ -123,6 +123,8 @@ describe("build variants", () => {
     expect(build(data, "tenon-teh-tarik-ice-cream").variants).toHaveLength(3);
     expect(build(data, "tenon-teh-tarik-ice-cream").vertical).toBe("tea");
     expect(build(data, "tenon-teh-tarik-ice-cream").derived_from).toBe("build/tenon-masala-chai@0.1.0");
+    expect(build(data, "tenon-bulletproof-ice-cream").variants).toHaveLength(3);
+    expect(build(data, "tenon-bulletproof-ice-cream").vertical).toBe("coffee");
     expect(variant(data, "tenon-cocoa", "hot.soy-whey-milk").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-latte", "hot.soy-whey-milk").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-tea", "hot.soy-whey-milk").composition.placeholder).toBe(false);
@@ -133,6 +135,12 @@ describe("build variants", () => {
     );
     expect(variant(data, "tenon-pistachio-matcha-ice-cream", "ice_cream.soy-whey-milk").composition.allergens).toEqual(
       expect.arrayContaining(["tree_nut", "milk", "soy"]),
+    );
+    expect(variant(data, "tenon-bulletproof-ice-cream", "ice_cream.soy-whey-milk").composition.allergens).toEqual(
+      expect.arrayContaining(["tree_nut", "milk", "soy"]),
+    );
+    expect(variant(data, "tenon-bulletproof-ice-cream", "ice_cream.soy-protein-milk").composition.diet.plant_based).toBe(
+      false,
     );
   });
 });
@@ -229,6 +237,7 @@ describe("allergens, diet and provenance", () => {
     const whey = data.ingredients.find((i) => i.id === "whey-concentrate")!;
     expect(whey.used_by).toEqual(["prep/dairy-whey-milk", "prep/soy-whey-milk"]);
     expect(prep(data, "soy-whey-milk").used_by).toEqual([
+      "build/tenon-bulletproof-ice-cream",
       "build/tenon-cocoa",
       "build/tenon-cocoa-pb-ice-cream",
       "build/tenon-latte",
@@ -253,5 +262,6 @@ describe("allergens, diet and provenance", () => {
       "menu/tenon-pistachio-matcha-ice-cream",
     ]);
     expect(build(data, "tenon-teh-tarik-ice-cream").used_by).toEqual(["menu/tenon-teh-tarik-ice-cream"]);
+    expect(build(data, "tenon-bulletproof-ice-cream").used_by).toEqual(["menu/tenon-bulletproof-ice-cream"]);
   });
 });
