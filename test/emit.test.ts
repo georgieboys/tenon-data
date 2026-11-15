@@ -187,6 +187,16 @@ describe("exports", () => {
             code: "BLD-039",
             name: "Tenon Tea Chia",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-cocoa-yogurt-bowl",
+            code: "BLD-040",
+            name: "Tenon Cocoa Yogurt Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-masala-overnight-oats",
+            code: "BLD-041",
+            name: "Tenon Masala Overnight Oats",
+          }),
         ]),
       );
 
