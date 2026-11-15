@@ -1,7 +1,7 @@
 export const KINDS = ["ingredient", "prep", "build", "menu"] as const;
 export type Kind = (typeof KINDS)[number];
 
-export const FORMATS = ["hot", "iced", "ice_blended", "ice_cream"] as const;
+export const FORMATS = ["hot", "iced", "ice_blended", "ice_cream", "baked"] as const;
 export type Format = (typeof FORMATS)[number];
 
 export type Unit = "g" | "kg" | "ml" | "l";
@@ -125,7 +125,7 @@ export interface FormatSpec {
 export interface Build extends RecordBase {
   kind: "build";
   derived_from?: string | null;
-  vertical: "coffee" | "matcha" | "cocoa" | "tea";
+  vertical: "coffee" | "matcha" | "cocoa" | "tea" | "food";
   slots?: Record<string, Slot>;
   formats: Partial<Record<Format, FormatSpec>>;
 }

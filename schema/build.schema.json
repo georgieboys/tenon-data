@@ -13,7 +13,7 @@
     "version": { "$ref": "common.schema.json#/$defs/semver" },
     "description": { "type": "string" },
     "derived_from": { "$ref": "common.schema.json#/$defs/derivedFrom" },
-    "vertical": { "enum": ["coffee", "matcha", "cocoa", "tea"] },
+    "vertical": { "enum": ["coffee", "matcha", "cocoa", "tea", "food"] },
     "slots": {
       "type": "object",
       "propertyNames": { "pattern": "^[a-z][a-z0-9_]*$" },

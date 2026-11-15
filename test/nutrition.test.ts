@@ -125,6 +125,12 @@ describe("build variants", () => {
     expect(build(data, "tenon-teh-tarik-ice-cream").derived_from).toBe("build/tenon-masala-chai@0.1.0");
     expect(build(data, "tenon-bulletproof-ice-cream").variants).toHaveLength(3);
     expect(build(data, "tenon-bulletproof-ice-cream").vertical).toBe("coffee");
+    expect(build(data, "tenon-energy-fruitcake").variants).toHaveLength(1);
+    expect(build(data, "tenon-energy-fruitcake").vertical).toBe("food");
+    expect(build(data, "tenon-energy-fruitcake").formats).toEqual(["baked"]);
+    expect(variant(data, "tenon-energy-fruitcake", "baked").composition.allergens).toEqual(
+      expect.arrayContaining(["egg", "gluten", "milk"]),
+    );
     expect(variant(data, "tenon-cocoa", "hot.soy-whey-milk").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-latte", "hot.soy-whey-milk").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-tea", "hot.soy-whey-milk").composition.placeholder).toBe(false);
@@ -263,5 +269,6 @@ describe("allergens, diet and provenance", () => {
     ]);
     expect(build(data, "tenon-teh-tarik-ice-cream").used_by).toEqual(["menu/tenon-teh-tarik-ice-cream"]);
     expect(build(data, "tenon-bulletproof-ice-cream").used_by).toEqual(["menu/tenon-bulletproof-ice-cream"]);
+    expect(build(data, "tenon-energy-fruitcake").used_by).toEqual(["menu/tenon-energy-fruitcake"]);
   });
 });

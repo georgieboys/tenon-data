@@ -47,7 +47,7 @@
       "exclusiveMinimum": 0
     },
     "format": {
-      "enum": ["hot", "iced", "ice_blended", "ice_cream"]
+      "enum": ["hot", "iced", "ice_blended", "ice_cream", "baked"]
     },
     "allergen": {
       "enum": [
