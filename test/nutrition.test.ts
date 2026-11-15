@@ -269,9 +269,11 @@ describe("allergens, diet and provenance", () => {
     const whey = data.ingredients.find((i) => i.id === "whey-concentrate")!;
     expect(whey.used_by).toEqual([
       "build/tenon-banana-cheesecake",
+      "build/tenon-banana-date-bites",
       "build/tenon-banana-oat-bar",
       "build/tenon-banana-overnight-oats",
       "build/tenon-blueberry-cheesecake",
+      "build/tenon-blueberry-date-bites",
       "build/tenon-blueberry-oat-bar",
       "build/tenon-blueberry-overnight-oats",
       "build/tenon-cinnamon-cheesecake",
@@ -303,6 +305,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-pistachio-oat-bar",
       "build/tenon-pistachio-overnight-oats",
       "build/tenon-strawberry-cheesecake",
+      "build/tenon-strawberry-date-bites",
       "build/tenon-strawberry-oat-bar",
       "build/tenon-strawberry-overnight-oats",
       "build/tenon-tea-cheesecake",
@@ -354,6 +357,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-masala-fruitcake",
       "build/tenon-masala-oat-bar",
       "build/tenon-masala-overnight-oats",
+      "build/tenon-masala-protein-sandwich",
       "build/tenon-masala-yogurt-bowl",
       "build/tenon-teh-tarik-ice-cream",
     ]);
@@ -381,6 +385,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-egg-protein-sandwich",
       "build/tenon-espresso-protein-sandwich",
       "build/tenon-honey-protein-sandwich",
+      "build/tenon-masala-protein-sandwich",
       "build/tenon-matcha-protein-sandwich",
       "build/tenon-pb-banana-sandwich",
       "build/tenon-pb-protein-sandwich",
