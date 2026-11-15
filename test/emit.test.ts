@@ -1392,6 +1392,106 @@ describe("exports", () => {
             code: "BLD-280",
             name: "Tenon Unisoy Ice Cream",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-unisoy-overnight-oats",
+            code: "BLD-281",
+            name: "Tenon Unisoy Overnight Oats",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-unisoy-egg-sandwich",
+            code: "BLD-282",
+            name: "Tenon Unisoy Egg Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-unisoy-protein-sandwich",
+            code: "BLD-283",
+            name: "Tenon Unisoy Protein Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-unisoy-oat-bar",
+            code: "BLD-284",
+            name: "Tenon Unisoy Oat Bar",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-unisoy-date-bites",
+            code: "BLD-285",
+            name: "Tenon Unisoy Date Bites",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-unisoy-almond-cookies",
+            code: "BLD-286",
+            name: "Tenon Unisoy Almond Cookies",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-unisoy-fruitcake",
+            code: "BLD-287",
+            name: "Tenon Unisoy Fruitcake",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-unisoy-cheesecake",
+            code: "BLD-288",
+            name: "Tenon Unisoy Cheesecake",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-full-fat-milk-cottage-bowl",
+            code: "BLD-289",
+            name: "Tenon Full Fat Milk Cottage Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-full-fat-milk-yogurt-bowl",
+            code: "BLD-290",
+            name: "Tenon Full Fat Milk Yogurt Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-full-fat-milk-chia",
+            code: "BLD-291",
+            name: "Tenon Full Fat Milk Chia",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-full-fat-milk-overnight-oats",
+            code: "BLD-292",
+            name: "Tenon Full Fat Milk Overnight Oats",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-full-fat-milk-ice-cream",
+            code: "BLD-293",
+            name: "Tenon Full Fat Milk Ice Cream",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-full-fat-milk-egg-sandwich",
+            code: "BLD-294",
+            name: "Tenon Full Fat Milk Egg Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-full-fat-milk-protein-sandwich",
+            code: "BLD-295",
+            name: "Tenon Full Fat Milk Protein Sandwich",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-full-fat-milk-oat-bar",
+            code: "BLD-296",
+            name: "Tenon Full Fat Milk Oat Bar",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-full-fat-milk-date-bites",
+            code: "BLD-297",
+            name: "Tenon Full Fat Milk Date Bites",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-full-fat-milk-almond-cookies",
+            code: "BLD-298",
+            name: "Tenon Full Fat Milk Almond Cookies",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-full-fat-milk-fruitcake",
+            code: "BLD-299",
+            name: "Tenon Full Fat Milk Fruitcake",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-full-fat-milk-cheesecake",
+            code: "BLD-300",
+            name: "Tenon Full Fat Milk Cheesecake",
+          }),
         ]),
       );
 
