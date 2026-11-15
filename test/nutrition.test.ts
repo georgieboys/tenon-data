@@ -285,6 +285,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-masala-chai",
       "build/tenon-matcha",
       "build/tenon-pistachio-matcha-ice-cream",
+      "build/tenon-strawberry-chia",
       "build/tenon-tea",
       "build/tenon-teh-tarik-ice-cream",
     ]);
@@ -324,5 +325,7 @@ describe("allergens, diet and provenance", () => {
     expect(variant(data, "tenon-chia-pudding", "assembled").composition.allergens).toEqual(
       expect.arrayContaining(["milk", "soy"]),
     );
+    expect(build(data, "tenon-strawberry-chia").derived_from).toBe("build/tenon-chia-pudding@0.1.0");
+    expect(build(data, "tenon-strawberry-chia").used_by).toEqual(["menu/tenon-strawberry-chia"]);
   });
 });
