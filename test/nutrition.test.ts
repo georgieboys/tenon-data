@@ -472,5 +472,17 @@ describe("allergens, diet and provenance", () => {
     expect(build(data, "tenon-masala-overnight-oats").used_by).toEqual([
       "menu/tenon-masala-overnight-oats",
     ]);
+    expect(build(data, "tenon-matcha-yogurt-bowl").derived_from).toBe(
+      "build/tenon-yogurt-honey-bowl@0.1.0",
+    );
+    expect(build(data, "tenon-matcha-yogurt-bowl").used_by).toEqual([
+      "menu/tenon-matcha-yogurt-bowl",
+    ]);
+    expect(build(data, "tenon-cinnamon-cottage-bowl").derived_from).toBe(
+      "build/tenon-cottage-cheese-berry-bowl@0.1.0",
+    );
+    expect(build(data, "tenon-cinnamon-cottage-bowl").used_by).toEqual([
+      "menu/tenon-cinnamon-cottage-bowl",
+    ]);
   });
 });
