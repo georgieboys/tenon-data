@@ -355,11 +355,15 @@ describe("allergens, diet and provenance", () => {
     expect(build(data, "tenon-energy-fruitcake").used_by).toEqual(["menu/tenon-energy-fruitcake"]);
     expect(build(data, "tenon-banana-cheesecake").used_by).toEqual(["menu/tenon-banana-cheesecake"]);
     expect(prep(data, "protein-bread").used_by).toEqual([
+      "build/tenon-blueberry-protein-sandwich",
       "build/tenon-cottage-protein-sandwich",
+      "build/tenon-date-protein-sandwich",
       "build/tenon-egg-banana-sandwich",
       "build/tenon-egg-protein-sandwich",
+      "build/tenon-honey-protein-sandwich",
       "build/tenon-pb-banana-sandwich",
       "build/tenon-pb-protein-sandwich",
+      "build/tenon-pistachio-protein-sandwich",
       "build/tenon-yogurt-protein-sandwich",
     ]);
     expect(build(data, "tenon-pb-protein-sandwich").used_by).toEqual(["menu/tenon-pb-protein-sandwich"]);
