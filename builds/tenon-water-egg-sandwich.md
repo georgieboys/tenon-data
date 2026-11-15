@@ -1,0 +1,43 @@
+---
+id: tenon-water-egg-sandwich
+code: BLD-326
+name: Tenon Water Egg Sandwich
+version: 0.1.0
+description: Egg protein sandwich remix steamed with water. Derived from Tenon Egg Protein Sandwich.
+derived_from: build/tenon-egg-protein-sandwich@0.1.0
+vertical: food
+slots: {}
+formats:
+  assembled:
+    inputs:
+      - ref: prep/protein-bread
+        qty: 80
+        unit: g
+        note: About two slices
+      - ref: ingredient/egg
+        qty: 50
+        unit: g
+        note: One large egg, fried
+      - ref: ingredient/butter
+        qty: 8
+        unit: g
+      - ref: ingredient/water
+        qty: 15
+        unit: g
+        note: Splash in pan for steam
+      - ref: ingredient/honey
+        qty: 8
+        unit: g
+    steps:
+      - op: 10
+        action: Slice the chilled protein bread. Weigh two slices to about 80 g.
+        equipment: [scale, knife]
+      - op: 20
+        action: Fry the egg in butter, add a splash of water and cover briefly to steam the top.
+        equipment: [pan, spatula, lid]
+        temp_c: 160
+      - op: 30
+        action: Drizzle honey on one slice, add the steamed egg, close the sandwich. Serve immediately.
+---
+
+Remix of BLD-014 with steam water.
