@@ -6,7 +6,7 @@ The open ingredient, prep and build database behind [Tenon Coffee](https://tenon
 
 Every drink and food item served at Tenon is documented here as structured data: the raw ingredients and their nutrition, the reusable components prepared from them, and the final assembly. Nutrition is calculated automatically from the ingredients up, so a published number can never disagree with its recipe.
 
-> **Status: v0.2.6.** Four verticals on the bar (matcha and cocoa with ice-blended, latte/americano, tea/masala chai). Core ingredients cite USDA FoodData Central, manufacturer labels or literature. Values still marked `placeholder` (if any) are flagged in every output until replaced.
+> **Status: v0.2.7.** Four verticals plus the first ice-cream format (cocoa–peanut butter). Core ingredients cite USDA FoodData Central, manufacturer labels or literature. Values still marked `placeholder` (if any) are flagged in every output until replaced.
 
 ## How it fits together
 

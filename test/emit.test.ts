@@ -22,6 +22,11 @@ describe("exports", () => {
           expect.objectContaining({ ref: "build/tenon-tea", code: "BLD-004", name: "Tenon Tea" }),
           expect.objectContaining({ ref: "build/tenon-americano", code: "BLD-005", name: "Tenon Americano" }),
           expect.objectContaining({ ref: "build/tenon-masala-chai", code: "BLD-006", name: "Tenon Masala Chai" }),
+          expect.objectContaining({
+            ref: "build/tenon-cocoa-pb-ice-cream",
+            code: "BLD-007",
+            name: "Tenon Cocoa–Peanut Butter Ice Cream",
+          }),
         ]),
       );
 

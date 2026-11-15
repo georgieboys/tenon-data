@@ -104,7 +104,7 @@ describe("build variants", () => {
     expect(item.default_variant).toBe("hot.soy-protein-milk");
   });
 
-  it("compiles cocoa, latte, tea, americano and masala chai builds", async () => {
+  it("compiles cocoa, latte, tea, americano, masala chai and ice cream builds", async () => {
     const data = compileDataset(await repoDataset());
     expect(build(data, "tenon-cocoa").variants).toHaveLength(9);
     expect(build(data, "tenon-cocoa").vertical).toBe("cocoa");
@@ -116,11 +116,16 @@ describe("build variants", () => {
     expect(build(data, "tenon-americano").variants.map((v) => v.key).sort()).toEqual(["hot", "iced"]);
     expect(build(data, "tenon-masala-chai").variants).toHaveLength(6);
     expect(build(data, "tenon-masala-chai").derived_from).toBe("build/tenon-tea@0.1.0");
+    expect(build(data, "tenon-cocoa-pb-ice-cream").variants).toHaveLength(3);
+    expect(build(data, "tenon-cocoa-pb-ice-cream").formats).toEqual(["ice_cream"]);
     expect(variant(data, "tenon-cocoa", "hot.soy-whey-milk").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-latte", "hot.soy-whey-milk").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-tea", "hot.soy-whey-milk").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-americano", "hot").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-masala-chai", "hot.soy-whey-milk").composition.placeholder).toBe(false);
+    expect(variant(data, "tenon-cocoa-pb-ice-cream", "ice_cream.soy-whey-milk").composition.allergens).toEqual(
+      expect.arrayContaining(["peanut", "milk", "soy"]),
+    );
   });
 });
 
@@ -217,6 +222,7 @@ describe("allergens, diet and provenance", () => {
     expect(whey.used_by).toEqual(["prep/dairy-whey-milk", "prep/soy-whey-milk"]);
     expect(prep(data, "soy-whey-milk").used_by).toEqual([
       "build/tenon-cocoa",
+      "build/tenon-cocoa-pb-ice-cream",
       "build/tenon-latte",
       "build/tenon-masala-chai",
       "build/tenon-matcha",
@@ -229,5 +235,6 @@ describe("allergens, diet and provenance", () => {
     expect(build(data, "tenon-tea").used_by).toEqual(["menu/tenon-tea"]);
     expect(build(data, "tenon-americano").used_by).toEqual(["menu/tenon-americano"]);
     expect(build(data, "tenon-masala-chai").used_by).toEqual(["menu/tenon-masala-chai"]);
+    expect(build(data, "tenon-cocoa-pb-ice-cream").used_by).toEqual(["menu/tenon-cocoa-pb-ice-cream"]);
   });
 });
