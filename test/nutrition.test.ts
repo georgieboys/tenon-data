@@ -269,6 +269,7 @@ describe("allergens, diet and provenance", () => {
     const whey = data.ingredients.find((i) => i.id === "whey-concentrate")!;
     expect(whey.used_by).toEqual([
       "build/tenon-banana-cheesecake",
+      "build/tenon-banana-oat-bar",
       "build/tenon-banana-overnight-oats",
       "build/tenon-blueberry-overnight-oats",
       "build/tenon-cinnamon-oat-bar",
@@ -277,6 +278,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-cocoa-overnight-oats",
       "build/tenon-date-oat-bar",
       "build/tenon-date-pb-bites",
+      "build/tenon-espresso-oat-bar",
       "build/tenon-espresso-overnight-oats",
       "build/tenon-honey-date-bites",
       "build/tenon-honey-oat-bar",
@@ -286,7 +288,9 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-matcha-overnight-oats",
       "build/tenon-pistachio-oat-bar",
       "build/tenon-pistachio-overnight-oats",
+      "build/tenon-strawberry-oat-bar",
       "build/tenon-strawberry-overnight-oats",
+      "build/tenon-tea-oat-bar",
       "build/tenon-tea-overnight-oats",
       "prep/dairy-whey-milk",
       "prep/protein-bread",
