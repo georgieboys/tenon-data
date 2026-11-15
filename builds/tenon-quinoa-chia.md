@@ -1,9 +1,9 @@
 ---
 id: tenon-quinoa-chia
-code: BLD-654
+code: BLD-1640
 name: Tenon Quinoa Chia
 version: 0.1.0
-description: Chia remix with quinoa.
+description: Chia remix with quinoa. Derived from parent chassis.
 derived_from: build/tenon-chia-pudding@0.1.0
 vertical: food
 slots:
@@ -28,7 +28,7 @@ formats:
         qty: 12
         unit: g
       - ref: ingredient/quinoa
-        qty: 22
+        qty: 50
         unit: g
       - ref: ingredient/salt
         qty: 0.5

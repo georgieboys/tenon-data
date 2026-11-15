@@ -1,9 +1,9 @@
 ---
 id: tenon-quinoa-cottage-bowl
-code: BLD-652
+code: BLD-1638
 name: Tenon Quinoa Cottage Bowl
 version: 0.1.0
-description: Cottage Bowl remix with quinoa.
+description: Cottage Bowl remix with quinoa. Derived from parent chassis.
 derived_from: build/tenon-cottage-cheese-berry-bowl@0.1.0
 vertical: food
 slots: {}
@@ -17,7 +17,7 @@ formats:
         qty: 10
         unit: g
       - ref: ingredient/quinoa
-        qty: 30
+        qty: 60
         unit: g
       - ref: ingredient/salt
         qty: 0.5

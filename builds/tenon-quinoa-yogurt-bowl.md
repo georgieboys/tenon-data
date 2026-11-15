@@ -1,9 +1,9 @@
 ---
 id: tenon-quinoa-yogurt-bowl
-code: BLD-651
+code: BLD-1637
 name: Tenon Quinoa Yogurt Bowl
 version: 0.1.0
-description: Yogurt Bowl remix with quinoa.
+description: Yogurt Bowl remix with quinoa. Derived from parent chassis.
 derived_from: build/tenon-yogurt-honey-bowl@0.1.0
 vertical: food
 slots: {}
@@ -17,7 +17,7 @@ formats:
         qty: 12
         unit: g
       - ref: ingredient/quinoa
-        qty: 30
+        qty: 60
         unit: g
       - ref: ingredient/salt
         qty: 0.3

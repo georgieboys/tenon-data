@@ -1,9 +1,9 @@
 ---
 id: tenon-quinoa-cheesecake
-code: BLD-659
+code: BLD-1645
 name: Tenon Quinoa Cheesecake
 version: 0.1.0
-description: Cheesecake remix with quinoa.
+description: Cheesecake remix with quinoa. Derived from parent chassis.
 derived_from: build/tenon-banana-cheesecake@0.1.0
 vertical: food
 slots: {}
@@ -20,7 +20,7 @@ formats:
         qty: 55
         unit: g
       - ref: ingredient/quinoa
-        qty: 30
+        qty: 40
         unit: g
       - ref: ingredient/egg
         qty: 100

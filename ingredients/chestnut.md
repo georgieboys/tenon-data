@@ -13,7 +13,7 @@ default_source: usda_fdc
 sources:
   usda_fdc:
     type: usda_fdc
-    ref: "FDC 170168 · Nuts, chestnuts, european, raw, peeled (SR Legacy). Proxy until the café SKU is labelled."
+    ref: "FDC 170168 · Nuts, chestnuts, european, raw, peeled (SR Legacy); fibre from FDC 170169 roasted proxy. Proxy until the café SKU is labelled."
 nutrition:
   energy_kcal: 196
   protein_g: 1.63
@@ -21,7 +21,7 @@ nutrition:
   saturated_fat_g: 0.24
   carbohydrate_g: 44.17
   sugars_g: 0
-  fibre_g: 0
+  fibre_g: 8.1
   sodium_mg: 2
   calcium_mg: 19
   iron_mg: 0.94
@@ -41,4 +41,4 @@ diet:
   vegetarian: true
 ---
 
-European chestnuts, peeled. Replace with the café SOP when locked.
+European chestnuts, peeled. Fibre uses the roasted SR Legacy proxy because raw peeled omits dietary fibre. Replace with the café SOP when locked.

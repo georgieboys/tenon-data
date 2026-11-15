@@ -1,9 +1,9 @@
 ---
 id: tenon-quinoa-fruitcake
-code: BLD-658
+code: BLD-1644
 name: Tenon Quinoa Fruitcake
 version: 0.1.0
-description: Fruitcake remix with quinoa.
+description: Fruitcake remix with quinoa. Derived from parent chassis.
 derived_from: build/tenon-energy-fruitcake@0.1.0
 vertical: food
 slots: {}
@@ -25,7 +25,7 @@ formats:
         qty: 50
         unit: g
       - ref: ingredient/quinoa
-        qty: 40
+        qty: 50
         unit: g
       - ref: ingredient/salt
         qty: 2

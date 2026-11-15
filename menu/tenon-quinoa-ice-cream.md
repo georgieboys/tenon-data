@@ -1,6 +1,6 @@
 ---
 id: tenon-quinoa-ice-cream
-code: MNU-660
+code: MNU-1646
 name: Tenon Quinoa Ice Cream
 version: 0.1.0
 description: Menu listing for Tenon Quinoa Ice Cream.

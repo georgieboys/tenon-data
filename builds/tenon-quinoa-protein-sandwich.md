@@ -1,9 +1,9 @@
 ---
 id: tenon-quinoa-protein-sandwich
-code: BLD-662
+code: BLD-1647
 name: Tenon Quinoa Protein Sandwich
 version: 0.1.0
-description: Protein Sandwich remix with quinoa.
+description: Protein Sandwich remix with quinoa. Derived from parent chassis.
 derived_from: build/tenon-pb-protein-sandwich@0.1.0
 vertical: food
 slots: {}
@@ -18,7 +18,7 @@ formats:
         qty: 24
         unit: g
       - ref: ingredient/quinoa
-        qty: 15
+        qty: 35
         unit: g
     steps:
       - op: 10

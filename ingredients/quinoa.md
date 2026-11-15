@@ -1,9 +1,9 @@
 ---
 id: quinoa
-code: ING-051
+code: ING-130
 name: Quinoa
 version: 0.1.0
-description: Quinoa. Open lab grain cell.
+description: Quinoa. Open lab cell.
 category: grain
 supplier:
   name: TBD
@@ -41,4 +41,4 @@ diet:
   vegetarian: true
 ---
 
-Uncooked quinoa. Replace with the café SKU label when locked.
+Uncooked quinoa. Replace with the café SOP when locked.

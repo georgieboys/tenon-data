@@ -1,6 +1,6 @@
 ---
 id: tenon-quinoa-fruitcake
-code: MNU-658
+code: MNU-1644
 name: Tenon Quinoa Fruitcake
 version: 0.1.0
 description: Menu listing for Tenon Quinoa Fruitcake.

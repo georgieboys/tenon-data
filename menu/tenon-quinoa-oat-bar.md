@@ -1,6 +1,6 @@
 ---
 id: tenon-quinoa-oat-bar
-code: MNU-655
+code: MNU-1641
 name: Tenon Quinoa Oat Bar
 version: 0.1.0
 description: Menu listing for Tenon Quinoa Oat Bar.

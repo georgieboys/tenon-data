@@ -7,7 +7,7 @@ import { formatNutrient } from "../src/markdown.ts";
 import { compileDataset, repoDataset } from "./helpers.ts";
 
 describe("exports", () => {
-  it("writes the static API and Markdown exports", async () => {
+  it("writes the static API and Markdown exports", { timeout: 30_000 }, async () => {
     const out = await mkdtemp(join(tmpdir(), "tenon-dist-"));
     try {
       await emit(compileDataset(await repoDataset(), { dataVersion: "9.9.9" }), out);

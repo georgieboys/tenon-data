@@ -1,6 +1,6 @@
 ---
 id: tenon-quinoa-chia
-code: MNU-654
+code: MNU-1640
 name: Tenon Quinoa Chia
 version: 0.1.0
 description: Menu listing for Tenon Quinoa Chia.

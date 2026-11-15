@@ -1,9 +1,9 @@
 ---
 id: tenon-quinoa-oat-bar
-code: BLD-655
+code: BLD-1641
 name: Tenon Quinoa Oat Bar
 version: 0.1.0
-description: Oat Bar remix with quinoa.
+description: Oat Bar remix with quinoa. Derived from parent chassis.
 derived_from: build/tenon-honey-oat-bar@0.1.0
 vertical: food
 slots: {}
@@ -17,7 +17,7 @@ formats:
         qty: 55
         unit: g
       - ref: ingredient/quinoa
-        qty: 35
+        qty: 40
         unit: g
       - ref: ingredient/honey
         qty: 55

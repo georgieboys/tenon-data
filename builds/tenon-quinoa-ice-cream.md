@@ -1,9 +1,9 @@
 ---
 id: tenon-quinoa-ice-cream
-code: BLD-660
+code: BLD-1646
 name: Tenon Quinoa Ice Cream
 version: 0.1.0
-description: Ice Cream remix with quinoa.
+description: Ice Cream remix with quinoa. Derived from parent chassis.
 derived_from: build/tenon-cocoa-pb-ice-cream@0.1.0
 vertical: food
 slots:
@@ -22,7 +22,7 @@ formats:
         unit: g
         temp_c: 4
       - ref: ingredient/quinoa
-        qty: 30
+        qty: 50
         unit: g
       - ref: ingredient/honey
         qty: 45

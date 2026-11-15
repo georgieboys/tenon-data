@@ -1,6 +1,6 @@
 ---
 id: tenon-quinoa-yogurt-bowl
-code: MNU-651
+code: MNU-1637
 name: Tenon Quinoa Yogurt Bowl
 version: 0.1.0
 description: Menu listing for Tenon Quinoa Yogurt Bowl.

@@ -1,6 +1,6 @@
 ---
 id: tenon-quinoa-date-bites
-code: MNU-656
+code: MNU-1642
 name: Tenon Quinoa Date Bites
 version: 0.1.0
 description: Menu listing for Tenon Quinoa Date Bites.

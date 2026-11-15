@@ -1,9 +1,9 @@
 ---
 id: tenon-quinoa-egg-sandwich
-code: BLD-661
+code: BLD-1648
 name: Tenon Quinoa Egg Sandwich
 version: 0.1.0
-description: Egg Sandwich remix with quinoa.
+description: Egg Sandwich remix with quinoa. Derived from parent chassis.
 derived_from: build/tenon-egg-protein-sandwich@0.1.0
 vertical: food
 slots: {}
@@ -22,7 +22,7 @@ formats:
         qty: 8
         unit: g
       - ref: ingredient/quinoa
-        qty: 15
+        qty: 40
         unit: g
     steps:
       - op: 10

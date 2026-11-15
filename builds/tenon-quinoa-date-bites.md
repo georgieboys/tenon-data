@@ -1,9 +1,9 @@
 ---
 id: tenon-quinoa-date-bites
-code: BLD-656
+code: BLD-1642
 name: Tenon Quinoa Date Bites
 version: 0.1.0
-description: Date Bites remix with quinoa.
+description: Date Bites remix with quinoa. Derived from parent chassis.
 derived_from: build/tenon-date-pb-bites@0.1.0
 vertical: food
 slots: {}
@@ -18,7 +18,7 @@ formats:
         qty: 35
         unit: g
       - ref: ingredient/quinoa
-        qty: 25
+        qty: 35
         unit: g
       - ref: ingredient/oats
         qty: 30

@@ -1,9 +1,9 @@
 ---
 id: tenon-quinoa-overnight-oats
-code: BLD-653
+code: BLD-1639
 name: Tenon Quinoa Overnight Oats
 version: 0.1.0
-description: Overnight Oats remix with quinoa.
+description: Overnight Oats remix with quinoa. Derived from parent chassis.
 derived_from: build/tenon-blueberry-overnight-oats@0.1.0
 vertical: food
 slots:
@@ -28,7 +28,7 @@ formats:
         qty: 12
         unit: g
       - ref: ingredient/quinoa
-        qty: 25
+        qty: 50
         unit: g
       - ref: ingredient/whey-concentrate
         qty: 15

@@ -1,9 +1,9 @@
 ---
 id: tenon-quinoa-almond-cookies
-code: BLD-657
+code: BLD-1643
 name: Tenon Quinoa Almond Cookies
 version: 0.1.0
-description: Almond Cookies remix with quinoa.
+description: Almond Cookies remix with quinoa. Derived from parent chassis.
 derived_from: build/tenon-almond-date-cookies@0.1.0
 vertical: food
 slots: {}
@@ -21,7 +21,7 @@ formats:
         qty: 35
         unit: g
       - ref: ingredient/quinoa
-        qty: 25
+        qty: 35
         unit: g
       - ref: ingredient/egg
         qty: 50

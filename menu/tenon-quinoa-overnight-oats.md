@@ -1,6 +1,6 @@
 ---
 id: tenon-quinoa-overnight-oats
-code: MNU-653
+code: MNU-1639
 name: Tenon Quinoa Overnight Oats
 version: 0.1.0
 description: Menu listing for Tenon Quinoa Overnight Oats.
