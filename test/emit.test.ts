@@ -1492,6 +1492,106 @@ describe("exports", () => {
             code: "BLD-300",
             name: "Tenon Full Fat Milk Cheesecake",
           }),
+          expect.objectContaining({
+            ref: "build/tenon-ice-chia",
+            code: "BLD-301",
+            name: "Tenon Ice Chia",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-ice-overnight-oats",
+            code: "BLD-302",
+            name: "Tenon Ice Overnight Oats",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-ice-cottage-bowl",
+            code: "BLD-303",
+            name: "Tenon Ice Cottage Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-ice-yogurt-bowl",
+            code: "BLD-304",
+            name: "Tenon Ice Yogurt Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-water-chia",
+            code: "BLD-305",
+            name: "Tenon Water Chia",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-water-overnight-oats",
+            code: "BLD-306",
+            name: "Tenon Water Overnight Oats",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-water-ice-cream",
+            code: "BLD-307",
+            name: "Tenon Water Ice Cream",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-salt-cottage-bowl",
+            code: "BLD-308",
+            name: "Tenon Salt Cottage Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-salt-yogurt-bowl",
+            code: "BLD-309",
+            name: "Tenon Salt Yogurt Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-baking-powder-oat-bar",
+            code: "BLD-310",
+            name: "Tenon Baking Powder Oat Bar",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-baking-powder-almond-cookies",
+            code: "BLD-311",
+            name: "Tenon Baking Powder Almond Cookies",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-baking-powder-fruitcake",
+            code: "BLD-312",
+            name: "Tenon Baking Powder Fruitcake",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-whole-wheat-oat-bar",
+            code: "BLD-313",
+            name: "Tenon Whole Wheat Oat Bar",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-whole-wheat-date-bites",
+            code: "BLD-314",
+            name: "Tenon Whole Wheat Date Bites",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-whole-wheat-almond-cookies",
+            code: "BLD-315",
+            name: "Tenon Whole Wheat Almond Cookies",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-whole-wheat-cheesecake",
+            code: "BLD-316",
+            name: "Tenon Whole Wheat Cheesecake",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-oats-chia",
+            code: "BLD-317",
+            name: "Tenon Oats Chia",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-chia-overnight-oats",
+            code: "BLD-318",
+            name: "Tenon Chia Overnight Oats",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-oats-cottage-bowl",
+            code: "BLD-319",
+            name: "Tenon Oats Cottage Bowl",
+          }),
+          expect.objectContaining({
+            ref: "build/tenon-chia-cottage-bowl",
+            code: "BLD-320",
+            name: "Tenon Chia Cottage Bowl",
+          }),
         ]),
       );
 
