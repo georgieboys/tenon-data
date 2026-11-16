@@ -3,51 +3,19 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const startCode = 5451;
-const baseBuilds = 5450;
+const startCode = 5501;
+const baseBuilds = 5500;
 
 const INGREDIENTS = [
   {
-    id: "moth-bean",
-    code: "ING-444",
-    name: "Moth Bean",
-    category: "other",
-    density: 0.8,
-    fdc: "FDC 174256 · Mung beans, mature seeds, raw (SR Legacy) as moth bean (Vigna aconitifolia) proxy. Proxy until the café SKU is labelled.",
-    allergens: "[]",
-    note: "Dried moth beans. Nutrition uses mung-bean proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
-    nutrition: {
-      energy_kcal: 347,
-      protein_g: 23.9,
-      fat_g: 1.2,
-      saturated_fat_g: 0.3,
-      carbohydrate_g: 62.6,
-      sugars_g: 6.6,
-      fibre_g: 16.3,
-      sodium_mg: 15,
-      calcium_mg: 132,
-      iron_mg: 6.7,
-      magnesium_mg: 189,
-      potassium_mg: 1246,
-      zinc_mg: 2.7,
-      vitamin_a_ug: 6,
-      vitamin_c_mg: 4.8,
-      vitamin_d_ug: 0,
-      vitamin_k_ug: 9.0,
-      vitamin_b12_ug: 0,
-      folate_ug: 625,
-      caffeine_mg: 0,
-    },
-  },
-  {
-    id: "bambara",
-    code: "ING-445",
-    name: "Bambara",
+    id: "jack-bean",
+    code: "ING-448",
+    name: "Jack Bean",
     category: "other",
     density: 0.75,
-    fdc: "FDC 174270 · Soybeans, mature seeds, raw (SR Legacy) as bambara groundnut proxy pending dedicated FDC row. Proxy until the café SKU is labelled.",
+    fdc: "FDC 174270 · Soybeans, mature seeds, raw (SR Legacy) as jack bean proxy pending dedicated FDC row. Proxy until the café SKU is labelled.",
     allergens: "[]",
-    note: "Dried bambara groundnuts (Vigna subterranea). Nutrition uses soybean proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
+    note: "Dried jack beans (Canavalia ensiformis). Nutrition uses soybean proxy until a dedicated FDC row or café CoA lands. Use only food-grade processed SKUs. Replace with the café SOP when locked.",
     nutrition: {
       energy_kcal: 446,
       protein_g: 36.5,
@@ -72,14 +40,14 @@ const INGREDIENTS = [
     },
   },
   {
-    id: "winged-bean",
-    code: "ING-446",
-    name: "Winged Bean",
+    id: "velvet-bean",
+    code: "ING-449",
+    name: "Velvet Bean",
     category: "other",
     density: 0.75,
-    fdc: "FDC 174270 · Soybeans, mature seeds, raw (SR Legacy) as winged bean seed proxy. Proxy until the café SKU is labelled.",
+    fdc: "FDC 174270 · Soybeans, mature seeds, raw (SR Legacy) as velvet bean / Mucuna proxy. Proxy until the café SKU is labelled.",
     allergens: "[]",
-    note: "Dried winged bean seeds (Psophocarpus tetragonolobus). Nutrition uses soybean proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
+    note: "Dried velvet beans (Mucuna pruriens). Nutrition uses soybean proxy until a dedicated FDC row or café CoA lands. Use only food-grade processed SKUs. Replace with the café SOP when locked.",
     nutrition: {
       energy_kcal: 446,
       protein_g: 36.5,
@@ -104,34 +72,66 @@ const INGREDIENTS = [
     },
   },
   {
-    id: "hyacinth-bean",
-    code: "ING-447",
-    name: "Hyacinth Bean",
+    id: "sword-bean",
+    code: "ING-450",
+    name: "Sword Bean",
     category: "other",
     density: 0.75,
-    fdc: "FDC 173735 · Beans, kidney, all types, mature seeds, raw (SR Legacy) as hyacinth / lablab bean proxy. Proxy until the café SKU is labelled.",
+    fdc: "FDC 174270 · Soybeans, mature seeds, raw (SR Legacy) as sword bean proxy. Proxy until the café SKU is labelled.",
     allergens: "[]",
-    note: "Dried hyacinth beans (lablab). Nutrition uses kidney-bean proxy until a dedicated FDC row or café CoA lands. Only use edible processed SKUs; raw ornamental seeds can be toxic. Replace with the café SOP when locked.",
+    note: "Dried sword beans (Canavalia gladiata). Nutrition uses soybean proxy until a dedicated FDC row or café CoA lands. Use only food-grade processed SKUs. Replace with the café SOP when locked.",
     nutrition: {
-      energy_kcal: 333,
-      protein_g: 23.6,
-      fat_g: 0.8,
-      saturated_fat_g: 0.1,
-      carbohydrate_g: 60.0,
-      sugars_g: 2.2,
-      fibre_g: 24.9,
-      sodium_mg: 24,
-      calcium_mg: 143,
-      iron_mg: 8.2,
-      magnesium_mg: 140,
-      potassium_mg: 1406,
-      zinc_mg: 2.8,
+      energy_kcal: 446,
+      protein_g: 36.5,
+      fat_g: 19.9,
+      saturated_fat_g: 2.9,
+      carbohydrate_g: 30.2,
+      sugars_g: 7.3,
+      fibre_g: 9.3,
+      sodium_mg: 2,
+      calcium_mg: 277,
+      iron_mg: 15.7,
+      magnesium_mg: 280,
+      potassium_mg: 1797,
+      zinc_mg: 4.9,
+      vitamin_a_ug: 1,
+      vitamin_c_mg: 6.0,
+      vitamin_d_ug: 0,
+      vitamin_k_ug: 47.0,
+      vitamin_b12_ug: 0,
+      folate_ug: 375,
+      caffeine_mg: 0,
+    },
+  },
+  {
+    id: "eye-of-goat",
+    code: "ING-451",
+    name: "Eye Of Goat",
+    category: "other",
+    density: 0.75,
+    fdc: "FDC 175186 · Beans, black, mature seeds, raw (SR Legacy) as ojo de cabra / eye of goat bean proxy. Proxy until the café SKU is labelled.",
+    allergens: "[]",
+    note: "Dried ojo de cabra (eye of goat) beans. Nutrition uses black-bean proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
+    nutrition: {
+      energy_kcal: 341,
+      protein_g: 21.6,
+      fat_g: 1.4,
+      saturated_fat_g: 0.4,
+      carbohydrate_g: 62.4,
+      sugars_g: 2.1,
+      fibre_g: 15.5,
+      sodium_mg: 5,
+      calcium_mg: 123,
+      iron_mg: 5.0,
+      magnesium_mg: 171,
+      potassium_mg: 1483,
+      zinc_mg: 3.7,
       vitamin_a_ug: 0,
-      vitamin_c_mg: 4.5,
+      vitamin_c_mg: 0,
       vitamin_d_ug: 0,
-      vitamin_k_ug: 19.0,
+      vitamin_k_ug: 6.0,
       vitamin_b12_ug: 0,
-      folate_ug: 394,
+      folate_ug: 444,
       caffeine_mg: 0,
     },
   },
@@ -153,8 +153,8 @@ const CELLS = [
 ];
 
 const ELEVATED = [
-  { ing: "moth-bean", cell: "chia", template: "tenon-tiger-eye-bean-chia-elevated", fromId: "tiger-eye-bean" },
-  { ing: "hyacinth-bean", cell: "overnight-oats", template: "tenon-horse-gram-overnight-oats-elevated", fromId: "horse-gram" },
+  { ing: "jack-bean", cell: "chia", template: "tenon-moth-bean-chia-elevated", fromId: "moth-bean" },
+  { ing: "eye-of-goat", cell: "overnight-oats", template: "tenon-hyacinth-bean-overnight-oats-elevated", fromId: "hyacinth-bean" },
 ];
 
 function titleCase(id) {
@@ -233,7 +233,7 @@ function rewriteElevated(src, fromId, toId, toName, codeNum, kind) {
   out = out.replaceAll(`Elevated ${toId} cell`, `Elevated ${prose} cell`);
   out = out.replaceAll(`elevated ${toId}`, `elevated ${prose}`);
   out = out.replaceAll(`with elevated ${toId}`, `with elevated ${prose}`);
-  out = out.replaceAll("Five thousand four hundred fifty builds.", "Five thousand five hundred builds.");
+  out = out.replaceAll("Five thousand five hundred builds.", "Five thousand five hundred fifty builds.");
   return out;
 }
 
