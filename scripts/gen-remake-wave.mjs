@@ -3,135 +3,71 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const startCode = 2701;
-const baseBuilds = 2700;
+const startCode = 2777;
+const baseBuilds = 2776;
 
 const INGREDIENTS = [
   {
-    id: "tempeh",
-    code: "ING-218",
-    name: "Tempeh",
-    category: "other",
-    density: 0.95,
-    fdc: "FDC 174272 · Tempeh (SR Legacy). Proxy until the café SKU is labelled.",
-    allergens: "[soy]",
-    note: "Tempeh. Replace with the café SOP when locked.",
+    id: "horseradish",
+    code: "ING-226",
+    name: "Horseradish",
+    category: "spice",
+    density: 0.7,
+    fdc: "FDC 168433 · Horseradish, prepared (SR Legacy). Proxy until the café SKU is labelled.",
+    allergens: "[]",
+    note: "Prepared horseradish. Replace with the café SOP when locked.",
     nutrition: {
-      energy_kcal: 192,
-      protein_g: 20.29,
-      fat_g: 10.8,
-      saturated_fat_g: 2.54,
-      carbohydrate_g: 7.64,
-      sugars_g: 0,
-      fibre_g: 5.4,
-      sodium_mg: 9,
-      calcium_mg: 111,
-      iron_mg: 2.7,
-      magnesium_mg: 81,
-      potassium_mg: 412,
-      zinc_mg: 1.14,
+      energy_kcal: 48,
+      protein_g: 1.18,
+      fat_g: 0.69,
+      saturated_fat_g: 0.09,
+      carbohydrate_g: 11.29,
+      sugars_g: 7.99,
+      fibre_g: 3.3,
+      sodium_mg: 420,
+      calcium_mg: 56,
+      iron_mg: 0.42,
+      magnesium_mg: 27,
+      potassium_mg: 246,
+      zinc_mg: 0.83,
       vitamin_a_ug: 0,
-      vitamin_c_mg: 0,
+      vitamin_c_mg: 24.9,
+      vitamin_d_ug: 0,
+      vitamin_k_ug: 1.3,
+      vitamin_b12_ug: 0,
+      folate_ug: 57,
+      caffeine_mg: 0,
+    },
+  },
+  {
+    id: "wasabi",
+    code: "ING-227",
+    name: "Wasabi",
+    category: "spice",
+    density: 0.7,
+    fdc: "FDC 170495 · Wasabi, root, raw (SR Legacy). Proxy until the café SKU is labelled.",
+    allergens: "[]",
+    note: "Raw wasabi root. Replace with the café SOP when locked.",
+    nutrition: {
+      energy_kcal: 109,
+      protein_g: 4.8,
+      fat_g: 0.63,
+      saturated_fat_g: 0,
+      carbohydrate_g: 23.24,
+      sugars_g: 0,
+      fibre_g: 7.8,
+      sodium_mg: 17,
+      calcium_mg: 128,
+      iron_mg: 1.03,
+      magnesium_mg: 71,
+      potassium_mg: 568,
+      zinc_mg: 1.62,
+      vitamin_a_ug: 4,
+      vitamin_c_mg: 41.9,
       vitamin_d_ug: 0,
       vitamin_k_ug: 0,
-      vitamin_b12_ug: 0.08,
-      folate_ug: 24,
-      caffeine_mg: 0,
-    },
-  },
-  {
-    id: "seitan",
-    code: "ING-219",
-    name: "Seitan",
-    category: "other",
-    density: 1.0,
-    fdc: "FDC 174272 · Seitan proxy via vital wheat gluten cooked estimate. Proxy until the café SKU is labelled.",
-    allergens: "[gluten]",
-    note: "Seitan (wheat gluten). Replace with the café SOP when locked.",
-    nutrition: {
-      energy_kcal: 370,
-      protein_g: 75.16,
-      fat_g: 1.85,
-      saturated_fat_g: 0.27,
-      carbohydrate_g: 13.79,
-      sugars_g: 0,
-      fibre_g: 0.6,
-      sodium_mg: 29,
-      calcium_mg: 142,
-      iron_mg: 5.2,
-      magnesium_mg: 25,
-      potassium_mg: 100,
-      zinc_mg: 0.85,
-      vitamin_a_ug: 0,
-      vitamin_c_mg: 0,
-      vitamin_d_ug: 0,
-      vitamin_k_ug: 0,
       vitamin_b12_ug: 0,
-      folate_ug: 0,
-      caffeine_mg: 0,
-    },
-  },
-  {
-    id: "shiitake",
-    code: "ING-220",
-    name: "Shiitake",
-    category: "other",
-    density: 0.4,
-    fdc: "FDC 169242 · Mushrooms, shiitake, raw (SR Legacy). Proxy until the café SKU is labelled.",
-    allergens: "[]",
-    note: "Raw shiitake. Replace with the café SOP when locked.",
-    nutrition: {
-      energy_kcal: 34,
-      protein_g: 2.24,
-      fat_g: 0.49,
-      saturated_fat_g: 0.04,
-      carbohydrate_g: 6.79,
-      sugars_g: 2.38,
-      fibre_g: 2.5,
-      sodium_mg: 9,
-      calcium_mg: 2,
-      iron_mg: 0.41,
-      magnesium_mg: 20,
-      potassium_mg: 304,
-      zinc_mg: 1.03,
-      vitamin_a_ug: 0,
-      vitamin_c_mg: 0.1,
-      vitamin_d_ug: 0.4,
-      vitamin_k_ug: 0,
-      vitamin_b12_ug: 0,
-      folate_ug: 13,
-      caffeine_mg: 0,
-    },
-  },
-  {
-    id: "oyster-mushroom",
-    code: "ING-221",
-    name: "Oyster Mushroom",
-    category: "other",
-    density: 0.35,
-    fdc: "FDC 168580 · Mushrooms, oyster, raw (SR Legacy). Proxy until the café SKU is labelled.",
-    allergens: "[]",
-    note: "Raw oyster mushrooms. Replace with the café SOP when locked.",
-    nutrition: {
-      energy_kcal: 33,
-      protein_g: 3.31,
-      fat_g: 0.41,
-      saturated_fat_g: 0.06,
-      carbohydrate_g: 6.09,
-      sugars_g: 1.11,
-      fibre_g: 2.3,
-      sodium_mg: 18,
-      calcium_mg: 3,
-      iron_mg: 1.33,
-      magnesium_mg: 18,
-      potassium_mg: 420,
-      zinc_mg: 0.77,
-      vitamin_a_ug: 2,
-      vitamin_c_mg: 0,
-      vitamin_d_ug: 0.7,
-      vitamin_k_ug: 0,
-      vitamin_b12_ug: 0,
-      folate_ug: 38,
+      folate_ug: 18,
       caffeine_mg: 0,
     },
   },
@@ -152,10 +88,7 @@ const CELLS = [
   "egg-sandwich",
 ];
 
-const ELEVATED = [
-  { ing: "tempeh", cell: "chia", template: "tenon-cannellini-chia-elevated", fromId: "cannellini" },
-  { ing: "oyster-mushroom", cell: "overnight-oats", template: "tenon-tofu-overnight-oats-elevated", fromId: "tofu" },
-];
+const ELEVATED = [];
 
 function titleCase(id) {
   return id
@@ -218,25 +151,6 @@ function rewriteFromRaspberry(src, ingId, displayName, codeNum, kind) {
   return out;
 }
 
-function rewriteElevated(src, fromId, toId, toName, codeNum, kind) {
-  const fromTitle = titleCase(fromId);
-  const toTitle = titleCase(toId);
-  const prose = toName.toLowerCase();
-  let out = src;
-  out = out.replaceAll(`tenon-${fromId}-`, `tenon-${toId}-`);
-  out = out.replaceAll(`Tenon ${fromTitle} `, `Tenon ${toTitle} `);
-  out = out.replaceAll(fromId, toId);
-  out = out.replace(
-    kind === "build" ? /code: BLD-\d+/ : /code: MNU-\d+/,
-    `code: ${kind === "build" ? "BLD" : "MNU"}-${codeNum}`,
-  );
-  out = out.replaceAll(`Elevated ${toId} cell`, `Elevated ${prose} cell`);
-  out = out.replaceAll(`elevated ${toId}`, `elevated ${prose}`);
-  out = out.replaceAll(`with elevated ${toId}`, `with elevated ${prose}`);
-  out = out.replaceAll("Two thousand seven hundred builds.", "Two thousand seven hundred fifty builds.");
-  return out;
-}
-
 let code = startCode;
 for (const ing of INGREDIENTS) {
   if (existsSync(path.join(root, "ingredients", `${ing.id}.md`))) {
@@ -260,24 +174,6 @@ for (const ing of INGREDIENTS) {
     );
     code += 1;
   }
-}
-for (const elev of ELEVATED) {
-  const cellSlug = `${elev.cell}-elevated`;
-  const buildPath = path.join(root, "builds", `tenon-${elev.ing}-${cellSlug}.md`);
-  if (existsSync(buildPath)) {
-    console.warn(`! skip existing elevated ${elev.ing}-${cellSlug}`);
-    continue;
-  }
-  const srcBuild = readFileSync(path.join(root, "builds", `${elev.template}.md`), "utf8");
-  const srcMenu = readFileSync(path.join(root, "menu", `${elev.template}.md`), "utf8");
-  const meta = INGREDIENTS.find((i) => i.id === elev.ing);
-  writeFileSync(buildPath, rewriteElevated(srcBuild, elev.fromId, elev.ing, meta.name, code, "build"));
-  writeFileSync(
-    path.join(root, "menu", `tenon-${elev.ing}-${cellSlug}.md`),
-    rewriteElevated(srcMenu, elev.fromId, elev.ing, meta.name, code, "menu"),
-  );
-  console.log(`+ elevated ${elev.ing}-${cellSlug} BLD-${code}`);
-  code += 1;
 }
 console.log(
   `done through BLD-${code - 1}; expected builds ${baseBuilds + (code - startCode)}`,
