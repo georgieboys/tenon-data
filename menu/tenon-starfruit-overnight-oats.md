@@ -1,0 +1,13 @@
+---
+id: tenon-starfruit-overnight-oats
+code: MNU-2039
+name: Tenon Starfruit Overnight Oats
+version: 0.1.0
+description: Menu listing for Tenon Starfruit Overnight Oats.
+build: build/tenon-starfruit-overnight-oats
+status: planned
+formats: [assembled]
+price_sgd: null
+---
+
+Menu product paired with build/tenon-starfruit-overnight-oats.
