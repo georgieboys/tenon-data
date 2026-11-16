@@ -3,71 +3,39 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const startCode = 2777;
-const baseBuilds = 2776;
+const startCode = 2839;
+const baseBuilds = 2838;
 
 const INGREDIENTS = [
   {
-    id: "horseradish",
-    code: "ING-226",
-    name: "Horseradish",
-    category: "spice",
+    id: "squash",
+    code: "ING-232",
+    name: "Winter Squash",
+    category: "other",
     density: 0.7,
-    fdc: "FDC 168433 · Horseradish, prepared (SR Legacy). Proxy until the café SKU is labelled.",
+    fdc: "FDC 168448 · Squash, winter, all varieties, raw (SR Legacy). Proxy until the café SKU is labelled.",
     allergens: "[]",
-    note: "Prepared horseradish. Replace with the café SOP when locked.",
+    note: "Raw winter squash. Replace with the café SOP when locked.",
     nutrition: {
-      energy_kcal: 48,
-      protein_g: 1.18,
-      fat_g: 0.69,
-      saturated_fat_g: 0.09,
-      carbohydrate_g: 11.29,
-      sugars_g: 7.99,
-      fibre_g: 3.3,
-      sodium_mg: 420,
-      calcium_mg: 56,
-      iron_mg: 0.42,
-      magnesium_mg: 27,
-      potassium_mg: 246,
-      zinc_mg: 0.83,
-      vitamin_a_ug: 0,
-      vitamin_c_mg: 24.9,
+      energy_kcal: 34,
+      protein_g: 0.95,
+      fat_g: 0.13,
+      saturated_fat_g: 0.04,
+      carbohydrate_g: 8.59,
+      sugars_g: 2.2,
+      fibre_g: 1.5,
+      sodium_mg: 4,
+      calcium_mg: 28,
+      iron_mg: 0.44,
+      magnesium_mg: 14,
+      potassium_mg: 350,
+      zinc_mg: 0.18,
+      vitamin_a_ug: 68,
+      vitamin_c_mg: 12.3,
       vitamin_d_ug: 0,
-      vitamin_k_ug: 1.3,
+      vitamin_k_ug: 1.1,
       vitamin_b12_ug: 0,
-      folate_ug: 57,
-      caffeine_mg: 0,
-    },
-  },
-  {
-    id: "wasabi",
-    code: "ING-227",
-    name: "Wasabi",
-    category: "spice",
-    density: 0.7,
-    fdc: "FDC 170495 · Wasabi, root, raw (SR Legacy). Proxy until the café SKU is labelled.",
-    allergens: "[]",
-    note: "Raw wasabi root. Replace with the café SOP when locked.",
-    nutrition: {
-      energy_kcal: 109,
-      protein_g: 4.8,
-      fat_g: 0.63,
-      saturated_fat_g: 0,
-      carbohydrate_g: 23.24,
-      sugars_g: 0,
-      fibre_g: 7.8,
-      sodium_mg: 17,
-      calcium_mg: 128,
-      iron_mg: 1.03,
-      magnesium_mg: 71,
-      potassium_mg: 568,
-      zinc_mg: 1.62,
-      vitamin_a_ug: 4,
-      vitamin_c_mg: 41.9,
-      vitamin_d_ug: 0,
-      vitamin_k_ug: 0,
-      vitamin_b12_ug: 0,
-      folate_ug: 18,
+      folate_ug: 24,
       caffeine_mg: 0,
     },
   },
@@ -87,8 +55,6 @@ const CELLS = [
   "protein-sandwich",
   "egg-sandwich",
 ];
-
-const ELEVATED = [];
 
 function titleCase(id) {
   return id
