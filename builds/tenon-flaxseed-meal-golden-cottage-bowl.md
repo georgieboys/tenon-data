@@ -1,0 +1,34 @@
+---
+id: tenon-flaxseed-meal-golden-cottage-bowl
+code: BLD-9328
+name: Tenon Flaxseed Meal Golden Cottage Bowl
+version: 0.1.0
+description: Cottage Bowl remix with flaxseed meal golden. Derived from parent chassis.
+derived_from: build/tenon-cottage-cheese-berry-bowl@0.1.0
+vertical: food
+slots: {}
+formats:
+  assembled:
+    inputs:
+      - ref: ingredient/cottage-cheese
+        qty: 180
+        unit: g
+      - ref: ingredient/honey
+        qty: 10
+        unit: g
+      - ref: ingredient/flaxseed-meal-golden
+        qty: 60
+        unit: g
+      - ref: ingredient/salt
+        qty: 0.5
+        unit: g
+    steps:
+      - op: 10
+        action: Spoon cottage cheese into a bowl. Fold in honey, flaxseed meal golden and salt.
+        equipment: [scale, bowl, spoon]
+        temp_c: 4
+      - op: 20
+        action: Serve cold. Nutrition is for the bowl as assembled.
+---
+
+Remix with flaxseed meal golden.
