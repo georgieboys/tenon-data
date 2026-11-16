@@ -3,97 +3,129 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const startCode = 6351;
-const baseBuilds = 6350;
+const startCode = 6401;
+const baseBuilds = 6400;
 
 const INGREDIENTS = [
   {
-    id: "soy-sauce",
-    code: "ING-516",
-    name: "Soy Sauce",
-    category: "other",
-    density: 1.15,
-    fdc: "FDC 174277 · Soy sauce made from soy and wheat (shoyu) (SR Legacy). Proxy until the café SKU is labelled.",
-    allergens: "[soy, gluten]",
-    note: "Soy sauce (shoyu). Contains soy and gluten. Replace with the café SOP when locked.",
+    id: "toasted-sesame-oil",
+    code: "ING-520",
+    name: "Toasted Sesame Oil",
+    category: "fat",
+    density: 0.92,
+    fdc: "FDC 171016 · Oil, sesame, salad or cooking (SR Legacy) as toasted sesame oil proxy. Proxy until the café SKU is labelled.",
+    allergens: "[sesame]",
+    note: "Toasted sesame oil. Contains sesame. Distinct catalogue cell from sesame oil for roast grade. Replace with the café SOP when locked.",
     nutrition: {
-      energy_kcal: 53,
-      protein_g: 8.14,
-      fat_g: 0.04,
-      saturated_fat_g: 0.01,
-      carbohydrate_g: 4.93,
-      sugars_g: 0.4,
-      fibre_g: 0.8,
-      sodium_mg: 5493,
-      calcium_mg: 33,
-      iron_mg: 1.45,
-      magnesium_mg: 74,
-      potassium_mg: 212,
-      zinc_mg: 0.87,
-      vitamin_a_ug: 0,
-      vitamin_c_mg: 0,
-      vitamin_d_ug: 0,
-      vitamin_k_ug: 0,
-      vitamin_b12_ug: 0,
-      folate_ug: 14,
-      caffeine_mg: 0,
-    },
-  },
-  {
-    id: "tamari",
-    code: "ING-517",
-    name: "Tamari",
-    category: "other",
-    density: 1.15,
-    fdc: "FDC 174277 · Soy sauce made from soy and wheat (shoyu) (SR Legacy) as tamari proxy. Proxy until the café SKU is labelled.",
-    allergens: "[soy]",
-    note: "Tamari. Contains soy. Nutrition uses shoyu proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
-    nutrition: {
-      energy_kcal: 60,
-      protein_g: 10.51,
-      fat_g: 0.1,
-      saturated_fat_g: 0.01,
-      carbohydrate_g: 5.57,
-      sugars_g: 0.5,
-      fibre_g: 0.8,
-      sodium_mg: 5586,
-      calcium_mg: 20,
-      iron_mg: 2.38,
-      magnesium_mg: 40,
-      potassium_mg: 212,
-      zinc_mg: 0.33,
-      vitamin_a_ug: 0,
-      vitamin_c_mg: 0,
-      vitamin_d_ug: 0,
-      vitamin_k_ug: 0,
-      vitamin_b12_ug: 0,
-      folate_ug: 18,
-      caffeine_mg: 0,
-    },
-  },
-  {
-    id: "coconut-aminos",
-    code: "ING-518",
-    name: "Coconut Aminos",
-    category: "other",
-    density: 1.12,
-    fdc: "FDC 174277 · Soy sauce made from soy and wheat (shoyu) (SR Legacy) as coconut aminos proxy. Proxy until the café SKU is labelled.",
-    allergens: "[]",
-    note: "Coconut aminos. Nutrition uses soy-sauce energy/sodium proxy shape until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
-    nutrition: {
-      energy_kcal: 90,
+      energy_kcal: 884,
       protein_g: 0,
-      fat_g: 0,
-      saturated_fat_g: 0,
-      carbohydrate_g: 20,
-      sugars_g: 18,
+      fat_g: 100,
+      saturated_fat_g: 14.2,
+      carbohydrate_g: 0,
+      sugars_g: 0,
       fibre_g: 0,
-      sodium_mg: 720,
-      calcium_mg: 10,
-      iron_mg: 0.2,
-      magnesium_mg: 10,
-      potassium_mg: 150,
-      zinc_mg: 0.1,
+      sodium_mg: 0,
+      calcium_mg: 0,
+      iron_mg: 0.05,
+      magnesium_mg: 0,
+      potassium_mg: 0,
+      zinc_mg: 0,
+      vitamin_a_ug: 0,
+      vitamin_c_mg: 0,
+      vitamin_d_ug: 0,
+      vitamin_k_ug: 13.6,
+      vitamin_b12_ug: 0,
+      folate_ug: 0,
+      caffeine_mg: 0,
+    },
+  },
+  {
+    id: "walnut-oil",
+    code: "ING-521",
+    name: "Walnut Oil",
+    category: "fat",
+    density: 0.92,
+    fdc: "FDC 171030 · Oil, walnut (SR Legacy). Proxy until the café SKU is labelled.",
+    allergens: "[tree_nut]",
+    note: "Walnut oil. Contains tree nut. Replace with the café SOP when locked.",
+    nutrition: {
+      energy_kcal: 884,
+      protein_g: 0,
+      fat_g: 100,
+      saturated_fat_g: 9.1,
+      carbohydrate_g: 0,
+      sugars_g: 0,
+      fibre_g: 0,
+      sodium_mg: 0,
+      calcium_mg: 0,
+      iron_mg: 0,
+      magnesium_mg: 0,
+      potassium_mg: 0,
+      zinc_mg: 0,
+      vitamin_a_ug: 0,
+      vitamin_c_mg: 0,
+      vitamin_d_ug: 0,
+      vitamin_k_ug: 15,
+      vitamin_b12_ug: 0,
+      folate_ug: 0,
+      caffeine_mg: 0,
+    },
+  },
+  {
+    id: "flaxseed-oil",
+    code: "ING-522",
+    name: "Flaxseed Oil",
+    category: "fat",
+    density: 0.93,
+    fdc: "FDC 167702 · Oil, flaxseed, cold pressed (SR Legacy). Proxy until the café SKU is labelled.",
+    allergens: "[]",
+    note: "Flaxseed oil. Replace with the café SOP when locked.",
+    nutrition: {
+      energy_kcal: 884,
+      protein_g: 0.11,
+      fat_g: 99.98,
+      saturated_fat_g: 8.98,
+      carbohydrate_g: 0,
+      sugars_g: 0,
+      fibre_g: 0,
+      sodium_mg: 0,
+      calcium_mg: 1,
+      iron_mg: 0,
+      magnesium_mg: 0,
+      potassium_mg: 0,
+      zinc_mg: 0,
+      vitamin_a_ug: 0,
+      vitamin_c_mg: 0,
+      vitamin_d_ug: 0,
+      vitamin_k_ug: 9.3,
+      vitamin_b12_ug: 0,
+      folate_ug: 0,
+      caffeine_mg: 0,
+    },
+  },
+  {
+    id: "hemp-seed-oil",
+    code: "ING-523",
+    name: "Hemp Seed Oil",
+    category: "fat",
+    density: 0.92,
+    fdc: "FDC 170148 · Seeds, hemp seed, hulled (SR Legacy) oil-fraction proxy. Proxy until the café SKU is labelled.",
+    allergens: "[]",
+    note: "Hemp seed oil. Nutrition uses hemp-seed oil-fraction proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
+    nutrition: {
+      energy_kcal: 884,
+      protein_g: 0,
+      fat_g: 100,
+      saturated_fat_g: 9.5,
+      carbohydrate_g: 0,
+      sugars_g: 0,
+      fibre_g: 0,
+      sodium_mg: 0,
+      calcium_mg: 0,
+      iron_mg: 0,
+      magnesium_mg: 0,
+      potassium_mg: 0,
+      zinc_mg: 0,
       vitamin_a_ug: 0,
       vitamin_c_mg: 0,
       vitamin_d_ug: 0,
@@ -102,39 +134,6 @@ const INGREDIENTS = [
       folate_ug: 0,
       caffeine_mg: 0,
     },
-  },
-  {
-    id: "fish-sauce",
-    code: "ING-519",
-    name: "Fish Sauce",
-    category: "other",
-    density: 1.2,
-    fdc: "FDC 174277 · Soy sauce made from soy and wheat (shoyu) (SR Legacy) as fish sauce proxy. Proxy until the café SKU is labelled.",
-    allergens: "[fish]",
-    note: "Fish sauce. Not plant-based. Nutrition uses soy-sauce proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
-    nutrition: {
-      energy_kcal: 35,
-      protein_g: 5.06,
-      fat_g: 0.01,
-      saturated_fat_g: 0,
-      carbohydrate_g: 3.64,
-      sugars_g: 0,
-      fibre_g: 0,
-      sodium_mg: 7851,
-      calcium_mg: 43,
-      iron_mg: 0.78,
-      magnesium_mg: 175,
-      potassium_mg: 288,
-      zinc_mg: 0.2,
-      vitamin_a_ug: 4,
-      vitamin_c_mg: 0.5,
-      vitamin_d_ug: 0,
-      vitamin_k_ug: 0,
-      vitamin_b12_ug: 0.48,
-      folate_ug: 12,
-      caffeine_mg: 0,
-    },
-    diet: { plant_based: false, vegetarian: false },
   },
 ];
 
@@ -154,8 +153,8 @@ const CELLS = [
 ];
 
 const ELEVATED = [
-  { ing: "soy-sauce", cell: "chia", template: "tenon-sesame-oil-chia-elevated", fromId: "sesame-oil" },
-  { ing: "fish-sauce", cell: "overnight-oats", template: "tenon-mct-oil-overnight-oats-elevated", fromId: "mct-oil" },
+  { ing: "toasted-sesame-oil", cell: "chia", template: "tenon-soy-sauce-chia-elevated", fromId: "soy-sauce" },
+  { ing: "hemp-seed-oil", cell: "overnight-oats", template: "tenon-fish-sauce-overnight-oats-elevated", fromId: "fish-sauce" },
 ];
 
 function titleCase(id) {
@@ -169,7 +168,6 @@ function ingredientMd(ing) {
   const lines = Object.entries(ing.nutrition)
     .map(([k, v]) => `  ${k}: ${v}`)
     .join("\n");
-  const diet = ing.diet || { plant_based: true, vegetarian: true };
   return `---
 id: ${ing.id}
 code: ${ing.code}
@@ -190,8 +188,8 @@ nutrition:
 ${lines}
 allergens: ${ing.allergens}
 diet:
-  plant_based: ${diet.plant_based}
-  vegetarian: ${diet.vegetarian}
+  plant_based: true
+  vegetarian: true
 ---
 
 ${ing.note}
@@ -235,7 +233,7 @@ function rewriteElevated(src, fromId, toId, toName, codeNum, kind) {
   out = out.replaceAll(`Elevated ${toId} cell`, `Elevated ${prose} cell`);
   out = out.replaceAll(`elevated ${toId}`, `elevated ${prose}`);
   out = out.replaceAll(`with elevated ${toId}`, `with elevated ${prose}`);
-  out = out.replaceAll("Six thousand three hundred fifty builds.", "Six thousand four hundred builds.");
+  out = out.replaceAll("Six thousand four hundred builds.", "Six thousand four hundred fifty builds.");
   return out;
 }
 
