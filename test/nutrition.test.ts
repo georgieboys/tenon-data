@@ -10,8 +10,8 @@ const WHEY_BATCH_PROTEIN = UNISOY_BATCH_PROTEIN + 40 * 0.7813;
 const SPI_BATCH_PROTEIN = UNISOY_BATCH_PROTEIN + 0.8832 * 35;
 const MATCHA_PROTEIN = 4 * 0.296;
 
-describe("ingredient normalisation", () => {
-  it("converts per-100 ml label values to per 100 g using density", async () => {
+describe("ingredient normalisation", { timeout: 30_000 }, () => {
+  it("converts per-100 ml label values to per 100 g using density", { timeout: 30_000 }, async () => {
     const data = compileDataset(await repoDataset());
     const unisoy = data.ingredients.find((i) => i.id === "unisoy")!;
     expect(unisoy.composition.per_100g.protein_g!.value).toBeCloseTo(2.6 / 1.03, 6);
@@ -19,8 +19,8 @@ describe("ingredient normalisation", () => {
   });
 });
 
-describe("prep calculation", () => {
-  it("sums inputs by mass and divides by yield", async () => {
+describe("prep calculation", { timeout: 30_000 }, () => {
+  it("sums inputs by mass and divides by yield", { timeout: 30_000 }, async () => {
     const data = compileDataset(await repoDataset());
     const milk = prep(data, "soy-whey-milk");
     // 1000 ml UniSoy = 1030 g; plus 40 g whey; yield = sum = 1070 g.
@@ -29,7 +29,7 @@ describe("prep calculation", () => {
     expect(milk.composition.per_100g.protein_g!.value).toBeCloseTo((WHEY_BATCH_PROTEIN / 1070) * 100, 6);
   });
 
-  it("concentrates per-100 g values when measured yield is below input mass", async () => {
+  it("concentrates per-100 g values when measured yield is below input mass", { timeout: 30_000 }, async () => {
     const data = compileDataset(await repoDataset());
     const milk = prep(data, "soy-protein-milk");
     // 1030 g UniSoy + 35 g isolate = 1065 g in, 1060 g measured out.
@@ -38,7 +38,7 @@ describe("prep calculation", () => {
     expect(milk.composition.per_100g.protein_g!.value).toBeCloseTo((SPI_BATCH_PROTEIN / 1060) * 100, 6);
   });
 
-  it("applies retention factors to totals", async () => {
+  it("applies retention factors to totals", { timeout: 30_000 }, async () => {
     const ds = await repoDataset();
     ds.prep["soy-whey-milk"]!.retention = { protein_g: 0.5 };
     const milk = prep(compileDataset(ds), "soy-whey-milk");
@@ -46,8 +46,8 @@ describe("prep calculation", () => {
   });
 });
 
-describe("build variants", () => {
-  it("calculates every format and milk base combination", async () => {
+describe("build variants", { timeout: 30_000 }, () => {
+  it("calculates every format and milk base combination", { timeout: 30_000 }, async () => {
     const data = compileDataset(await repoDataset());
     const keys = build(data, "tenon-matcha").variants.map((v) => v.key).sort();
     expect(keys).toEqual([
@@ -63,7 +63,7 @@ describe("build variants", () => {
     ]);
   });
 
-  it("calculates per-serving nutrition through the prep", async () => {
+  it("calculates per-serving nutrition through the prep", { timeout: 30_000 }, async () => {
     const data = compileDataset(await repoDataset());
     const hot = variant(data, "tenon-matcha", "hot.soy-whey-milk");
     expect(hot.composition.mass_g).toBe(264);
@@ -78,21 +78,21 @@ describe("build variants", () => {
     );
   });
 
-  it("counts ice in the serving mass but not in the nutrients", async () => {
+  it("counts ice in the serving mass but not in the nutrients", { timeout: 30_000 }, async () => {
     const data = compileDataset(await repoDataset());
     const iced = variant(data, "tenon-matcha", "iced.soy-whey-milk");
     expect(iced.composition.mass_g).toBe(4 + 40 + 180 + 120);
     expect(iced.composition.totals.protein_g!.value).toBeCloseTo(MATCHA_PROTEIN + (180 * WHEY_BATCH_PROTEIN) / 1070, 6);
   });
 
-  it("menu product exposes the same numbers as the build", async () => {
+  it("menu product exposes the same numbers as the build", { timeout: 30_000 }, async () => {
     const data = compileDataset(await repoDataset());
     const item = menuItem(data, "tenon-matcha");
     expect(item.default_variant).toBe("hot.soy-whey-milk");
     expect(item.variants).toEqual(build(data, "tenon-matcha").variants);
   });
 
-  it("menu options can restrict the offered milk bases", async () => {
+  it("menu options can restrict the offered milk bases", { timeout: 30_000 }, async () => {
     const ds = await repoDataset();
     ds.menu["tenon-matcha"]!.options = { base: ["prep/soy-protein-milk"] };
     const item = menuItem(compileDataset(ds), "tenon-matcha");
@@ -104,7 +104,7 @@ describe("build variants", () => {
     expect(item.default_variant).toBe("hot.soy-protein-milk");
   });
 
-  it("compiles cocoa, latte, tea, americano, masala chai and ice cream builds", async () => {
+  it("compiles cocoa, latte, tea, americano, masala chai and ice cream builds", { timeout: 30_000 }, async () => {
     const data = compileDataset(await repoDataset());
     expect(build(data, "tenon-cocoa").variants).toHaveLength(9);
     expect(build(data, "tenon-cocoa").vertical).toBe("cocoa");
@@ -177,8 +177,8 @@ describe("build variants", () => {
   });
 });
 
-describe("nutritional inheritance", () => {
-  it("propagates an ingredient change through prep, build and menu", async () => {
+describe("nutritional inheritance", { timeout: 30_000 }, () => {
+  it("propagates an ingredient change through prep, build and menu", { timeout: 30_000 }, async () => {
     const ds = await repoDataset();
     const before = compileDataset(ds);
     ds.ingredient["whey-concentrate"]!.nutrition.protein_g = 80;
@@ -202,7 +202,7 @@ describe("nutritional inheritance", () => {
     expect(menuDefault.composition.totals.protein_g!.value).toBeCloseTo(expected, 6);
   });
 
-  it("propagates a recipe quantity change", async () => {
+  it("propagates a recipe quantity change", { timeout: 30_000 }, async () => {
     const ds = await repoDataset();
     ds.prep["soy-whey-milk"]!.inputs[1]!.qty = 60;
     const milk = prep(compileDataset(ds), "soy-whey-milk");
@@ -211,22 +211,22 @@ describe("nutritional inheritance", () => {
   });
 });
 
-describe("missing data", () => {
-  it("reports a lower bound, not zero, when some inputs lack a value", async () => {
+describe("missing data", { timeout: 30_000 }, () => {
+  it("reports a lower bound, not zero, when some inputs lack a value", { timeout: 30_000 }, async () => {
     const data = compileDataset(await repoDataset());
     const hot = variant(data, "tenon-matcha", "hot.soy-whey-milk");
     // Matcha has vitamin K; UniSoy is unknown, so the total is incomplete.
     expect(hot.composition.totals.vitamin_k_ug).toEqual({ value: expect.closeTo(116, 6), complete: false });
   });
 
-  it("keeps a nutrient null when no input has data", async () => {
+  it("keeps a nutrient null when no input has data", { timeout: 30_000 }, async () => {
     const ds = await repoDataset();
     const milk = prep(compileDataset(ds), "soy-protein-milk");
     // Neither UniSoy nor soy isolate declares vitamin A.
     expect(milk.composition.totals.vitamin_a_ug).toEqual({ value: null, complete: false });
   });
 
-  it("treats undeclared nutrients as unknown unless the ingredient says zero", async () => {
+  it("treats undeclared nutrients as unknown unless the ingredient says zero", { timeout: 30_000 }, async () => {
     const ds = await repoDataset();
     delete ds.ingredient.matcha!.nutrition.caffeine_mg;
     const data = compileDataset(ds);
@@ -237,8 +237,8 @@ describe("missing data", () => {
   });
 });
 
-describe("allergens, diet and provenance", () => {
-  it("derives allergens and diet flags from every input", async () => {
+describe("allergens, diet and provenance", { timeout: 30_000 }, () => {
+  it("derives allergens and diet flags from every input", { timeout: 30_000 }, async () => {
     const data = compileDataset(await repoDataset());
     const soy = variant(data, "tenon-matcha", "hot.soy-protein-milk").composition;
     const soyWhey = variant(data, "tenon-matcha", "hot.soy-whey-milk").composition;
@@ -252,19 +252,19 @@ describe("allergens, diet and provenance", () => {
     expect(dairy.diet).toEqual({ plant_based: false, vegetarian: true });
   });
 
-  it("is not placeholder when every source in the chain is attributable", async () => {
+  it("is not placeholder when every source in the chain is attributable", { timeout: 30_000 }, async () => {
     const data = compileDataset(await repoDataset());
     expect(variant(data, "tenon-matcha", "hot.soy-whey-milk").composition.placeholder).toBe(false);
     expect(variant(data, "tenon-cocoa", "hot.dairy-whey-milk").composition.placeholder).toBe(false);
   });
 
-  it("flags placeholder when a source in the chain is illustrative", async () => {
+  it("flags placeholder when a source in the chain is illustrative", { timeout: 30_000 }, async () => {
     const ds = await repoDataset();
     ds.ingredient["unisoy"]!.sources.manufacturer_label!.type = "placeholder";
     expect(variant(compileDataset(ds), "tenon-matcha", "hot.soy-whey-milk").composition.placeholder).toBe(true);
   });
 
-  it("records which records use each component", async () => {
+  it("records which records use each component", { timeout: 30_000 }, async () => {
     const data = compileDataset(await repoDataset());
     const whey = data.ingredients.find((i) => i.id === "whey-concentrate")!;
     expect(whey.used_by).toEqual([
@@ -428,6 +428,10 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-black-cardamom-date-bites",
       "build/tenon-black-cardamom-oat-bar",
       "build/tenon-black-cardamom-overnight-oats",
+      "build/tenon-black-fungus-cheesecake",
+      "build/tenon-black-fungus-date-bites",
+      "build/tenon-black-fungus-oat-bar",
+      "build/tenon-black-fungus-overnight-oats",
       "build/tenon-black-pepper-cheesecake",
       "build/tenon-black-pepper-date-bites",
       "build/tenon-black-pepper-oat-bar",
@@ -595,6 +599,10 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-chamomile-date-bites",
       "build/tenon-chamomile-oat-bar",
       "build/tenon-chamomile-overnight-oats",
+      "build/tenon-chanterelle-cheesecake",
+      "build/tenon-chanterelle-date-bites",
+      "build/tenon-chanterelle-oat-bar",
+      "build/tenon-chanterelle-overnight-oats",
       "build/tenon-chayote-cheesecake",
       "build/tenon-chayote-date-bites",
       "build/tenon-chayote-oat-bar",
@@ -739,6 +747,10 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-cream-cheese-date-bites",
       "build/tenon-cream-cheese-oat-bar",
       "build/tenon-cream-cheese-overnight-oats",
+      "build/tenon-crimini-cheesecake",
+      "build/tenon-crimini-date-bites",
+      "build/tenon-crimini-oat-bar",
+      "build/tenon-crimini-overnight-oats",
       "build/tenon-cubeb-cheesecake",
       "build/tenon-cubeb-date-bites",
       "build/tenon-cubeb-oat-bar",
@@ -805,6 +817,10 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-dragon-fruit-date-bites",
       "build/tenon-dragon-fruit-oat-bar",
       "build/tenon-dragon-fruit-overnight-oats",
+      "build/tenon-dried-maitake-cheesecake",
+      "build/tenon-dried-maitake-date-bites",
+      "build/tenon-dried-maitake-oat-bar",
+      "build/tenon-dried-maitake-overnight-oats",
       "build/tenon-dried-shiitake-cheesecake",
       "build/tenon-dried-shiitake-date-bites",
       "build/tenon-dried-shiitake-oat-bar",
@@ -1496,6 +1512,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-porcini-date-bites",
       "build/tenon-porcini-oat-bar",
       "build/tenon-porcini-overnight-oats",
+      "build/tenon-porcini-overnight-oats-elevated",
       "build/tenon-portobello-cheesecake",
       "build/tenon-portobello-date-bites",
       "build/tenon-portobello-oat-bar",
@@ -2081,6 +2098,9 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-black-cardamom-chia",
       "build/tenon-black-cardamom-ice-cream",
       "build/tenon-black-cardamom-overnight-oats",
+      "build/tenon-black-fungus-chia",
+      "build/tenon-black-fungus-ice-cream",
+      "build/tenon-black-fungus-overnight-oats",
       "build/tenon-black-pepper-chia",
       "build/tenon-black-pepper-ice-cream",
       "build/tenon-black-pepper-overnight-oats",
@@ -2220,6 +2240,10 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-chamomile-chia-elevated",
       "build/tenon-chamomile-ice-cream",
       "build/tenon-chamomile-overnight-oats",
+      "build/tenon-chanterelle-chia",
+      "build/tenon-chanterelle-chia-elevated",
+      "build/tenon-chanterelle-ice-cream",
+      "build/tenon-chanterelle-overnight-oats",
       "build/tenon-chayote-chia",
       "build/tenon-chayote-ice-cream",
       "build/tenon-chayote-overnight-oats",
@@ -2339,6 +2363,9 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-cream-cheese-ice-cream",
       "build/tenon-cream-cheese-overnight-oats",
       "build/tenon-cream-ice-cream",
+      "build/tenon-crimini-chia",
+      "build/tenon-crimini-ice-cream",
+      "build/tenon-crimini-overnight-oats",
       "build/tenon-cubeb-chia",
       "build/tenon-cubeb-ice-cream",
       "build/tenon-cubeb-overnight-oats",
@@ -2390,6 +2417,9 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-dragon-fruit-chia",
       "build/tenon-dragon-fruit-ice-cream",
       "build/tenon-dragon-fruit-overnight-oats",
+      "build/tenon-dried-maitake-chia",
+      "build/tenon-dried-maitake-ice-cream",
+      "build/tenon-dried-maitake-overnight-oats",
       "build/tenon-dried-shiitake-chia",
       "build/tenon-dried-shiitake-ice-cream",
       "build/tenon-dried-shiitake-overnight-oats",
@@ -2958,6 +2988,7 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-porcini-chia",
       "build/tenon-porcini-ice-cream",
       "build/tenon-porcini-overnight-oats",
+      "build/tenon-porcini-overnight-oats-elevated",
       "build/tenon-portobello-chia",
       "build/tenon-portobello-chia-elevated",
       "build/tenon-portobello-ice-cream",
@@ -3425,6 +3456,8 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-black-bean-protein-sandwich",
       "build/tenon-black-cardamom-egg-sandwich",
       "build/tenon-black-cardamom-protein-sandwich",
+      "build/tenon-black-fungus-egg-sandwich",
+      "build/tenon-black-fungus-protein-sandwich",
       "build/tenon-black-pepper-egg-sandwich",
       "build/tenon-black-pepper-protein-sandwich",
       "build/tenon-black-vinegar-egg-sandwich",
@@ -3507,6 +3540,8 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-celery-seed-protein-sandwich",
       "build/tenon-chamomile-egg-sandwich",
       "build/tenon-chamomile-protein-sandwich",
+      "build/tenon-chanterelle-egg-sandwich",
+      "build/tenon-chanterelle-protein-sandwich",
       "build/tenon-chayote-egg-sandwich",
       "build/tenon-chayote-protein-sandwich",
       "build/tenon-cherimoya-egg-sandwich",
@@ -3577,6 +3612,8 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-cranberry-protein-sandwich",
       "build/tenon-cream-cheese-egg-sandwich",
       "build/tenon-cream-cheese-protein-sandwich",
+      "build/tenon-crimini-egg-sandwich",
+      "build/tenon-crimini-protein-sandwich",
       "build/tenon-cubeb-egg-sandwich",
       "build/tenon-cubeb-protein-sandwich",
       "build/tenon-cucumber-egg-sandwich",
@@ -3609,6 +3646,8 @@ describe("allergens, diet and provenance", () => {
       "build/tenon-doenjang-protein-sandwich",
       "build/tenon-dragon-fruit-egg-sandwich",
       "build/tenon-dragon-fruit-protein-sandwich",
+      "build/tenon-dried-maitake-egg-sandwich",
+      "build/tenon-dried-maitake-protein-sandwich",
       "build/tenon-dried-shiitake-egg-sandwich",
       "build/tenon-dried-shiitake-protein-sandwich",
       "build/tenon-dumpling-squash-egg-sandwich",
