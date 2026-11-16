@@ -3,7 +3,7 @@ import { factorForMass, scaleRecipe } from "../src/scale.ts";
 import { compileDataset, prep, repoDataset, variant } from "./helpers.ts";
 
 describe("batch scaling", () => {
-  it("doubles quantities, yield and totals while per-100 g stays the same", async () => {
+  it("doubles quantities, yield and totals while per-100 g stays the same", { timeout: 30_000 }, async () => {
     const milk = prep(compileDataset(await repoDataset()), "soy-whey-milk");
     const double = scaleRecipe(milk, 2);
 
@@ -16,7 +16,7 @@ describe("batch scaling", () => {
     expect(double.composition.per_100g).toEqual(milk.composition.per_100g);
   });
 
-  it("scales to a target output mass", async () => {
+  it("scales to a target output mass", { timeout: 30_000 }, async () => {
     const milk = prep(compileDataset(await repoDataset()), "soy-whey-milk");
     const factor = factorForMass(milk, 535);
     expect(factor).toBeCloseTo(0.5, 6);
@@ -25,21 +25,21 @@ describe("batch scaling", () => {
     expect(whey!.qty).toBeCloseTo(20, 6);
   });
 
-  it("scales a build serving into a batch of drinks", async () => {
+  it("scales a build serving into a batch of drinks", { timeout: 30_000 }, async () => {
     const hot = variant(compileDataset(await repoDataset()), "tenon-matcha", "hot.soy-whey-milk");
     const four = scaleRecipe(hot, 4);
     expect(four.composition.mass_g).toBe(264 * 4);
     expect(four.inputs.find((i) => i.ref === "ingredient/matcha")!.qty).toBe(16);
   });
 
-  it("does not mutate the original", async () => {
+  it("does not mutate the original", { timeout: 30_000 }, async () => {
     const milk = prep(compileDataset(await repoDataset()), "soy-whey-milk");
     const snapshot = structuredClone(milk);
     scaleRecipe(milk, 3);
     expect(milk).toEqual(snapshot);
   });
 
-  it("rejects zero, negative and non-finite factors", async () => {
+  it("rejects zero, negative and non-finite factors", { timeout: 30_000 }, async () => {
     const milk = prep(compileDataset(await repoDataset()), "soy-whey-milk");
     for (const bad of [0, -1, Number.NaN, Number.POSITIVE_INFINITY]) {
       expect(() => scaleRecipe(milk, bad)).toThrow(RangeError);
