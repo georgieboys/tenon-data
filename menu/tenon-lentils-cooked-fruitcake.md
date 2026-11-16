@@ -1,0 +1,13 @@
+---
+id: tenon-lentils-cooked-fruitcake
+code: MNU-10122
+name: Tenon Lentils Cooked Fruitcake
+version: 0.1.0
+description: Menu listing for Tenon Lentils Cooked Fruitcake.
+build: build/tenon-lentils-cooked-fruitcake
+status: planned
+formats: [baked]
+price_sgd: null
+---
+
+Menu product paired with build/tenon-lentils-cooked-fruitcake.
