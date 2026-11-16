@@ -3,65 +3,97 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const startCode = 6301;
-const baseBuilds = 6300;
+const startCode = 6351;
+const baseBuilds = 6350;
 
 const INGREDIENTS = [
   {
-    id: "sesame-oil",
-    code: "ING-512",
-    name: "Sesame Oil",
-    category: "fat",
-    density: 0.92,
-    fdc: "FDC 171016 · Oil, sesame, salad or cooking (SR Legacy). Proxy until the café SKU is labelled.",
-    allergens: "[sesame]",
-    note: "Sesame oil. Contains sesame. Replace with the café SOP when locked.",
+    id: "soy-sauce",
+    code: "ING-516",
+    name: "Soy Sauce",
+    category: "other",
+    density: 1.15,
+    fdc: "FDC 174277 · Soy sauce made from soy and wheat (shoyu) (SR Legacy). Proxy until the café SKU is labelled.",
+    allergens: "[soy, gluten]",
+    note: "Soy sauce (shoyu). Contains soy and gluten. Replace with the café SOP when locked.",
     nutrition: {
-      energy_kcal: 884,
-      protein_g: 0,
-      fat_g: 100,
-      saturated_fat_g: 14.2,
-      carbohydrate_g: 0,
-      sugars_g: 0,
-      fibre_g: 0,
-      sodium_mg: 0,
-      calcium_mg: 0,
-      iron_mg: 0.05,
-      magnesium_mg: 0,
-      potassium_mg: 0,
-      zinc_mg: 0,
+      energy_kcal: 53,
+      protein_g: 8.14,
+      fat_g: 0.04,
+      saturated_fat_g: 0.01,
+      carbohydrate_g: 4.93,
+      sugars_g: 0.4,
+      fibre_g: 0.8,
+      sodium_mg: 5493,
+      calcium_mg: 33,
+      iron_mg: 1.45,
+      magnesium_mg: 74,
+      potassium_mg: 212,
+      zinc_mg: 0.87,
       vitamin_a_ug: 0,
       vitamin_c_mg: 0,
       vitamin_d_ug: 0,
-      vitamin_k_ug: 13.6,
+      vitamin_k_ug: 0,
       vitamin_b12_ug: 0,
-      folate_ug: 0,
+      folate_ug: 14,
       caffeine_mg: 0,
     },
   },
   {
-    id: "avocado-oil",
-    code: "ING-513",
-    name: "Avocado Oil",
-    category: "fat",
-    density: 0.91,
-    fdc: "FDC 171413 · Oil, olive, salad or cooking (SR Legacy) as avocado oil proxy. Proxy until the café SKU is labelled.",
-    allergens: "[]",
-    note: "Avocado oil. Nutrition uses olive oil proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
+    id: "tamari",
+    code: "ING-517",
+    name: "Tamari",
+    category: "other",
+    density: 1.15,
+    fdc: "FDC 174277 · Soy sauce made from soy and wheat (shoyu) (SR Legacy) as tamari proxy. Proxy until the café SKU is labelled.",
+    allergens: "[soy]",
+    note: "Tamari. Contains soy. Nutrition uses shoyu proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
     nutrition: {
-      energy_kcal: 884,
+      energy_kcal: 60,
+      protein_g: 10.51,
+      fat_g: 0.1,
+      saturated_fat_g: 0.01,
+      carbohydrate_g: 5.57,
+      sugars_g: 0.5,
+      fibre_g: 0.8,
+      sodium_mg: 5586,
+      calcium_mg: 20,
+      iron_mg: 2.38,
+      magnesium_mg: 40,
+      potassium_mg: 212,
+      zinc_mg: 0.33,
+      vitamin_a_ug: 0,
+      vitamin_c_mg: 0,
+      vitamin_d_ug: 0,
+      vitamin_k_ug: 0,
+      vitamin_b12_ug: 0,
+      folate_ug: 18,
+      caffeine_mg: 0,
+    },
+  },
+  {
+    id: "coconut-aminos",
+    code: "ING-518",
+    name: "Coconut Aminos",
+    category: "other",
+    density: 1.12,
+    fdc: "FDC 174277 · Soy sauce made from soy and wheat (shoyu) (SR Legacy) as coconut aminos proxy. Proxy until the café SKU is labelled.",
+    allergens: "[]",
+    note: "Coconut aminos. Nutrition uses soy-sauce energy/sodium proxy shape until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
+    nutrition: {
+      energy_kcal: 90,
       protein_g: 0,
-      fat_g: 100,
-      saturated_fat_g: 11.6,
-      carbohydrate_g: 0,
-      sugars_g: 0,
+      fat_g: 0,
+      saturated_fat_g: 0,
+      carbohydrate_g: 20,
+      sugars_g: 18,
       fibre_g: 0,
-      sodium_mg: 0,
-      calcium_mg: 0,
-      iron_mg: 0,
-      magnesium_mg: 0,
-      potassium_mg: 0,
-      zinc_mg: 0,
+      sodium_mg: 720,
+      calcium_mg: 10,
+      iron_mg: 0.2,
+      magnesium_mg: 10,
+      potassium_mg: 150,
+      zinc_mg: 0.1,
       vitamin_a_ug: 0,
       vitamin_c_mg: 0,
       vitamin_d_ug: 0,
@@ -72,68 +104,37 @@ const INGREDIENTS = [
     },
   },
   {
-    id: "grapeseed-oil",
-    code: "ING-514",
-    name: "Grapeseed Oil",
-    category: "fat",
-    density: 0.92,
-    fdc: "FDC 171028 · Oil, grapeseed (SR Legacy). Proxy until the café SKU is labelled.",
-    allergens: "[]",
-    note: "Grapeseed oil. Replace with the café SOP when locked.",
+    id: "fish-sauce",
+    code: "ING-519",
+    name: "Fish Sauce",
+    category: "other",
+    density: 1.2,
+    fdc: "FDC 174277 · Soy sauce made from soy and wheat (shoyu) (SR Legacy) as fish sauce proxy. Proxy until the café SKU is labelled.",
+    allergens: "[fish]",
+    note: "Fish sauce. Not plant-based. Nutrition uses soy-sauce proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
     nutrition: {
-      energy_kcal: 884,
-      protein_g: 0,
-      fat_g: 100,
-      saturated_fat_g: 9.6,
-      carbohydrate_g: 0,
+      energy_kcal: 35,
+      protein_g: 5.06,
+      fat_g: 0.01,
+      saturated_fat_g: 0,
+      carbohydrate_g: 3.64,
       sugars_g: 0,
       fibre_g: 0,
-      sodium_mg: 0,
-      calcium_mg: 0,
-      iron_mg: 0,
-      magnesium_mg: 0,
-      potassium_mg: 0,
-      zinc_mg: 0,
-      vitamin_a_ug: 0,
-      vitamin_c_mg: 0,
+      sodium_mg: 7851,
+      calcium_mg: 43,
+      iron_mg: 0.78,
+      magnesium_mg: 175,
+      potassium_mg: 288,
+      zinc_mg: 0.2,
+      vitamin_a_ug: 4,
+      vitamin_c_mg: 0.5,
       vitamin_d_ug: 0,
       vitamin_k_ug: 0,
-      vitamin_b12_ug: 0,
-      folate_ug: 0,
+      vitamin_b12_ug: 0.48,
+      folate_ug: 12,
       caffeine_mg: 0,
     },
-  },
-  {
-    id: "mct-oil",
-    code: "ING-515",
-    name: "MCT Oil",
-    category: "fat",
-    density: 0.94,
-    fdc: "FDC 171412 · Oil, coconut (SR Legacy) as MCT oil proxy. Proxy until the café SKU is labelled.",
-    allergens: "[]",
-    note: "MCT oil. Nutrition uses coconut oil proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
-    nutrition: {
-      energy_kcal: 862,
-      protein_g: 0,
-      fat_g: 100,
-      saturated_fat_g: 82.5,
-      carbohydrate_g: 0,
-      sugars_g: 0,
-      fibre_g: 0,
-      sodium_mg: 0,
-      calcium_mg: 0,
-      iron_mg: 0.04,
-      magnesium_mg: 0,
-      potassium_mg: 0,
-      zinc_mg: 0,
-      vitamin_a_ug: 0,
-      vitamin_c_mg: 0,
-      vitamin_d_ug: 0,
-      vitamin_k_ug: 0.5,
-      vitamin_b12_ug: 0,
-      folate_ug: 0,
-      caffeine_mg: 0,
-    },
+    diet: { plant_based: false, vegetarian: false },
   },
 ];
 
@@ -153,8 +154,8 @@ const CELLS = [
 ];
 
 const ELEVATED = [
-  { ing: "sesame-oil", cell: "chia", template: "tenon-balsamic-vinegar-chia-elevated", fromId: "balsamic-vinegar" },
-  { ing: "mct-oil", cell: "overnight-oats", template: "tenon-sherry-vinegar-overnight-oats-elevated", fromId: "sherry-vinegar" },
+  { ing: "soy-sauce", cell: "chia", template: "tenon-sesame-oil-chia-elevated", fromId: "sesame-oil" },
+  { ing: "fish-sauce", cell: "overnight-oats", template: "tenon-mct-oil-overnight-oats-elevated", fromId: "mct-oil" },
 ];
 
 function titleCase(id) {
@@ -168,6 +169,7 @@ function ingredientMd(ing) {
   const lines = Object.entries(ing.nutrition)
     .map(([k, v]) => `  ${k}: ${v}`)
     .join("\n");
+  const diet = ing.diet || { plant_based: true, vegetarian: true };
   return `---
 id: ${ing.id}
 code: ${ing.code}
@@ -188,8 +190,8 @@ nutrition:
 ${lines}
 allergens: ${ing.allergens}
 diet:
-  plant_based: true
-  vegetarian: true
+  plant_based: ${diet.plant_based}
+  vegetarian: ${diet.vegetarian}
 ---
 
 ${ing.note}
@@ -233,7 +235,7 @@ function rewriteElevated(src, fromId, toId, toName, codeNum, kind) {
   out = out.replaceAll(`Elevated ${toId} cell`, `Elevated ${prose} cell`);
   out = out.replaceAll(`elevated ${toId}`, `elevated ${prose}`);
   out = out.replaceAll(`with elevated ${toId}`, `with elevated ${prose}`);
-  out = out.replaceAll("Six thousand three hundred builds.", "Six thousand three hundred fifty builds.");
+  out = out.replaceAll("Six thousand three hundred fifty builds.", "Six thousand four hundred builds.");
   return out;
 }
 
