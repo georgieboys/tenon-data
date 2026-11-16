@@ -1,6 +1,6 @@
 {
   "name": "tenon-data",
-  "version": "0.3.131",
+  "version": "0.3.132",
   "description": "Open ingredient, prep and build data for Tenon Coffee, with calculated nutrition.",
   "private": true,
   "type": "module",
