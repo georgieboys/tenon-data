@@ -13,7 +13,7 @@ default_source: usda_fdc
 sources:
   usda_fdc:
     type: usda_fdc
-    ref: "FDC 168880 · Molasses (SR Legacy) as sorghum syrup proxy. Proxy until the café SKU is labelled."
+    ref: "FDC 168820 · Molasses (SR Legacy) as sorghum syrup proxy. Proxy until the café SKU is labelled."
 nutrition:
   energy_kcal: 290
   protein_g: 0
