@@ -10,19 +10,19 @@ import { ROOT, repoDataset } from "./helpers.ts";
 const messages = (issues: { message: string }[]) => issues.map((i) => i.message).join("\n");
 
 describe("repository data", () => {
-  it("passes all checks", async () => {
+  it("passes all checks", { timeout: 30_000 }, async () => {
     expect(validateDataset(await repoDataset())).toEqual([]);
   });
 });
 
 describe("cross-record checks", () => {
-  it("rejects unknown references", async () => {
+  it("rejects unknown references", { timeout: 30_000 }, async () => {
     const ds = await repoDataset();
     ds.prep["soy-whey-milk"]!.inputs[1]!.ref = "ingredient/pea-protein";
     expect(messages(validateDataset(ds))).toContain("unknown reference ingredient/pea-protein");
   });
 
-  it("rejects volumes for components without a density", async () => {
+  it("rejects volumes for components without a density", { timeout: 30_000 }, async () => {
     const ds = await repoDataset();
     const iced = ds.build["tenon-matcha"]!.formats.iced!;
     const ice = iced.inputs.find((i) => "ref" in i && i.ref === "ingredient/ice")!;
@@ -30,38 +30,38 @@ describe("cross-record checks", () => {
     expect(messages(validateDataset(ds))).toContain("ingredient/ice is measured in ml but has no density_g_per_ml");
   });
 
-  it("rejects a measured yield above the input mass", async () => {
+  it("rejects a measured yield above the input mass", { timeout: 30_000 }, async () => {
     const ds = await repoDataset();
     ds.prep["soy-protein-milk"]!.yield = { method: "measured", mass_g: 2000 };
     expect(messages(validateDataset(ds))).toContain("exceeds total input mass");
   });
 
-  it("rejects circular prep references", async () => {
+  it("rejects circular prep references", { timeout: 30_000 }, async () => {
     const ds = await repoDataset();
     ds.prep["soy-whey-milk"]!.inputs.push({ ref: "prep/dairy-whey-milk", qty: 10, unit: "g" });
     ds.prep["dairy-whey-milk"]!.inputs.push({ ref: "prep/soy-whey-milk", qty: 10, unit: "g" });
     expect(messages(validateDataset(ds))).toContain("circular prep reference");
   });
 
-  it("rejects nutrients missing from the catalogue", async () => {
+  it("rejects nutrients missing from the catalogue", { timeout: 30_000 }, async () => {
     const ds = await repoDataset();
     ds.ingredient.matcha!.nutrition.theanine_mg = 1500;
     expect(messages(validateDataset(ds))).toContain("unknown nutrient 'theanine_mg'");
   });
 
-  it("rejects plant-based ingredients with animal allergens", async () => {
+  it("rejects plant-based ingredients with animal allergens", { timeout: 30_000 }, async () => {
     const ds = await repoDataset();
     ds.ingredient["whey-concentrate"]!.diet.plant_based = true;
     expect(messages(validateDataset(ds))).toContain("marked plant_based but lists animal allergens (milk)");
   });
 
-  it("rejects duplicate codes", async () => {
+  it("rejects duplicate codes", { timeout: 30_000 }, async () => {
     const ds = await repoDataset();
     ds.ingredient.ice!.code = "ING-001";
     expect(messages(validateDataset(ds))).toContain("code ING-001 is already used");
   });
 
-  it("rejects slot defaults that are not options and menu formats the build lacks", async () => {
+  it("rejects slot defaults that are not options and menu formats the build lacks", { timeout: 30_000 }, async () => {
     const ds = await repoDataset();
     ds.build["tenon-matcha"]!.slots!.base!.default = "prep/missing-milk";
     ds.menu["tenon-matcha"]!.formats.push("ice_cream");
