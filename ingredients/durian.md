@@ -1,0 +1,44 @@
+---
+id: durian
+code: ING-165
+name: Durian
+version: 0.1.0
+description: Durian. Open lab cell.
+category: fruit
+supplier:
+  name: TBD
+basis: per_100g
+density_g_per_ml: 0.9
+default_source: usda_fdc
+sources:
+  usda_fdc:
+    type: usda_fdc
+    ref: "FDC 168178 · Durian, raw or frozen (SR Legacy). Proxy until the café SKU is labelled."
+nutrition:
+  energy_kcal: 147
+  protein_g: 1.47
+  fat_g: 5.33
+  saturated_fat_g: 0
+  carbohydrate_g: 27.09
+  sugars_g: 0
+  fibre_g: 3.8
+  sodium_mg: 2
+  calcium_mg: 6
+  iron_mg: 0.43
+  magnesium_mg: 30
+  potassium_mg: 436
+  zinc_mg: 0.28
+  vitamin_a_ug: 2
+  vitamin_c_mg: 19.7
+  vitamin_d_ug: 0
+  vitamin_k_ug: 0
+  vitamin_b12_ug: 0
+  folate_ug: 36
+  caffeine_mg: 0
+allergens: []
+diet:
+  plant_based: true
+  vegetarian: true
+---
+
+Raw/frozen durian. Replace with the café SOP when locked.
