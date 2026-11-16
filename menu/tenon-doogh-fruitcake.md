@@ -1,0 +1,13 @@
+---
+id: tenon-doogh-fruitcake
+code: MNU-8672
+name: Tenon Doogh Fruitcake
+version: 0.1.0
+description: Menu listing for Tenon Doogh Fruitcake.
+build: build/tenon-doogh-fruitcake
+status: planned
+formats: [baked]
+price_sgd: null
+---
+
+Menu product paired with build/tenon-doogh-fruitcake.
