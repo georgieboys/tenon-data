@@ -3,137 +3,138 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const startCode = 6901;
-const baseBuilds = 6900;
+const startCode = 6951;
+const baseBuilds = 6950;
 
 const INGREDIENTS = [
   {
-    id: "flax-milk",
-    code: "ING-560",
-    name: "Flax Milk",
+    id: "tiger-nut-milk",
+    code: "ING-564",
+    name: "Tiger Nut Milk",
     category: "plant_milk",
-    density: 1.02,
-    fdc: "FDC 174832 · Beverages, almond milk, unsweetened, shelf stable (SR Legacy) as flax milk proxy. Proxy until the café SKU is labelled.",
+    density: 1.03,
+    fdc: "FDC 174832 · Beverages, almond milk, unsweetened, shelf stable (SR Legacy) as tiger nut milk proxy. Proxy until the café SKU is labelled.",
     allergens: "[]",
-    note: "Flax milk. Nutrition uses almond milk proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
+    note: "Tiger nut (chufa) milk / horchata base. Nutrition uses almond milk proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
     nutrition: {
-      energy_kcal: 25,
-      protein_g: 0,
+      energy_kcal: 60,
+      protein_g: 0.5,
       fat_g: 2.5,
-      saturated_fat_g: 0.2,
-      carbohydrate_g: 1.0,
-      sugars_g: 0,
-      fibre_g: 0,
-      sodium_mg: 70,
-      calcium_mg: 180,
-      iron_mg: 0.2,
-      magnesium_mg: 5,
-      potassium_mg: 20,
-      zinc_mg: 0.1,
-      vitamin_a_ug: 60,
-      vitamin_c_mg: 0,
-      vitamin_d_ug: 1.0,
-      vitamin_k_ug: 0,
-      vitamin_b12_ug: 0.5,
-      folate_ug: 0,
-      caffeine_mg: 0,
-    },
-  },
-  {
-    id: "hazelnut-milk",
-    code: "ING-561",
-    name: "Hazelnut Milk",
-    category: "plant_milk",
-    density: 1.02,
-    fdc: "FDC 174832 · Beverages, almond milk, unsweetened, shelf stable (SR Legacy) as hazelnut milk proxy. Proxy until the café SKU is labelled.",
-    allergens: "[tree_nut]",
-    note: "Hazelnut milk. Contains tree nut. Nutrition uses almond milk proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
-    nutrition: {
-      energy_kcal: 29,
-      protein_g: 0.4,
-      fat_g: 2.8,
-      saturated_fat_g: 0.2,
-      carbohydrate_g: 0.8,
-      sugars_g: 0.5,
-      fibre_g: 0.2,
-      sodium_mg: 55,
-      calcium_mg: 150,
-      iron_mg: 0.3,
-      magnesium_mg: 12,
-      potassium_mg: 60,
+      saturated_fat_g: 0.5,
+      carbohydrate_g: 9.0,
+      sugars_g: 6.0,
+      fibre_g: 1.0,
+      sodium_mg: 40,
+      calcium_mg: 50,
+      iron_mg: 0.5,
+      magnesium_mg: 20,
+      potassium_mg: 120,
       zinc_mg: 0.2,
-      vitamin_a_ug: 60,
+      vitamin_a_ug: 0,
       vitamin_c_mg: 0,
-      vitamin_d_ug: 1.0,
+      vitamin_d_ug: 0,
       vitamin_k_ug: 0,
-      vitamin_b12_ug: 0.5,
-      folate_ug: 3,
-      caffeine_mg: 0,
-    },
-  },
-  {
-    id: "pistachio-milk",
-    code: "ING-562",
-    name: "Pistachio Milk",
-    category: "plant_milk",
-    density: 1.02,
-    fdc: "FDC 174832 · Beverages, almond milk, unsweetened, shelf stable (SR Legacy) as pistachio milk proxy. Proxy until the café SKU is labelled.",
-    allergens: "[tree_nut]",
-    note: "Pistachio milk. Contains tree nut. Nutrition uses almond milk proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
-    nutrition: {
-      energy_kcal: 40,
-      protein_g: 1.0,
-      fat_g: 3.0,
-      saturated_fat_g: 0.4,
-      carbohydrate_g: 2.0,
-      sugars_g: 1.0,
-      fibre_g: 0.5,
-      sodium_mg: 65,
-      calcium_mg: 160,
-      iron_mg: 0.4,
-      magnesium_mg: 15,
-      potassium_mg: 80,
-      zinc_mg: 0.2,
-      vitamin_a_ug: 60,
-      vitamin_c_mg: 0,
-      vitamin_d_ug: 1.0,
-      vitamin_k_ug: 0,
-      vitamin_b12_ug: 0.5,
+      vitamin_b12_ug: 0,
       folate_ug: 5,
       caffeine_mg: 0,
     },
   },
   {
-    id: "sesame-milk",
-    code: "ING-563",
-    name: "Sesame Milk",
+    id: "banana-milk",
+    code: "ING-565",
+    name: "Banana Milk",
     category: "plant_milk",
-    density: 1.02,
-    fdc: "FDC 174832 · Beverages, almond milk, unsweetened, shelf stable (SR Legacy) as sesame milk proxy. Proxy until the café SKU is labelled.",
-    allergens: "[sesame]",
-    note: "Sesame milk. Contains sesame. Nutrition uses almond milk proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
+    density: 1.04,
+    fdc: "FDC 174832 · Beverages, almond milk, unsweetened, shelf stable (SR Legacy) as banana milk proxy. Proxy until the café SKU is labelled.",
+    allergens: "[]",
+    note: "Banana milk. Nutrition uses almond milk energy shape until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
     nutrition: {
-      energy_kcal: 50,
-      protein_g: 1.5,
-      fat_g: 4.0,
-      saturated_fat_g: 0.6,
-      carbohydrate_g: 2.0,
-      sugars_g: 0.5,
+      energy_kcal: 55,
+      protein_g: 0.5,
+      fat_g: 1.5,
+      saturated_fat_g: 0.2,
+      carbohydrate_g: 10.0,
+      sugars_g: 7.0,
       fibre_g: 0.5,
-      sodium_mg: 50,
-      calcium_mg: 200,
-      iron_mg: 1.0,
-      magnesium_mg: 40,
-      potassium_mg: 90,
-      zinc_mg: 0.5,
-      vitamin_a_ug: 60,
-      vitamin_c_mg: 0,
+      sodium_mg: 45,
+      calcium_mg: 120,
+      iron_mg: 0.2,
+      magnesium_mg: 15,
+      potassium_mg: 150,
+      zinc_mg: 0.1,
+      vitamin_a_ug: 20,
+      vitamin_c_mg: 2,
       vitamin_d_ug: 1.0,
-      vitamin_k_ug: 0,
+      vitamin_k_ug: 0.2,
       vitamin_b12_ug: 0.5,
       folate_ug: 8,
       caffeine_mg: 0,
     },
+  },
+  {
+    id: "coconut-cream",
+    code: "ING-566",
+    name: "Coconut Cream",
+    category: "plant_milk",
+    density: 1.01,
+    fdc: "FDC 170172 · Nuts, coconut cream (liquid expressed from grated meat) (SR Legacy). Proxy until the café SKU is labelled.",
+    allergens: "[tree_nut]",
+    note: "Coconut cream. Contains tree nut (US FDA coconut labelling). Replace with the café SOP when locked.",
+    nutrition: {
+      energy_kcal: 330,
+      protein_g: 3.63,
+      fat_g: 34.68,
+      saturated_fat_g: 30.75,
+      carbohydrate_g: 6.65,
+      sugars_g: 0,
+      fibre_g: 2.2,
+      sodium_mg: 4,
+      calcium_mg: 11,
+      iron_mg: 2.28,
+      magnesium_mg: 28,
+      potassium_mg: 325,
+      zinc_mg: 0.96,
+      vitamin_a_ug: 0,
+      vitamin_c_mg: 2.8,
+      vitamin_d_ug: 0,
+      vitamin_k_ug: 0,
+      vitamin_b12_ug: 0,
+      folate_ug: 23,
+      caffeine_mg: 0,
+    },
+  },
+  {
+    id: "buttermilk",
+    code: "ING-567",
+    name: "Buttermilk",
+    category: "dairy",
+    density: 1.03,
+    fdc: "FDC 170874 · Milk, buttermilk, fluid, cultured, lowfat (SR Legacy). Proxy until the café SKU is labelled.",
+    allergens: "[milk]",
+    note: "Cultured buttermilk. Contains milk. Replace with the café SOP when locked.",
+    nutrition: {
+      energy_kcal: 40,
+      protein_g: 3.31,
+      fat_g: 0.88,
+      saturated_fat_g: 0.55,
+      carbohydrate_g: 4.79,
+      sugars_g: 4.79,
+      fibre_g: 0,
+      sodium_mg: 105,
+      calcium_mg: 116,
+      iron_mg: 0.05,
+      magnesium_mg: 11,
+      potassium_mg: 151,
+      zinc_mg: 0.42,
+      vitamin_a_ug: 7,
+      vitamin_c_mg: 1.0,
+      vitamin_d_ug: 0,
+      vitamin_k_ug: 0.1,
+      vitamin_b12_ug: 0.22,
+      folate_ug: 5,
+      caffeine_mg: 0,
+    },
+    diet: { plant_based: false, vegetarian: true },
   },
 ];
 
@@ -153,8 +154,8 @@ const CELLS = [
 ];
 
 const ELEVATED = [
-  { ing: "flax-milk", cell: "chia", template: "tenon-hemp-milk-chia-elevated", fromId: "hemp-milk" },
-  { ing: "sesame-milk", cell: "overnight-oats", template: "tenon-pea-milk-overnight-oats-elevated", fromId: "pea-milk" },
+  { ing: "tiger-nut-milk", cell: "chia", template: "tenon-flax-milk-chia-elevated", fromId: "flax-milk" },
+  { ing: "buttermilk", cell: "overnight-oats", template: "tenon-sesame-milk-overnight-oats-elevated", fromId: "sesame-milk" },
 ];
 
 function titleCase(id) {
@@ -168,6 +169,7 @@ function ingredientMd(ing) {
   const lines = Object.entries(ing.nutrition)
     .map(([k, v]) => `  ${k}: ${v}`)
     .join("\n");
+  const diet = ing.diet || { plant_based: true, vegetarian: true };
   return `---
 id: ${ing.id}
 code: ${ing.code}
@@ -188,8 +190,8 @@ nutrition:
 ${lines}
 allergens: ${ing.allergens}
 diet:
-  plant_based: true
-  vegetarian: true
+  plant_based: ${diet.plant_based}
+  vegetarian: ${diet.vegetarian}
 ---
 
 ${ing.note}
@@ -233,7 +235,7 @@ function rewriteElevated(src, fromId, toId, toName, codeNum, kind) {
   out = out.replaceAll(`Elevated ${toId} cell`, `Elevated ${prose} cell`);
   out = out.replaceAll(`elevated ${toId}`, `elevated ${prose}`);
   out = out.replaceAll(`with elevated ${toId}`, `with elevated ${prose}`);
-  out = out.replaceAll("Six thousand nine hundred builds.", "Six thousand nine hundred fifty builds.");
+  out = out.replaceAll("Six thousand nine hundred fifty builds.", "Seven thousand builds.");
   return out;
 }
 
