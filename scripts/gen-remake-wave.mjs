@@ -3,135 +3,137 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const startCode = 6451;
-const baseBuilds = 6450;
+const startCode = 6501;
+const baseBuilds = 6500;
 
 const INGREDIENTS = [
   {
-    id: "chili-oil",
-    code: "ING-524",
-    name: "Chili Oil",
-    category: "fat",
-    density: 0.92,
-    fdc: "FDC 171413 · Oil, olive, salad or cooking (SR Legacy) as chili oil carrier proxy. Proxy until the café SKU is labelled.",
-    allergens: "[]",
-    note: "Chili oil. Nutrition uses olive oil carrier proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
-    nutrition: {
-      energy_kcal: 884,
-      protein_g: 0,
-      fat_g: 100,
-      saturated_fat_g: 13.8,
-      carbohydrate_g: 0,
-      sugars_g: 0,
-      fibre_g: 0,
-      sodium_mg: 2,
-      calcium_mg: 1,
-      iron_mg: 0.56,
-      magnesium_mg: 0,
-      potassium_mg: 1,
-      zinc_mg: 0,
-      vitamin_a_ug: 0,
-      vitamin_c_mg: 0,
-      vitamin_d_ug: 0,
-      vitamin_k_ug: 60.2,
-      vitamin_b12_ug: 0,
-      folate_ug: 0,
-      caffeine_mg: 0,
-    },
-  },
-  {
-    id: "rice-bran-oil",
-    code: "ING-525",
-    name: "Rice Bran Oil",
-    category: "fat",
-    density: 0.92,
-    fdc: "FDC 171413 · Oil, olive, salad or cooking (SR Legacy) as rice bran oil proxy. Proxy until the café SKU is labelled.",
-    allergens: "[]",
-    note: "Rice bran oil. Nutrition uses olive oil proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
-    nutrition: {
-      energy_kcal: 884,
-      protein_g: 0,
-      fat_g: 100,
-      saturated_fat_g: 19.7,
-      carbohydrate_g: 0,
-      sugars_g: 0,
-      fibre_g: 0,
-      sodium_mg: 0,
-      calcium_mg: 0,
-      iron_mg: 0,
-      magnesium_mg: 0,
-      potassium_mg: 0,
-      zinc_mg: 0,
-      vitamin_a_ug: 0,
-      vitamin_c_mg: 0,
-      vitamin_d_ug: 0,
-      vitamin_k_ug: 24.7,
-      vitamin_b12_ug: 0,
-      folate_ug: 0,
-      caffeine_mg: 0,
-    },
-  },
-  {
-    id: "sriracha",
-    code: "ING-526",
-    name: "Sriracha",
+    id: "ketchup",
+    code: "ING-528",
+    name: "Ketchup",
     category: "other",
     density: 1.15,
-    fdc: "FDC 174066 · Sauce, peppers, hot (SR Legacy) as sriracha proxy. Proxy until the café SKU is labelled.",
+    fdc: "FDC 168462 · Catsup (SR Legacy). Proxy until the café SKU is labelled.",
     allergens: "[]",
-    note: "Sriracha. Nutrition uses hot pepper sauce proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
+    note: "Ketchup / catsup. Replace with the café SOP when locked.",
     nutrition: {
-      energy_kcal: 11,
-      protein_g: 0.51,
-      fat_g: 0.37,
-      saturated_fat_g: 0.05,
-      carbohydrate_g: 1.75,
-      sugars_g: 1.3,
+      energy_kcal: 101,
+      protein_g: 1.04,
+      fat_g: 0.1,
+      saturated_fat_g: 0.01,
+      carbohydrate_g: 27.4,
+      sugars_g: 21.3,
       fibre_g: 0.3,
-      sodium_mg: 2643,
-      calcium_mg: 8,
-      iron_mg: 0.48,
-      magnesium_mg: 5,
-      potassium_mg: 144,
-      zinc_mg: 0.05,
-      vitamin_a_ug: 81,
-      vitamin_c_mg: 74.5,
+      sodium_mg: 907,
+      calcium_mg: 15,
+      iron_mg: 0.35,
+      magnesium_mg: 13,
+      potassium_mg: 281,
+      zinc_mg: 0.17,
+      vitamin_a_ug: 26,
+      vitamin_c_mg: 4.1,
       vitamin_d_ug: 0,
-      vitamin_k_ug: 2.4,
+      vitamin_k_ug: 3,
       vitamin_b12_ug: 0,
-      folate_ug: 6,
+      folate_ug: 9,
       caffeine_mg: 0,
     },
   },
   {
-    id: "hot-sauce",
-    code: "ING-527",
-    name: "Hot Sauce",
-    category: "other",
-    density: 1.05,
-    fdc: "FDC 174066 · Sauce, peppers, hot (SR Legacy). Proxy until the café SKU is labelled.",
-    allergens: "[]",
-    note: "Hot sauce. Replace with the café SOP when locked.",
+    id: "mayo",
+    code: "ING-529",
+    name: "Mayonnaise",
+    category: "fat",
+    density: 0.91,
+    fdc: "FDC 171009 · Salad dressing, mayonnaise, regular (SR Legacy). Proxy until the café SKU is labelled.",
+    allergens: "[egg]",
+    note: "Mayonnaise. Contains egg. Replace with the café SOP when locked.",
     nutrition: {
-      energy_kcal: 11,
-      protein_g: 0.51,
-      fat_g: 0.37,
-      saturated_fat_g: 0.05,
-      carbohydrate_g: 1.75,
-      sugars_g: 1.3,
-      fibre_g: 0.3,
-      sodium_mg: 2643,
+      energy_kcal: 680,
+      protein_g: 0.96,
+      fat_g: 74.85,
+      saturated_fat_g: 11.75,
+      carbohydrate_g: 0.57,
+      sugars_g: 0.57,
+      fibre_g: 0,
+      sodium_mg: 635,
       calcium_mg: 8,
-      iron_mg: 0.48,
-      magnesium_mg: 5,
-      potassium_mg: 144,
-      zinc_mg: 0.05,
-      vitamin_a_ug: 81,
-      vitamin_c_mg: 74.5,
+      iron_mg: 0.21,
+      magnesium_mg: 1,
+      potassium_mg: 20,
+      zinc_mg: 0.15,
+      vitamin_a_ug: 13,
+      vitamin_c_mg: 0,
+      vitamin_d_ug: 0.2,
+      vitamin_k_ug: 163,
+      vitamin_b12_ug: 0.12,
+      folate_ug: 5,
+      caffeine_mg: 0,
+    },
+    diet: { plant_based: false, vegetarian: true },
+  },
+  {
+    id: "pesto",
+    code: "ING-530",
+    name: "Pesto",
+    category: "other",
+    density: 1.0,
+    fdc: "FDC 171009 · Salad dressing, mayonnaise, regular (SR Legacy) as pesto energy proxy. Proxy until the café SKU is labelled.",
+    allergens: "[tree_nut, milk]",
+    note: "Basil pesto. Contains tree nut and dairy. Nutrition uses mayo energy proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
+    nutrition: {
+      energy_kcal: 418,
+      protein_g: 5.0,
+      fat_g: 42.0,
+      saturated_fat_g: 7.5,
+      carbohydrate_g: 4.0,
+      sugars_g: 1.0,
+      fibre_g: 1.5,
+      sodium_mg: 600,
+      calcium_mg: 150,
+      iron_mg: 1.5,
+      magnesium_mg: 40,
+      potassium_mg: 200,
+      zinc_mg: 0.8,
+      vitamin_a_ug: 150,
+      vitamin_c_mg: 5,
       vitamin_d_ug: 0,
-      vitamin_k_ug: 2.4,
+      vitamin_k_ug: 180,
+      vitamin_b12_ug: 0.2,
+      folate_ug: 30,
+      caffeine_mg: 0,
+    },
+    diet: { plant_based: false, vegetarian: true },
+  },
+  {
+    id: "harissa",
+    code: "ING-531",
+    name: "Harissa",
+    category: "other",
+    density: 1.1,
+    fdc: "FDC 174066 · Sauce, peppers, hot (SR Legacy) as harissa proxy. Proxy until the café SKU is labelled.",
+    allergens: "[]",
+    note: "Harissa paste. Nutrition uses hot pepper sauce proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
+    nutrition: {
+      energy_kcal: 120,
+      protein_g: 2.5,
+      fat_g: 8.0,
+      saturated_fat_g: 1.0,
+      carbohydrate_g: 10.0,
+      sugars_g: 4.0,
+      fibre_g: 3.0,
+      sodium_mg: 900,
+      calcium_mg: 40,
+      iron_mg: 1.5,
+      magnesium_mg: 25,
+      potassium_mg: 300,
+      zinc_mg: 0.3,
+      vitamin_a_ug: 200,
+      vitamin_c_mg: 30,
+      vitamin_d_ug: 0,
+      vitamin_k_ug: 10,
       vitamin_b12_ug: 0,
-      folate_ug: 6,
+      folate_ug: 15,
       caffeine_mg: 0,
     },
   },
@@ -153,8 +155,8 @@ const CELLS = [
 ];
 
 const ELEVATED = [
-  { ing: "chili-oil", cell: "chia", template: "tenon-toasted-sesame-oil-chia-elevated", fromId: "toasted-sesame-oil" },
-  { ing: "hot-sauce", cell: "overnight-oats", template: "tenon-hemp-seed-oil-overnight-oats-elevated", fromId: "hemp-seed-oil" },
+  { ing: "ketchup", cell: "chia", template: "tenon-chili-oil-chia-elevated", fromId: "chili-oil" },
+  { ing: "harissa", cell: "overnight-oats", template: "tenon-hot-sauce-overnight-oats-elevated", fromId: "hot-sauce" },
 ];
 
 function titleCase(id) {
@@ -168,6 +170,7 @@ function ingredientMd(ing) {
   const lines = Object.entries(ing.nutrition)
     .map(([k, v]) => `  ${k}: ${v}`)
     .join("\n");
+  const diet = ing.diet || { plant_based: true, vegetarian: true };
   return `---
 id: ${ing.id}
 code: ${ing.code}
@@ -188,8 +191,8 @@ nutrition:
 ${lines}
 allergens: ${ing.allergens}
 diet:
-  plant_based: true
-  vegetarian: true
+  plant_based: ${diet.plant_based}
+  vegetarian: ${diet.vegetarian}
 ---
 
 ${ing.note}
@@ -233,7 +236,7 @@ function rewriteElevated(src, fromId, toId, toName, codeNum, kind) {
   out = out.replaceAll(`Elevated ${toId} cell`, `Elevated ${prose} cell`);
   out = out.replaceAll(`elevated ${toId}`, `elevated ${prose}`);
   out = out.replaceAll(`with elevated ${toId}`, `with elevated ${prose}`);
-  out = out.replaceAll("Six thousand four hundred fifty builds.", "Six thousand five hundred builds.");
+  out = out.replaceAll("Six thousand five hundred builds.", "Six thousand five hundred fifty builds.");
   return out;
 }
 
