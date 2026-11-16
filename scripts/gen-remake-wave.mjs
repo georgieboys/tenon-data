@@ -3,135 +3,71 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const startCode = 4751;
-const baseBuilds = 4750;
+const startCode = 4827;
+const baseBuilds = 4826;
 
 const INGREDIENTS = [
   {
-    id: "gochugaru",
-    code: "ING-385",
-    name: "Gochugaru",
-    category: "spice",
+    id: "maitake",
+    code: "ING-393",
+    name: "Maitake",
+    category: "other",
     density: 0.45,
-    fdc: "FDC 170066 · Peppers, hot chili, red, raw (SR Legacy) as gochugaru chili flake proxy. Proxy until the café SKU is labelled.",
+    fdc: "FDC 169251 · Mushrooms, shiitake, raw (SR Legacy) as maitake / hen-of-the-woods proxy. Proxy until the café SKU is labelled.",
     allergens: "[]",
-    note: "Korean chili flakes (gochugaru). Replace with the café SOP when locked.",
+    note: "Fresh maitake (hen-of-the-woods). Replace with the café SOP when locked.",
     nutrition: {
-      energy_kcal: 280,
-      protein_g: 12.0,
-      fat_g: 14.0,
-      saturated_fat_g: 2.0,
-      carbohydrate_g: 50.0,
-      sugars_g: 10.0,
-      fibre_g: 25.0,
-      sodium_mg: 30,
-      calcium_mg: 150,
-      iron_mg: 8.0,
-      magnesium_mg: 150,
-      potassium_mg: 2000,
-      zinc_mg: 2.0,
-      vitamin_a_ug: 2000,
-      vitamin_c_mg: 100.0,
-      vitamin_d_ug: 0,
-      vitamin_k_ug: 80.0,
-      vitamin_b12_ug: 0,
-      folate_ug: 50,
-      caffeine_mg: 0,
-    },
-  },
-  {
-    id: "kimchi",
-    code: "ING-386",
-    name: "Kimchi",
-    category: "other",
-    density: 0.95,
-    fdc: "FDC 169975 · Cabbage, kimchi (SR Legacy). Proxy until the café SKU is labelled.",
-    allergens: "[]",
-    note: "Fermented napa cabbage kimchi. Replace with the café SOP when locked.",
-    nutrition: {
-      energy_kcal: 15,
-      protein_g: 1.1,
-      fat_g: 0.5,
-      saturated_fat_g: 0.1,
-      carbohydrate_g: 2.4,
-      sugars_g: 1.1,
-      fibre_g: 1.6,
-      sodium_mg: 498,
-      calcium_mg: 33,
-      iron_mg: 2.5,
-      magnesium_mg: 18,
-      potassium_mg: 151,
-      zinc_mg: 0.2,
-      vitamin_a_ug: 5,
+      energy_kcal: 31,
+      protein_g: 1.9,
+      fat_g: 0.2,
+      saturated_fat_g: 0,
+      carbohydrate_g: 7.0,
+      sugars_g: 2.0,
+      fibre_g: 2.7,
+      sodium_mg: 1,
+      calcium_mg: 1,
+      iron_mg: 0.3,
+      magnesium_mg: 10,
+      potassium_mg: 204,
+      zinc_mg: 0.8,
+      vitamin_a_ug: 0,
       vitamin_c_mg: 0,
-      vitamin_d_ug: 0,
-      vitamin_k_ug: 43.0,
+      vitamin_d_ug: 1.2,
+      vitamin_k_ug: 0,
       vitamin_b12_ug: 0,
-      folate_ug: 52,
+      folate_ug: 20,
       caffeine_mg: 0,
     },
   },
   {
-    id: "nori",
-    code: "ING-387",
-    name: "Nori",
+    id: "shimeji",
+    code: "ING-394",
+    name: "Shimeji",
     category: "other",
-    density: 0.2,
-    fdc: "FDC 168457 · Seaweed, laver, raw (SR Legacy) as nori sheet proxy. Proxy until the café SKU is labelled.",
+    density: 0.45,
+    fdc: "FDC 168421 · Mushrooms, enoki, raw (SR Legacy) as shimeji / beech mushroom proxy. Proxy until the café SKU is labelled.",
     allergens: "[]",
-    note: "Dried nori seaweed sheets. Replace with the café SOP when locked.",
+    note: "Fresh shimeji (beech) mushrooms. Replace with the café SOP when locked.",
     nutrition: {
-      energy_kcal: 35,
-      protein_g: 5.8,
-      fat_g: 0.3,
+      energy_kcal: 34,
+      protein_g: 2.5,
+      fat_g: 0.4,
       saturated_fat_g: 0.1,
-      carbohydrate_g: 5.1,
-      sugars_g: 0.5,
-      fibre_g: 0.3,
-      sodium_mg: 48,
-      calcium_mg: 70,
-      iron_mg: 1.8,
-      magnesium_mg: 2,
-      potassium_mg: 356,
-      zinc_mg: 1.1,
-      vitamin_a_ug: 260,
-      vitamin_c_mg: 39.0,
-      vitamin_d_ug: 0,
-      vitamin_k_ug: 4.0,
+      carbohydrate_g: 6.5,
+      sugars_g: 1.0,
+      fibre_g: 2.5,
+      sodium_mg: 5,
+      calcium_mg: 2,
+      iron_mg: 0.8,
+      magnesium_mg: 15,
+      potassium_mg: 350,
+      zinc_mg: 0.7,
+      vitamin_a_ug: 0,
+      vitamin_c_mg: 0,
+      vitamin_d_ug: 0.3,
+      vitamin_k_ug: 0,
       vitamin_b12_ug: 0,
-      folate_ug: 146,
-      caffeine_mg: 0,
-    },
-  },
-  {
-    id: "wakame",
-    code: "ING-388",
-    name: "Wakame",
-    category: "other",
-    density: 0.3,
-    fdc: "FDC 168458 · Seaweed, wakame, raw (SR Legacy). Proxy until the café SKU is labelled.",
-    allergens: "[]",
-    note: "Dried or rehydrated wakame. Replace with the café SOP when locked.",
-    nutrition: {
-      energy_kcal: 45,
-      protein_g: 3.0,
-      fat_g: 0.6,
-      saturated_fat_g: 0.1,
-      carbohydrate_g: 9.1,
-      sugars_g: 0.6,
-      fibre_g: 0.5,
-      sodium_mg: 870,
-      calcium_mg: 150,
-      iron_mg: 2.2,
-      magnesium_mg: 107,
-      potassium_mg: 50,
-      zinc_mg: 0.4,
-      vitamin_a_ug: 18,
-      vitamin_c_mg: 3.0,
-      vitamin_d_ug: 0,
-      vitamin_k_ug: 5.0,
-      vitamin_b12_ug: 0,
-      folate_ug: 196,
+      folate_ug: 30,
       caffeine_mg: 0,
     },
   },
@@ -152,10 +88,7 @@ const CELLS = [
   "egg-sandwich",
 ];
 
-const ELEVATED = [
-  { ing: "kimchi", cell: "chia", template: "tenon-gochujang-chia-elevated", fromId: "gochujang" },
-  { ing: "nori", cell: "overnight-oats", template: "tenon-mirin-overnight-oats-elevated", fromId: "mirin" },
-];
+const ELEVATED = [];
 
 function titleCase(id) {
   return id
@@ -218,25 +151,6 @@ function rewriteFromRaspberry(src, ingId, displayName, codeNum, kind) {
   return out;
 }
 
-function rewriteElevated(src, fromId, toId, toName, codeNum, kind) {
-  const fromTitle = titleCase(fromId);
-  const toTitle = titleCase(toId);
-  const prose = toName.toLowerCase();
-  let out = src;
-  out = out.replaceAll(`tenon-${fromId}-`, `tenon-${toId}-`);
-  out = out.replaceAll(`Tenon ${fromTitle} `, `Tenon ${toTitle} `);
-  out = out.replaceAll(fromId, toId);
-  out = out.replace(
-    kind === "build" ? /code: BLD-\d+/ : /code: MNU-\d+/,
-    `code: ${kind === "build" ? "BLD" : "MNU"}-${codeNum}`,
-  );
-  out = out.replaceAll(`Elevated ${toId} cell`, `Elevated ${prose} cell`);
-  out = out.replaceAll(`elevated ${toId}`, `elevated ${prose}`);
-  out = out.replaceAll(`with elevated ${toId}`, `with elevated ${prose}`);
-  out = out.replaceAll("Four thousand seven hundred fifty builds.", "Four thousand eight hundred builds.");
-  return out;
-}
-
 let code = startCode;
 for (const ing of INGREDIENTS) {
   if (existsSync(path.join(root, "ingredients", `${ing.id}.md`))) {
@@ -271,10 +185,10 @@ for (const elev of ELEVATED) {
   const srcBuild = readFileSync(path.join(root, "builds", `${elev.template}.md`), "utf8");
   const srcMenu = readFileSync(path.join(root, "menu", `${elev.template}.md`), "utf8");
   const meta = INGREDIENTS.find((i) => i.id === elev.ing);
-  writeFileSync(buildPath, rewriteElevated(srcBuild, elev.fromId, elev.ing, meta.name, code, "build"));
+  writeFileSync(buildPath, rewriteFromRaspberry(srcBuild, elev.ing, meta.name, code, "build"));
   writeFileSync(
     path.join(root, "menu", `tenon-${elev.ing}-${cellSlug}.md`),
-    rewriteElevated(srcMenu, elev.fromId, elev.ing, meta.name, code, "menu"),
+    rewriteFromRaspberry(srcMenu, elev.ing, meta.name, code, "menu"),
   );
   console.log(`+ elevated ${elev.ing}-${cellSlug} BLD-${code}`);
   code += 1;
