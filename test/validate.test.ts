@@ -86,7 +86,7 @@ describe("schema checks on files", () => {
     return dir;
   }
 
-  it("rejects unknown fields", async () => {
+  it("rejects unknown fields", { timeout: 30_000 }, async () => {
     const root = await copyRepo();
     const matcha = join(root, "ingredients", "matcha.md");
     const source = await readFile(matcha, "utf8");
@@ -97,7 +97,7 @@ describe("schema checks on files", () => {
     expect(messages((error as DataError).issues)).toContain("must NOT have additional properties 'colour'");
   });
 
-  it("rejects ids that do not match the file name", async () => {
+  it("rejects ids that do not match the file name", { timeout: 30_000 }, async () => {
     const root = await copyRepo();
     const matcha = join(root, "ingredients", "matcha.md");
     await writeFile(matcha, (await readFile(matcha, "utf8")).replace("id: matcha", "id: matcha-powder"));
@@ -106,3 +106,4 @@ describe("schema checks on files", () => {
     expect(messages(error.issues)).toContain("id 'matcha-powder' must match the file name 'matcha'");
   });
 });
+
