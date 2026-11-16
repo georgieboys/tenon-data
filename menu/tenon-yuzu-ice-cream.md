@@ -1,0 +1,13 @@
+---
+id: tenon-yuzu-ice-cream
+code: MNU-3710
+name: Tenon Yuzu Ice Cream
+version: 0.1.0
+description: Menu listing for Tenon Yuzu Ice Cream.
+build: build/tenon-yuzu-ice-cream
+status: planned
+formats: [ice_cream]
+price_sgd: null
+---
+
+Menu product paired with build/tenon-yuzu-ice-cream.
