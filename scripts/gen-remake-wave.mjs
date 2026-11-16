@@ -3,19 +3,51 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const startCode = 7615;
-const baseBuilds = 7614;
+const startCode = 7665;
+const baseBuilds = 7664;
 
 const INGREDIENTS = [
   {
-    id: "aleppo-pepper",
-    code: "ING-618",
-    name: "Aleppo Pepper",
+    id: "chipotle-powder",
+    code: "ING-622",
+    name: "Chipotle Powder",
     category: "spice",
     density: 0.45,
-    fdc: "FDC 171328 · Spices, paprika (SR Legacy) as Aleppo pepper proxy. Proxy until the café SKU is labelled.",
+    fdc: "FDC 170932 · Spices, pepper, red or cayenne (SR Legacy) as chipotle powder proxy. Proxy until the café SKU is labelled.",
     allergens: "[]",
-    note: "Aleppo pepper flakes. Nutrition uses paprika proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
+    note: "Chipotle powder. Nutrition uses cayenne proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
+    nutrition: {
+      energy_kcal: 318,
+      protein_g: 12.0,
+      fat_g: 17.3,
+      saturated_fat_g: 3.3,
+      carbohydrate_g: 56.6,
+      sugars_g: 10.3,
+      fibre_g: 27.2,
+      sodium_mg: 30,
+      calcium_mg: 148,
+      iron_mg: 7.8,
+      magnesium_mg: 152,
+      potassium_mg: 2010,
+      zinc_mg: 2.5,
+      vitamin_a_ug: 2081,
+      vitamin_c_mg: 76.4,
+      vitamin_d_ug: 0,
+      vitamin_k_ug: 80.4,
+      vitamin_b12_ug: 0,
+      folate_ug: 106,
+      caffeine_mg: 0,
+    },
+  },
+  {
+    id: "ancho-powder",
+    code: "ING-623",
+    name: "Ancho Powder",
+    category: "spice",
+    density: 0.45,
+    fdc: "FDC 171328 · Spices, paprika (SR Legacy) as ancho powder proxy. Proxy until the café SKU is labelled.",
+    allergens: "[]",
+    note: "Ancho chile powder. Nutrition uses paprika proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
     nutrition: {
       energy_kcal: 282,
       protein_g: 14.1,
@@ -40,14 +72,14 @@ const INGREDIENTS = [
     },
   },
   {
-    id: "smoked-paprika",
-    code: "ING-619",
-    name: "Smoked Paprika",
+    id: "guajillo-powder",
+    code: "ING-624",
+    name: "Guajillo Powder",
     category: "spice",
     density: 0.45,
-    fdc: "FDC 171328 · Spices, paprika (SR Legacy) as smoked paprika proxy. Proxy until the café SKU is labelled.",
+    fdc: "FDC 171328 · Spices, paprika (SR Legacy) as guajillo powder proxy. Proxy until the café SKU is labelled.",
     allergens: "[]",
-    note: "Smoked paprika. Nutrition uses paprika proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
+    note: "Guajillo chile powder. Nutrition uses paprika proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
     nutrition: {
       energy_kcal: 282,
       protein_g: 14.1,
@@ -72,46 +104,14 @@ const INGREDIENTS = [
     },
   },
   {
-    id: "sweet-paprika",
-    code: "ING-620",
-    name: "Sweet Paprika",
+    id: "urfa-biber",
+    code: "ING-625",
+    name: "Urfa Biber",
     category: "spice",
     density: 0.45,
-    fdc: "FDC 171328 · Spices, paprika (SR Legacy). Proxy until the café SKU is labelled.",
+    fdc: "FDC 170932 · Spices, pepper, red or cayenne (SR Legacy) as urfa biber proxy. Proxy until the café SKU is labelled.",
     allergens: "[]",
-    note: "Sweet paprika. Replace with the café SOP when locked.",
-    nutrition: {
-      energy_kcal: 282,
-      protein_g: 14.1,
-      fat_g: 12.9,
-      saturated_fat_g: 2.1,
-      carbohydrate_g: 53.9,
-      sugars_g: 10.3,
-      fibre_g: 34.9,
-      sodium_mg: 68,
-      calcium_mg: 229,
-      iron_mg: 21.1,
-      magnesium_mg: 178,
-      potassium_mg: 2280,
-      zinc_mg: 4.3,
-      vitamin_a_ug: 2463,
-      vitamin_c_mg: 0.9,
-      vitamin_d_ug: 0,
-      vitamin_k_ug: 80.3,
-      vitamin_b12_ug: 0,
-      folate_ug: 49,
-      caffeine_mg: 0,
-    },
-  },
-  {
-    id: "cayenne-pepper",
-    code: "ING-621",
-    name: "Cayenne Pepper",
-    category: "spice",
-    density: 0.45,
-    fdc: "FDC 170932 · Spices, pepper, red or cayenne (SR Legacy). Proxy until the café SKU is labelled.",
-    allergens: "[]",
-    note: "Cayenne pepper. Replace with the café SOP when locked.",
+    note: "Urfa biber (isot) chile flakes. Nutrition uses cayenne proxy until a dedicated FDC row or café CoA lands. Replace with the café SOP when locked.",
     nutrition: {
       energy_kcal: 318,
       protein_g: 12.0,
@@ -153,8 +153,8 @@ const CELLS = [
 ];
 
 const ELEVATED = [
-  { ing: "aleppo-pepper", cell: "chia", template: "tenon-ghee-chia-elevated", fromId: "ghee" },
-  { ing: "cayenne-pepper", cell: "overnight-oats", template: "tenon-duck-fat-overnight-oats-elevated", fromId: "duck-fat" },
+  { ing: "chipotle-powder", cell: "chia", template: "tenon-ghee-chia-elevated", fromId: "ghee" },
+  { ing: "urfa-biber", cell: "overnight-oats", template: "tenon-duck-fat-overnight-oats-elevated", fromId: "duck-fat" },
 ];
 
 function titleCase(id) {
@@ -234,7 +234,7 @@ function rewriteElevated(src, fromId, toId, toName, codeNum, kind) {
   out = out.replaceAll(`Elevated ${toId} cell`, `Elevated ${prose} cell`);
   out = out.replaceAll(`elevated ${toId}`, `elevated ${prose}`);
   out = out.replaceAll(`with elevated ${toId}`, `with elevated ${prose}`);
-  out = out.replaceAll("Seven thousand three hundred fifty builds.", "Seven thousand six hundred sixty-four builds.");
+  out = out.replaceAll("Seven thousand three hundred fifty builds.", "Seven thousand seven hundred fourteen builds.");
   return out;
 }
 
