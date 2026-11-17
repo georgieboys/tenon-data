@@ -1,0 +1,13 @@
+---
+id: tenon-spelt-flakes-powder-fruitcake
+code: MNU-17234
+name: Tenon Spelt Flakes Powder Fruitcake
+version: 0.1.0
+description: Menu listing for Tenon Spelt Flakes Powder Fruitcake.
+build: build/tenon-spelt-flakes-powder-fruitcake
+status: planned
+formats: [baked]
+price_sgd: null
+---
+
+Menu product paired with build/tenon-spelt-flakes-powder-fruitcake.
