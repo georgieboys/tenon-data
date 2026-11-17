@@ -1,0 +1,13 @@
+---
+id: tenon-chrysanthemum-powder-protein-sandwich
+code: MNU-13487
+name: Tenon Chrysanthemum Powder Protein Sandwich
+version: 0.1.0
+description: Menu listing for Tenon Chrysanthemum Powder Protein Sandwich.
+build: build/tenon-chrysanthemum-powder-protein-sandwich
+status: planned
+formats: [assembled]
+price_sgd: null
+---
+
+Menu product paired with build/tenon-chrysanthemum-powder-protein-sandwich.
