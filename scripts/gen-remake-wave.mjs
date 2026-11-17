@@ -1,146 +1,70 @@
 #!/usr/bin/env node
+/**
+ * Remake wave: 4 base ingredients → powder forms × 12 chassis + 2 elevated = +50 builds.
+ * Pass ids via WAVE_IDS (comma-separated) or edit DEFAULT_IDS.
+ * Env: WAVE_VERSION, WAVE_START_CODE, WAVE_BASE_BUILDS, WAVE_PROSE, WAVE_ING_START
+ */
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const startCode = 14091;
-const baseBuilds = 14090;
-const proseCount = "Fourteen thousand one hundred forty builds.";
 
-const INGREDIENTS = [
-  {
-    id: "chia-black-powder",
-    code: "ING-1138",
-    name: "Chia Black Powder",
-    category: "nut_seed",
-    density: 0.65,
-    fdc: "FDC 170554 · Seeds, chia seeds, dried (SR Legacy) as black chia powder proxy. Proxy until the café SKU is labelled.",
-    allergens: "[]",
-    note: "Black chia powder (distinct from chia-seed-powder and whole chia-black). Nutrition uses dried chia proxy until a café CoA lands. Replace with the café SOP when locked.",
-    diet: { plant_based: true, vegetarian: true },
-    nutrition: {
-      energy_kcal: 486,
-      protein_g: 16.5,
-      fat_g: 30.7,
-      saturated_fat_g: 3.3,
-      carbohydrate_g: 42.1,
-      sugars_g: 0,
-      fibre_g: 34.4,
-      sodium_mg: 16,
-      calcium_mg: 631,
-      iron_mg: 7.7,
-      magnesium_mg: 335,
-      potassium_mg: 407,
-      zinc_mg: 4.6,
-      vitamin_a_ug: 54,
-      vitamin_c_mg: 1.6,
-      vitamin_d_ug: 0,
-      vitamin_k_ug: 0,
-      vitamin_b12_ug: 0,
-      folate_ug: 49,
-      caffeine_mg: 0,
-    },
-  },
-  {
-    id: "lupin-powder",
-    code: "ING-1139",
-    name: "Lupin Powder",
-    category: "nut_seed",
-    density: 0.65,
-    fdc: "FDC 172420 · Lupins, mature seeds, raw (SR Legacy) as lupin powder proxy. Proxy until the café SKU is labelled.",
-    allergens: "[]",
-    note: "Lupin powder (distinct from whole lupin). Potential cross-reactivity with peanut — flag in café SOP when locked. Nutrition uses SR Legacy lupin until a café CoA lands.",
-    diet: { plant_based: true, vegetarian: true },
-    nutrition: {
-      energy_kcal: 371,
-      protein_g: 36.2,
-      fat_g: 9.7,
-      saturated_fat_g: 1.2,
-      carbohydrate_g: 40.4,
-      sugars_g: 0,
-      fibre_g: 18.9,
-      sodium_mg: 15,
-      calcium_mg: 176,
-      iron_mg: 4.4,
-      magnesium_mg: 198,
-      potassium_mg: 1013,
-      zinc_mg: 4.8,
-      vitamin_a_ug: 0,
-      vitamin_c_mg: 4.8,
-      vitamin_d_ug: 0,
-      vitamin_k_ug: 0,
-      vitamin_b12_ug: 0,
-      folate_ug: 355,
-      caffeine_mg: 0,
-    },
-  },
-  {
-    id: "fava-powder",
-    code: "ING-1140",
-    name: "Fava Powder",
-    category: "nut_seed",
-    density: 0.7,
-    fdc: "FDC 175192 · Broadbeans (fava beans), mature seeds, raw (SR Legacy) as fava powder proxy. Proxy until the café SKU is labelled.",
-    allergens: "[]",
-    note: "Fava powder (distinct from whole fava). Nutrition uses SR Legacy broadbean until a café CoA lands. Replace with the café SOP when locked.",
-    diet: { plant_based: true, vegetarian: true },
-    nutrition: {
-      energy_kcal: 341,
-      protein_g: 26.1,
-      fat_g: 1.5,
-      saturated_fat_g: 0.3,
-      carbohydrate_g: 58.3,
-      sugars_g: 5.7,
-      fibre_g: 25,
-      sodium_mg: 13,
-      calcium_mg: 103,
-      iron_mg: 6.7,
-      magnesium_mg: 192,
-      potassium_mg: 1062,
-      zinc_mg: 3.1,
-      vitamin_a_ug: 3,
-      vitamin_c_mg: 1.4,
-      vitamin_d_ug: 0,
-      vitamin_k_ug: 9,
-      vitamin_b12_ug: 0,
-      folate_ug: 423,
-      caffeine_mg: 0,
-    },
-  },
-  {
-    id: "black-eyed-pea-powder",
-    code: "ING-1141",
-    name: "Black Eyed Pea Powder",
-    category: "nut_seed",
-    density: 0.7,
-    fdc: "FDC 175190 · Cowpeas, common (blackeyes, crowder, southern), mature seeds, raw (SR Legacy) as black-eyed pea powder proxy. Proxy until the café SKU is labelled.",
-    allergens: "[]",
-    note: "Black-eyed pea powder (distinct from whole black-eyed pea). Nutrition uses SR Legacy cowpea until a café CoA lands. Replace with the café SOP when locked.",
-    diet: { plant_based: true, vegetarian: true },
-    nutrition: {
-      energy_kcal: 336,
-      protein_g: 23.5,
-      fat_g: 1.3,
-      saturated_fat_g: 0.3,
-      carbohydrate_g: 60,
-      sugars_g: 6.9,
-      fibre_g: 10.6,
-      sodium_mg: 16,
-      calcium_mg: 110,
-      iron_mg: 8.3,
-      magnesium_mg: 184,
-      potassium_mg: 1112,
-      zinc_mg: 3.4,
-      vitamin_a_ug: 2,
-      vitamin_c_mg: 1.5,
-      vitamin_d_ug: 0,
-      vitamin_k_ug: 5,
-      vitamin_b12_ug: 0,
-      folate_ug: 633,
-      caffeine_mg: 0,
-    },
-  },
-];
+const DEFAULT_IDS = ["pigeon-pea", "mustard-seed", "nigella", "cumin"];
+const ids = (process.env.WAVE_IDS || DEFAULT_IDS.join(","))
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
+if (ids.length !== 4) {
+  console.error("Need exactly 4 ingredient ids");
+  process.exit(1);
+}
+
+const startCode = Number(process.env.WAVE_START_CODE || 14141);
+const baseBuilds = Number(process.env.WAVE_BASE_BUILDS || 14140);
+const proseCount =
+  process.env.WAVE_PROSE || "Fourteen thousand one hundred ninety builds.";
+const ingStart = Number(process.env.WAVE_ING_START || 1142);
+
+function parseIngredient(id) {
+  const raw = readFileSync(path.join(root, "ingredients", `${id}.md`), "utf8");
+  const fm = raw.match(/^---\n([\s\S]*?)\n---/);
+  if (!fm) throw new Error(`no frontmatter for ${id}`);
+  const body = fm[1];
+  const get = (k) => {
+    const m = body.match(new RegExp(`^${k}:\\s*(.+)$`, "m"));
+    return m ? m[1].trim() : null;
+  };
+  const name = get("name");
+  const category = get("category") || "spice";
+  const density = Number(get("density_g_per_ml") || 0.5);
+  const allergens = (body.match(/^allergens:\s*(\[[^\]]*\])/m) || [, "[]"])[1];
+  const refMatch = body.match(/ref:\s*"([^"]+)"/);
+  const fdc = refMatch
+    ? `${refMatch[1].replace(/\.\s*Proxy.*/, "")} as ${id.replace(/-/g, " ")} powder proxy. Proxy until the café SKU is labelled.`
+    : `Proxy as ${id} powder until the café SKU is labelled.`;
+  const nutBlock = body.match(/nutrition:\n([\s\S]*?)(?=\nallergens:|\ndiet:)/);
+  if (!nutBlock) throw new Error(`no nutrition for ${id}`);
+  const nutrition = {};
+  for (const line of nutBlock[1].split("\n")) {
+    const m = line.match(/^\s+([a-z0-9_]+):\s*(.+)\s*$/);
+    if (m) nutrition[m[1]] = Number(m[2]);
+  }
+  return { id, name, category, density, allergens, fdc, nutrition };
+}
+
+const bases = ids.map(parseIngredient);
+const INGREDIENTS = bases.map((b, i) => ({
+  id: `${b.id}-powder`,
+  code: `ING-${ingStart + i}`,
+  name: `${b.name} Powder`,
+  category: b.category,
+  density: Math.min(b.density, 0.7),
+  fdc: b.fdc,
+  allergens: b.allergens,
+  note: `${b.name} powder (distinct from whole ${b.id}). Nutrition uses the parent SR Legacy / proxy row until a café CoA lands. Replace with the café SOP when locked.`,
+  diet: { plant_based: true, vegetarian: true },
+  nutrition: b.nutrition,
+}));
 
 const CELLS = [
   "yogurt-bowl",
@@ -158,8 +82,13 @@ const CELLS = [
 ];
 
 const ELEVATED = [
-  { ing: "chia-black-powder", cell: "chia", template: "tenon-ghee-chia-elevated", fromId: "ghee" },
-  { ing: "lupin-powder", cell: "overnight-oats", template: "tenon-duck-fat-overnight-oats-elevated", fromId: "duck-fat" },
+  { ing: INGREDIENTS[0].id, cell: "chia", template: "tenon-ghee-chia-elevated", fromId: "ghee" },
+  {
+    ing: INGREDIENTS[1].id,
+    cell: "overnight-oats",
+    template: "tenon-duck-fat-overnight-oats-elevated",
+    fromId: "duck-fat",
+  },
 ];
 
 function titleCase(id) {
@@ -287,5 +216,5 @@ for (const elev of ELEVATED) {
   code += 1;
 }
 console.log(
-  `done through BLD-${code - 1}; expected builds ${baseBuilds + (code - startCode)}`,
+  `done through BLD-${code - 1}; expected builds ${baseBuilds + (code - startCode)}; ings ${INGREDIENTS.map((i) => i.id).join(",")}`,
 );
