@@ -3,34 +3,34 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const startCode = 12091;
-const baseBuilds = 12090;
-const proseCount = "Twelve thousand one hundred forty builds.";
+const startCode = 12141;
+const baseBuilds = 12140;
+const proseCount = "Twelve thousand one hundred ninety builds.";
 
 const INGREDIENTS = [
   {
-    id: "resistant-dextrin",
-    code: "ING-978",
-    name: "Resistant Dextrin",
+    id: "stevia-extract",
+    code: "ING-982",
+    name: "Stevia Extract",
     category: "other",
-    density: 0.55,
-    fdc: "Branded resistant dextrin / soluble corn fibre (no dedicated SR Legacy row). Soluble fibre proxy until the café SKU is labelled.",
+    density: 0.6,
+    fdc: "Branded stevia leaf extract (Reb-A) (no dedicated SR Legacy row). High-intensity sweetener proxy until the café SKU is labelled.",
     allergens: "[]",
-    note: "Resistant dextrin. Nutrition is a branded soluble-fibre proxy until a café CoA lands. Replace with the café SOP when locked.",
+    note: "Stevia extract. Nutrition is a branded high-intensity sweetener proxy until a café CoA lands. Replace with the café SOP when locked.",
     diet: { plant_based: true, vegetarian: true },
     nutrition: {
-      energy_kcal: 90,
+      energy_kcal: 0,
       protein_g: 0,
       fat_g: 0,
       saturated_fat_g: 0,
       carbohydrate_g: 95.0,
       sugars_g: 0,
-      fibre_g: 90.0,
-      sodium_mg: 15,
-      calcium_mg: 5,
-      iron_mg: 0.1,
-      magnesium_mg: 2,
-      potassium_mg: 5,
+      fibre_g: 0,
+      sodium_mg: 0,
+      calcium_mg: 0,
+      iron_mg: 0,
+      magnesium_mg: 0,
+      potassium_mg: 0,
       zinc_mg: 0,
       vitamin_a_ug: 0,
       vitamin_c_mg: 0,
@@ -42,21 +42,21 @@ const INGREDIENTS = [
     },
   },
   {
-    id: "erythritol",
-    code: "ING-979",
-    name: "Erythritol",
+    id: "monk-fruit",
+    code: "ING-983",
+    name: "Monk Fruit",
     category: "other",
-    density: 0.8,
-    fdc: "Branded erythritol (sugar alcohol) (no dedicated SR Legacy row). Polyol sweetener proxy until the café SKU is labelled.",
+    density: 0.6,
+    fdc: "Branded monk fruit (luo han guo) extract (no dedicated SR Legacy row). High-intensity sweetener proxy until the café SKU is labelled.",
     allergens: "[]",
-    note: "Erythritol. Nutrition is a branded polyol proxy until a café CoA lands. Replace with the café SOP when locked.",
+    note: "Monk fruit extract. Nutrition is a branded high-intensity sweetener proxy until a café CoA lands. Replace with the café SOP when locked.",
     diet: { plant_based: true, vegetarian: true },
     nutrition: {
-      energy_kcal: 20,
+      energy_kcal: 0,
       protein_g: 0,
       fat_g: 0,
       saturated_fat_g: 0,
-      carbohydrate_g: 100.0,
+      carbohydrate_g: 95.0,
       sugars_g: 0,
       fibre_g: 0,
       sodium_mg: 0,
@@ -75,22 +75,22 @@ const INGREDIENTS = [
     },
   },
   {
-    id: "xylitol",
-    code: "ING-980",
-    name: "Xylitol",
+    id: "trehalose",
+    code: "ING-984",
+    name: "Trehalose",
     category: "other",
     density: 0.85,
-    fdc: "Branded xylitol (sugar alcohol) (no dedicated SR Legacy row). Polyol sweetener proxy until the café SKU is labelled.",
+    fdc: "Branded trehalose (disaccharide) (no dedicated SR Legacy row). Carbohydrate sweetener proxy until the café SKU is labelled.",
     allergens: "[]",
-    note: "Xylitol. Nutrition is a branded polyol proxy until a café CoA lands. Replace with the café SOP when locked.",
+    note: "Trehalose. Nutrition is a branded disaccharide proxy until a café CoA lands. Replace with the café SOP when locked.",
     diet: { plant_based: true, vegetarian: true },
     nutrition: {
-      energy_kcal: 240,
+      energy_kcal: 360,
       protein_g: 0,
       fat_g: 0,
       saturated_fat_g: 0,
-      carbohydrate_g: 100.0,
-      sugars_g: 0,
+      carbohydrate_g: 95.0,
+      sugars_g: 95.0,
       fibre_g: 0,
       sodium_mg: 0,
       calcium_mg: 0,
@@ -108,22 +108,22 @@ const INGREDIENTS = [
     },
   },
   {
-    id: "allulose",
-    code: "ING-981",
-    name: "Allulose",
+    id: "tagatose",
+    code: "ING-985",
+    name: "Tagatose",
     category: "other",
-    density: 0.9,
-    fdc: "Branded allulose (rare sugar) (no dedicated SR Legacy row). Low-calorie sugar proxy until the café SKU is labelled.",
+    density: 0.85,
+    fdc: "Branded D-tagatose (rare sugar) (no dedicated SR Legacy row). Low-GI sugar proxy until the café SKU is labelled.",
     allergens: "[]",
-    note: "Allulose. Nutrition is a branded rare-sugar proxy until a café CoA lands. Replace with the café SOP when locked.",
+    note: "Tagatose. Nutrition is a branded rare-sugar proxy until a café CoA lands. Replace with the café SOP when locked.",
     diet: { plant_based: true, vegetarian: true },
     nutrition: {
-      energy_kcal: 40,
+      energy_kcal: 150,
       protein_g: 0,
       fat_g: 0,
       saturated_fat_g: 0,
       carbohydrate_g: 100.0,
-      sugars_g: 0,
+      sugars_g: 100.0,
       fibre_g: 0,
       sodium_mg: 0,
       calcium_mg: 0,
@@ -158,8 +158,8 @@ const CELLS = [
 ];
 
 const ELEVATED = [
-  { ing: "erythritol", cell: "chia", template: "tenon-ghee-chia-elevated", fromId: "ghee" },
-  { ing: "allulose", cell: "overnight-oats", template: "tenon-duck-fat-overnight-oats-elevated", fromId: "duck-fat" },
+  { ing: "stevia-extract", cell: "chia", template: "tenon-ghee-chia-elevated", fromId: "ghee" },
+  { ing: "tagatose", cell: "overnight-oats", template: "tenon-duck-fat-overnight-oats-elevated", fromId: "duck-fat" },
 ];
 
 function titleCase(id) {
