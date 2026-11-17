@@ -1,0 +1,13 @@
+---
+id: tenon-amaranth-cooked-powder-almond-cookies
+code: MNU-16221
+name: Tenon Amaranth Cooked Powder Almond Cookies
+version: 0.1.0
+description: Menu listing for Tenon Amaranth Cooked Powder Almond Cookies.
+build: build/tenon-amaranth-cooked-powder-almond-cookies
+status: planned
+formats: [baked]
+price_sgd: null
+---
+
+Menu product paired with build/tenon-amaranth-cooked-powder-almond-cookies.
