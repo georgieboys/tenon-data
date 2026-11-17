@@ -1,0 +1,13 @@
+---
+id: tenon-gochujang-powder-almond-cookies
+code: MNU-16059
+name: Tenon Gochujang Powder Almond Cookies
+version: 0.1.0
+description: Menu listing for Tenon Gochujang Powder Almond Cookies.
+build: build/tenon-gochujang-powder-almond-cookies
+status: planned
+formats: [baked]
+price_sgd: null
+---
+
+Menu product paired with build/tenon-gochujang-powder-almond-cookies.
