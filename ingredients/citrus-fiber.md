@@ -1,0 +1,44 @@
+---
+id: citrus-fiber
+code: ING-1069
+name: Citrus Fiber
+version: 0.1.0
+description: Citrus Fiber. Open lab cell.
+category: spice
+supplier:
+  name: TBD
+basis: per_100g
+density_g_per_ml: 0.35
+default_source: usda_fdc
+sources:
+  usda_fdc:
+    type: usda_fdc
+    ref: "Branded citrus fiber (no dedicated SR Legacy row). Insoluble/soluble citrus pulp fiber proxy until the café SKU is labelled."
+nutrition:
+  energy_kcal: 180
+  protein_g: 5
+  fat_g: 1
+  saturated_fat_g: 0.2
+  carbohydrate_g: 70
+  sugars_g: 5
+  fibre_g: 60
+  sodium_mg: 50
+  calcium_mg: 200
+  iron_mg: 2
+  magnesium_mg: 40
+  potassium_mg: 400
+  zinc_mg: 0.5
+  vitamin_a_ug: 10
+  vitamin_c_mg: 20
+  vitamin_d_ug: 0
+  vitamin_k_ug: 5
+  vitamin_b12_ug: 0
+  folate_ug: 20
+  caffeine_mg: 0
+allergens: []
+diet:
+  plant_based: true
+  vegetarian: true
+---
+
+Citrus fiber (functional pulp fiber). Nutrition is a branded citrus-fiber proxy until a café CoA lands. Replace with the café SOP when locked.
