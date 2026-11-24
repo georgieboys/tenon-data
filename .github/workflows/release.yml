@@ -10,11 +10,10 @@ name: Release data
 on:
   push:
     tags: ["v*"]
+  # Manual run: publishes the selected branch under its package.json version
+  # (creating that release, and the tag if missing). Use it to bootstrap or
+  # to reload the database without a new data version.
   workflow_dispatch:
-    inputs:
-      tag:
-        description: "Existing tag to (re)publish, e.g. v0.3.409"
-        required: true
 
 permissions:
   contents: write
@@ -28,12 +27,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     env:
-      TAG: ${{ inputs.tag || github.ref_name }}
       NODE_OPTIONS: --max-old-space-size=12288
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.tag || github.ref }}
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
@@ -41,13 +37,14 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
 
-      - name: Check tag matches package version
+      - name: Resolve release tag
         run: |
           version="v$(node -p "require('./package.json').version")"
-          if [ "$version" != "$TAG" ]; then
-            echo "::error::package.json is $version but the tag is $TAG"
+          if [ "$GITHUB_REF_TYPE" = "tag" ] && [ "$GITHUB_REF_NAME" != "$version" ]; then
+            echo "::error::package.json is $version but the tag is $GITHUB_REF_NAME"
             exit 1
           fi
+          echo "TAG=$version" >> "$GITHUB_ENV"
 
       - name: Write exports
         run: node src/cli.ts export exports
@@ -59,7 +56,7 @@ jobs:
           if gh release view "$TAG" >/dev/null 2>&1; then
             gh release upload "$TAG" exports/* --clobber
           else
-            gh release create "$TAG" exports/* --title "$TAG" --notes "Compiled exports for tenon-data $TAG. Licence: data CC BY-SA 4.0, code MIT."
+            gh release create "$TAG" exports/* --target "$GITHUB_SHA" --title "$TAG" --notes "Compiled exports for tenon-data $TAG. Licence: data CC BY-SA 4.0, code MIT."
           fi
 
       - name: Load site database
