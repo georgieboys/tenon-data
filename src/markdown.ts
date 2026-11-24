@@ -40,6 +40,18 @@ function table(header: string[], rows: string[][]): string {
   ].join("\n");
 }
 
+const renderers = new WeakMap<CompiledDataset, Renderer>();
+
+/** One Renderer per dataset: building its label map walks every record. */
+function rendererFor(data: CompiledDataset): Renderer {
+  let r = renderers.get(data);
+  if (!r) {
+    r = new Renderer(data);
+    renderers.set(data, r);
+  }
+  return r;
+}
+
 class Renderer {
   private readonly nutrients: NutrientDef[];
   private readonly labels = new Map<string, string>();
@@ -161,7 +173,7 @@ class Renderer {
 }
 
 export function renderIngredient(data: CompiledDataset, ing: CompiledIngredient): string {
-  const r = new Renderer(data);
+  const r = rendererFor(data);
   const spec: string[][] = [
     ["Reference", `\`${ing.ref}\``],
     ["Version", ing.version],
@@ -203,7 +215,7 @@ export function renderIngredient(data: CompiledDataset, ing: CompiledIngredient)
 }
 
 export function renderPrep(data: CompiledDataset, prep: CompiledPrep): string {
-  const r = new Renderer(data);
+  const r = rendererFor(data);
   const spec: string[][] = [
     ["Reference", `\`${prep.ref}\``],
     ["Version", prep.version],
@@ -244,7 +256,7 @@ export function renderPrep(data: CompiledDataset, prep: CompiledPrep): string {
 }
 
 export function renderBuild(data: CompiledDataset, build: CompiledBuild): string {
-  const r = new Renderer(data);
+  const r = rendererFor(data);
   const slotRows = Object.entries(build.slots).map(([name, slot]) => [
     `Slot: ${slot.label} (\`${name}\`)`,
     slot.options.map((o) => `${r.label(o)}${o === slot.default ? " (default)" : ""}`).join("; "),
@@ -281,7 +293,7 @@ export function renderBuild(data: CompiledDataset, build: CompiledBuild): string
 }
 
 export function renderMenuProduct(data: CompiledDataset, item: CompiledMenuProduct): string {
-  const r = new Renderer(data);
+  const r = rendererFor(data);
   const defaultVariant = item.variants.find((v) => v.key === item.default_variant)!;
   return [
     r.header(item.code, item.name, item.description, item.variants.some((v) => v.composition.placeholder)),

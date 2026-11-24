@@ -20,7 +20,5 @@ jobs:
       - run: pnpm validate
       - run: pnpm test
       - run: pnpm build
-      - uses: actions/upload-artifact@v4
-        with:
-          name: tenon-data-dist
-          path: dist/
+      - name: Exports render
+        run: node --max-old-space-size=12288 src/cli.ts export exports

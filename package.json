@@ -11,7 +11,8 @@
     "./markdown": "./src/markdown.ts",
     "./nutrition": "./src/nutrition.ts",
     "./scale": "./src/scale.ts",
-    "./types": "./src/types.ts"
+    "./types": "./src/types.ts",
+    "./summary": "./src/summary.ts"
   },
   "engines": {
     "node": ">=22.18"
@@ -20,7 +21,9 @@
     "validate": "node src/cli.ts validate",
     "build": "node src/cli.ts build",
     "test": "vitest run",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "export": "node --max-old-space-size=12288 src/cli.ts export",
+    "load-db": "node --max-old-space-size=12288 src/cli.ts load-db"
   },
   "devEngines": {
     "packageManager": {
@@ -31,6 +34,7 @@
   },
   "packageManager": "pnpm@12.16.1",
   "dependencies": {
+    "@libsql/client": "^0.18.0",
     "ajv": "^8.20.0",
     "yaml": "^2.9.1"
   },
