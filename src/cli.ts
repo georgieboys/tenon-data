@@ -1,6 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join, relative, resolve } from "node:path";
-import { compileDataset } from "./compile.ts";
+import { compileDataset, type CompiledDataset } from "./compile.ts";
 import { loadDatabase } from "./db.ts";
 import { emit } from "./emit.ts";
 import { EXPORTS } from "./exports/index.ts";
@@ -41,11 +41,18 @@ try {
     console.warn(`! ${placeholders} of ${records.length} ingredients and preps rely on placeholder values`);
   }
 
+  // Exports, the site database and the site have always worked from the
+  // emitted JSON, where numbers are rounded to 6 decimals. Keep that exactly.
+  const roundNumbers = (_key: string, value: unknown) =>
+    typeof value === "number" ? Math.round(value * 1e6) / 1e6 : value;
+  const published = (): CompiledDataset => JSON.parse(JSON.stringify(data, roundNumbers)) as CompiledDataset;
+
   if (command === "export") {
+    const rounded = published();
     const outDir = resolve(process.argv[3] ?? join(root, "exports"));
     await mkdir(outDir, { recursive: true });
     for (const [name, render] of Object.entries(EXPORTS)) {
-      const body = render(data);
+      const body = render(rounded);
       await writeFile(join(outDir, name), body);
       console.log(`  · ${name} (${(Buffer.byteLength(body) / 1e6).toFixed(1)} MB)`);
     }
@@ -55,7 +62,7 @@ try {
   if (command === "load-db") {
     const url = process.env.TURSO_DATABASE_URL;
     if (!url) throw new Error("TURSO_DATABASE_URL is not set");
-    await loadDatabase(data, { url, authToken: process.env.TURSO_AUTH_TOKEN });
+    await loadDatabase(published(), { url, authToken: process.env.TURSO_AUTH_TOKEN });
   }
 
   if (command === "build") {

@@ -75,6 +75,24 @@ pnpm build      # writes dist/
 
 The calculation code in `src/` can also be imported directly, including `scaleRecipe` and `factorForMass` for batch scaling.
 
+## Releases, downloads and the website
+
+Every `v*` tag runs [`.github/workflows/release.yml`](.github/workflows/release.yml):
+
+1. Validate and compile the catalogue.
+2. Publish the bulk downloads as files on the GitHub release: `all.json`, `index.json`, `records.ndjson`, `graph.json`, `stats.json`, `nutrients.json`, `llms-full.txt` and every CSV (`builds.csv`, `variants.csv`, `menu.csv`, …). Download them from the [releases page](https://github.com/georgieboys/tenon-data/releases) or `https://github.com/georgieboys/tenon-data/releases/download/<tag>/<file>`.
+3. Load the website database (Turso/libSQL): one row per record with its JSON, Markdown and a compact list summary, plus used-by edges and dataset stats. The load writes staging tables and swaps them in with one transaction.
+4. Trigger a tenon.coffee deploy.
+
+Run the same steps locally:
+
+```sh
+pnpm export exports/                                  # bulk downloads
+TURSO_DATABASE_URL=file:tenon.db pnpm load-db         # local libSQL database
+```
+
+Repository secrets: `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN` (full access) and `VERCEL_DEPLOY_HOOK_URL`. Steps 3 and 4 are skipped with a warning when they are not set.
+
 ## Contributing and remixing
 
 Recipes are meant to be adapted. A remix is a new prep or build with `derived_from` pointing at the original version. See [docs/contribution-guide.md](docs/contribution-guide.md).
